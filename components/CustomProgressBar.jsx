@@ -1,5 +1,6 @@
 import React from 'react'
 import { ProgressBar } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
 const CustomProgressBar = ({ now, customColor, className }) => {
   return (
@@ -17,6 +18,12 @@ const CustomProgressBar = ({ now, customColor, className }) => {
       ></div>
     </ProgressBar>
   )
+}
+
+CustomProgressBar.propTypes = {
+  now: PropTypes.number.isRequired,
+  customColor: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired
 }
 
 export default CustomProgressBar
