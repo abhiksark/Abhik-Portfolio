@@ -2,11 +2,12 @@
 import styles from '../styles/Home.module.css'
 import SkillsGrid from './SkillsGrid'
 import React from 'react'
+import SkillsProgressBar from './SkillsProgressBar'
 
 const Skills = () => {
   return (
     <section className={styles.section}>
-      {/* <SkillsProgressBar /> */}
+      <SkillsProgressBar />
 
       <div className={styles.line}></div> {/* Vertical line */}
 

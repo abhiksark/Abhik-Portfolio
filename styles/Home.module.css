@@ -291,3 +291,20 @@
   }
 }
 
+
+/* Add the following classes for each skill level */
+.skill-level-1 {
+  background-color: hsl(200, 80%, 30%);
+}
+
+.skill-level-2 {
+  background-color: hsl(200, 80%, 50%);
+}
+
+.skill-level-3 {
+  background-color: hsl(200, 80%, 70%);
+}
+
+.skill-level-4 {
+  background-color: hsl(200, 80%, 90%);
+}

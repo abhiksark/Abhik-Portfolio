@@ -1,8 +1,16 @@
-// SkillsProgressBar.js
 import React from 'react'
-import { ProgressBar } from 'react-bootstrap'
 import { skills } from '../const'
 import styles from '../styles/Home.module.css'
+// import { getSkillColor } from './utils'
+import CustomProgressBar from './CustomProgressBar'
+
+export const getSkillColor = (level) => {
+  const hue = 200 // Blue color hue
+  const saturation = 80 // Saturation
+  const lightness = 35 + ((level - 1) * 20) // Increasing lightness from 20% to 80%
+
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`
+}
 
 const SkillsProgressBar = () => {
   return (
@@ -13,10 +21,10 @@ const SkillsProgressBar = () => {
           <li key={skill.name} className={styles.skillsItem}>
             <div className={styles.skillsItemInfo}>
               <span className={styles.skillsItemName}>{skill.name}</span>
-              <span className={styles.skillsItemProgress}>{skill.progress}%</span>
             </div>
-            <ProgressBar
+            <CustomProgressBar
               now={skill.progress}
+              customColor={getSkillColor(skill.level)}
               className={styles.skillsItemProgressBar}
             />
           </li>
