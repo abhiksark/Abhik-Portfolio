@@ -10,6 +10,8 @@ import {
 import { SiPytorch, SiTensorflow, SiGooglecloud, SiCplusplus, SiMongodb, SiPostgresql, SiRedis } from 'react-icons/si'
 import { GiArtificialIntelligence } from 'react-icons/gi'
 import { AiOutlineApi } from 'react-icons/ai'
+import React from 'react'
+
 
 export const skillsMap = [
   {
@@ -217,31 +219,76 @@ export const suggestedReading = [
     subType: 'Computer Vision'
   },
   {
-    title: 'Convolutional Neural Networks for Sentence Classification',
-    link: 'https://arxiv.org/pdf/1408.5882.pdf',
+    title: 'Illustrated Transformer',
+    link: 'https://jalammar.github.io/illustrated-transformer/',
+    type: 'Blog',
+    subType: 'Natural Language Processing'
+  },
+  {
+    title: 'You Only Look Once: Unified, Real-Time Object Detection',
+    link: 'https://arxiv.org/pdf/1506.02640.pdf',
+    type: 'Paper',
+    subType: 'Computer Vision'
+  },
+  {
+    title: 'The Illustrated GPT-2 (Visualizing Transformer Language Models)',
+    link: 'https://jalammar.github.io/illustrated-gpt2/',
+    type: 'Blog',
+    subType: 'Natural Language Processing'
+  },
+  {
+    title: 'Attention Is All You Need',
+    link: 'https://arxiv.org/pdf/1706.03762.pdf',
     type: 'Paper',
     subType: 'Natural Language Processing'
   },
   {
-    title: 'Title of Book 1',
-    authors: 'Author 1, Author 2',
-    link: 'https://example.com/book1',
+    title: 'YOLO9000: Better, Faster, Stronger',
+    link: 'https://arxiv.org/pdf/1612.08242.pdf',
+    type: 'Paper',
+    subType: 'Computer Vision'
+  },
+  {
+    title: 'YOLOv3: An Incremental Improvement',
+    link: 'https://arxiv.org/pdf/1804.02767.pdf',
+    type: 'Paper',
+    subType: 'Computer Vision'
+  },
+  {
+    title: 'YOLOv4: Optimal Speed and Accuracy of Object Detection',
+    link: 'https://arxiv.org/pdf/2004.10934.pdf',
+    type: 'Paper',
+    subType: 'Computer Vision'
+  },
+  {
+    title: 'Visual Transformer Language Representation Models',
+    link: 'https://arxiv.org/pdf/2010.11929.pdf',
+    type: 'Paper',
+    subType: 'Natural Language Processing'
+  },
+  {
+    title: 'CLIP: Connecting Text and Images',
+    link: 'https://arxiv.org/pdf/2103.00020.pdf',
+    type: 'Paper',
+    subType: 'Natural Language Processing'
+  },
+  {
+    title: 'Transformers from Scratch',
+    link: 'https://e2eml.school/transformers.html',
+    type: 'Blog',
+    subType: 'Natural Language Processing'
+  },
+  {
+    title: 'Machine Learning Design Patterns: Solutions to Common Challenges in Data Preparation, Model Building, and MLOps ',
+    link: 'https://www.amazon.in/Machine-Learning-Design-Patterns-Preparation/dp/1098115783',
     type: 'Book',
     subType: 'Machine Learning'
   },
   {
-    title: 'Title of Book 2',
-    authors: 'Author 3, Author 4',
-    link: 'https://example.com/book2',
+    title: 'Designing Machine Learning Systems: An Iterative Process for Production-Ready Applications',
+    link: 'https://www.amazon.in/Designing-Machine-Learning-Systems-Production-Ready/dp/149204510X',
     type: 'Book',
-    subType: 'Computer Science'
-  },
-  {
-    title: 'Title of Book 2',
-    authors: 'Author 3, Author 4',
-    link: 'https://example.com/book2',
-    type: 'Blog',
-    subType: ''
+    subType: 'Machine Learning'
   }
 ]
 
@@ -253,30 +300,123 @@ export const suggestedVideos = [
     subType: 'Joe Rogan'
   },
   {
-    title: 'Convolutional Neural Networks for Sentence Classification',
-    link: 'https://arxiv.org/pdf/1408.5882.pdf',
+    title: 'Sam Altman: OpenAI CEO on GPT-4, ChatGPT, and the Future of AI | Lex Fridman Podcast #367',
+    link: 'https://www.youtube.com/watch?v=L_Guz73e6fw',
+    type: 'Podcast',
+    subType: 'Lex Fridman'
+  },
+  {
+    title: 'Balaji Srinivasan: How to Fix Government, Twitter, Science, and the FDA | Lex Fridman Podcast #331',
+    link: 'https://www.youtube.com/watch?v=VeH7qKZr0WI',
+    type: 'Podcast',
+    subType: 'Lex Fridman'
+  },
+  {
+    title: 'Joe Rogan Experience #1536 - Edward Snowden',
+    link: 'https://www.youtube.com/watch?v=efs3QRr8LWw',
+    type: 'Podcast',
+    subType: 'Joe Rogan'
+  },
+  {
+    title: 'Joe Rogan Experience #1470 - Elon Musk',
+    link: 'https://www.youtube.com/watch?v=RcYjXbSJBN8',
+    type: 'Podcast',
+    subType: 'Joe Rogan'
+  },
+  {
+    title: 'Mark Zuckerberg: Meta, Facebook, Instagram, and the Metaverse | Lex Fridman Podcast #267',    
+    link: 'https://www.youtube.com/watch?v=5zOHSysMmH0',
+    type: 'Podcast',
+    subType: 'Lex Fridman'
+  },
+  {
+    title: 'Asli Engineering by Arpit Bhayani',
+    link: 'https://www.youtube.com/@AsliEngineering',
     type: 'YouTube',
+    subType: 'Recommended Channels'
+  },
+  {
+    title: 'Techie007',
+    link: 'https://www.youtube.com/user/Techie007',
+    type: 'YouTube',
+    subType: 'Recommended Channels'
+  },
+  {
+    title: 'Yannic Kilcher',
+    link: 'https://www.youtube.com/@YannicKilcher',
+    type: 'YouTube',
+    subType: 'Recommended Channels'
+  },
+  {
+    title: 'Two Minute Papers',
+    link: 'https://www.youtube.com/user/keeroyz',
+    type: 'YouTube',
+    subType: 'Recommended Channels'
+  },
+  {
+    title: '3Blue1Brown',
+    link: 'https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw',
+    type: 'YouTube',
+    subType: 'Recommended Channels'
+  },
+  {
+    title: 'Theo - t3․gg',
+    link: 'https://www.youtube.com/@t3dotgg',
+    type: 'YouTube',
+    subType: 'Recommended Channels'
+  },
+  {
+    title: 'Byte Byte Go',
+    link: 'https://www.youtube.com/@ByteByteGo',
+    type: 'YouTube',
+    subType: 'Recommended Channels'
+  },
+  {
+    title: 'CS231n: Convolutional Neural Networks for Visual Recognition',
+    link: 'https://www.youtube.com/playlist?list=PLC1qU-LWwrF64f4QKQT-Vg5Wr4qEE1Zxk',
+    type: 'Course',
+    subType: 'Computer Vision'
+  },
+  {
+    title: 'CS224n: Natural Language Processing with Deep Learning',
+    link: 'https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z',
+    type: 'Course',
     subType: 'Natural Language Processing'
   },
   {
-    title: 'Title of Book 1',
-    authors: 'Author 1, Author 2',
-    link: 'https://example.com/book1',
+    title: 'CS224W: Machine Learning with Graphs',
+    link: 'https://www.youtube.com/playlist?list=PLoROMvodv4rPLKxIpqhjhPgdQy7imNkDn',
     type: 'Course',
-    subType: 'Machine Learning'
+    subType: 'Graph Neural Networks'
   },
   {
-    title: 'Title of Book 2',
-    authors: 'Author 3, Author 4',
-    link: 'https://example.com/book2',
-    type: 'Book',
-    subType: 'Computer Science'
+    title: 'CS285: Deep Reinforcement Learning',
+    link: 'https://www.youtube.com/playlist?list=PLkFD6_40KJIxJMR-j5A1mkxK26gh_qg37',
+    type: 'Course',
+    subType: 'Reinforcement Learning'
   },
   {
-    title: 'Title of Book 2',
-    authors: 'Author 3, Author 4',
-    link: 'https://example.com/book2',
-    type: 'Blog',
-    subType: ''
+    title: 'CS230: Deep Learning',
+    link: 'https://www.youtube.com/playlist?list=PLoROMvodv4rOABXSygHTsbvUz4G_YQhOb',
+    type: 'Course',
+    subType: 'Deep Learning'
+  },
+  {
+    title: 'FreeCodeCamp',
+    link: 'https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ',
+    type: 'YouTube',
+    subType: 'Recommended Channels'
+  },
+  {
+    title: 'Sebastian Raschka',
+    link: 'https://www.youtube.com/@SebastianRaschka',
+    type: 'YouTube',
+    subType: 'Recommended Channels'
+  },
+  {
+    title: 'Corey Schafer',
+    link: 'https://www.youtube.com/user/schafer5',
+    type: 'YouTube',
+    subType: 'Recommended Channels'
   }
 ]
