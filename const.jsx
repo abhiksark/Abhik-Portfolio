@@ -1,24 +1,44 @@
 import {
-  FaEnvelope, FaTwitter, FaGithub, FaLinkedin, FaLightbulb, FaBlog, FaBlogger, FaHome, FaProjectDiagram, FaCode, FaBook, FaFilm,
-  FaPython,
+  FaBook,
+  FaCode,
   FaDocker,
+  FaEnvelope,
+  FaFilm,
+  FaGithub,
+  FaHome,
   FaJs,
-  FaDatabase,
-  FaServer,
-  FaReact
+  FaLinkedin,
+  FaProjectDiagram,
+  FaPython,
+  FaReact,
+  FaTwitter
 } from 'react-icons/fa'
 
-import { SiPytorch, SiTensorflow, SiGooglecloud, SiCplusplus, SiMongodb, SiPostgresql, SiRedis, SiRust, SiApachekafka, SiNumpy, SiPandas, SiJenkins, SiScikitlearn, SiNextdotjs, SiGit } from 'react-icons/si'
-import { GiArtificialIntelligence } from 'react-icons/gi'
-import { AiOutlineApi } from 'react-icons/ai'
+import { SiApachekafka, SiCplusplus, SiGit, SiGooglecloud, SiJenkins, SiMongodb, SiNextdotjs, SiNumpy, SiOpencv, SiPandas, SiPostgresql, SiPytorch, SiRedis, SiRust, SiScikitlearn, SiTensorflow } from 'react-icons/si'
+
 import React from 'react'
 
-
 export const skillsMap = [
+  {
+    name: 'Python',
+    Icon: FaPython,
+    level: 0
+
+  },
   {
     name: 'Pytorch',
     Icon: SiPytorch,
     level: 0.5
+  },
+  {
+    name: 'Numpy',
+    Icon: SiNumpy,
+    level: 0.5
+  },
+  {
+    name: 'Pandas',
+    Icon: SiPandas,
+    level: 1
   },
   {
     name: 'Tensorflow',
@@ -31,10 +51,14 @@ export const skillsMap = [
     level: 1
   },
   {
-    name: 'Python',
-    Icon: FaPython,
-    level: 0
-
+    name: 'Git',
+    Icon: SiGit,
+    level: 1
+  },
+  {
+    name: 'OpenCV',
+    Icon: SiOpencv,
+    level: 1
   },
   {
     name: 'Docker',
@@ -42,38 +66,18 @@ export const skillsMap = [
     level: 1.5
   },
   {
+    name: 'MongoDB',
+    Icon: SiMongodb,
+    level: 2
+  },
+  {
     name: 'GCP',
     Icon: SiGooglecloud,
     level: 2
   },
   {
-    name: 'JavaScript',
-    Icon: FaJs,
-    level: 3
-  },
-  {
     name: 'Jenkins',
     Icon: SiJenkins,
-    level: 2
-  },
-  {
-    name: 'Pandas',
-    Icon: SiPandas,
-    level: 1
-  },
-  {
-    name: 'C++',
-    Icon: SiCplusplus,
-    level: 3
-  },
-  {
-    name: 'Numpy',
-    Icon: SiNumpy,
-    level: 0.5
-  },
-  {
-    name: 'MongoDB',
-    Icon: SiMongodb,
     level: 2
   },
   {
@@ -102,19 +106,19 @@ export const skillsMap = [
     level: 2.5
   },
   {
-    name: 'Next.js',
-    Icon: SiNextdotjs,
+    name: 'JavaScript',
+    Icon: FaJs,
+    level: 3
+  },
+  {
+    name: 'C++',
+    Icon: SiCplusplus,
     level: 3
   },
   {
     name: 'Next.js',
     Icon: SiNextdotjs,
     level: 3
-  },
-  {
-    name: 'Git',
-    Icon: SiGit,
-    level: 1
   }
 ]
 
@@ -190,15 +194,12 @@ export const socialLinks = [
   }
 ]
 
-
-
-
 export const skills = [
-  { name: 'Deep Learning', progress: 90 , level: 0.5},
-  { name: 'Computer Vision', progress: 90 , level: 1},
-  { name: 'Natural Language Processing', progress: 55 , level: 1.7},
-  { name: 'Databases', progress: 50 , level: 2},
-  { name: 'Front End', progress: 20 , level: 3},
+  { name: 'Deep Learning', progress: 90, level: 0.5 },
+  { name: 'Computer Vision', progress: 90, level: 1 },
+  { name: 'Natural Language Processing', progress: 55, level: 1.7 },
+  { name: 'Databases', progress: 50, level: 2 },
+  { name: 'Front End', progress: 20, level: 3 }
 ]
 
 export const suggestedReading = [
@@ -314,7 +315,7 @@ export const suggestedVideos = [
     subType: 'Joe Rogan'
   },
   {
-    title: 'Mark Zuckerberg: Meta, Facebook, Instagram, and the Metaverse | Lex Fridman Podcast #267',    
+    title: 'Mark Zuckerberg: Meta, Facebook, Instagram, and the Metaverse | Lex Fridman Podcast #267',
     link: 'https://www.youtube.com/watch?v=5zOHSysMmH0',
     type: 'Podcast',
     subType: 'Lex Fridman'
