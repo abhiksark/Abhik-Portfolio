@@ -1,7 +1,4 @@
 import AboutMe from '../components/AboutMe'
-import Footer from '../components/Footer'
-import MyHead from '../components/MyHead'
-import Navbar from '../components/Navbar'
 import Skills from '../components/Skills'
 import { projects } from '../const'
 import styles from '../styles/Home.module.css'
@@ -11,10 +8,6 @@ import React from 'react'
 export default function Home () {
   return (
     <div className={styles.container}>
-     <MyHead/>
-      <Navbar>
-      </Navbar>
-
       <main className={styles.main}>
       <h1>
 
@@ -40,7 +33,6 @@ export default function Home () {
         </section>
       </main>
 
-      <Footer />
     </div>
   )
 }

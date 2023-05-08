@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
-import Footer from '../components/Footer'
-import MyHead from '../components/MyHead'
-import Navbar from '../components/Navbar'
 import { suggestedVideos } from '../const'
 
 export default function Home () {
@@ -26,8 +23,6 @@ export default function Home () {
 
   return (
     <div className={styles.container}>
-      <MyHead />
-      <Navbar />
 
       <main className={styles.main}>
         {Object.keys(readingItemsByType).map((type) => (
@@ -61,7 +56,6 @@ export default function Home () {
         ))}
       </main>
 
-      <Footer />
     </div>
   )
 }
