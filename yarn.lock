@@ -4737,7 +4737,7 @@
   "resolved" "https://registry.npmjs.org/next-seo/-/next-seo-5.13.0.tgz"
   "version" "5.13.0"
 
-"next@^12.3.0", "next@^8.1.1-canary.54 || >=9.0.0", "next@>= 13":
+"next@^12.3.4", "next@^8.1.1-canary.54 || >=9.0.0", "next@>= 13":
   "integrity" "sha512-VcyMJUtLZBGzLKo3oMxrEF0stxh8HwuW976pAzlHhI3t8qJ4SROjCrSh1T24bhrbjw55wfZXAbXPGwPt5FLRfQ=="
   "resolved" "https://registry.npmjs.org/next/-/next-12.3.4.tgz"
   "version" "12.3.4"
