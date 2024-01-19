@@ -12,6 +12,8 @@ import 'focus-visible'
 import { MDXProvider } from '@mdx-js/react'
 import  Pre  from '@/components/Pre'
 
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/react'
 
 const components = {
 
@@ -46,6 +48,8 @@ export default function App({ Component, pageProps, router }) {
         <main>
           <Component previousPathname={previousPathname} {...pageProps} />
         </main>
+        <Analytics />
+        <SpeedInsights />
         <Footer />
       </div>
     </MDXProvider>
