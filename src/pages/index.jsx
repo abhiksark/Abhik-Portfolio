@@ -206,18 +206,24 @@ export default function Home({ articles }) {
       <Container className="mt-9">
         <div className="max-w-2xl text-lg">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Cloud Advocate, hacker, and open source enthusiast.
+            Teaching Machine to be Smart
           </h1>
-          <p className="mt-6 prose dark:prose-invert">
-            I’m Brian, and I teach people how to use the Cloud. I’ve been active in Open Source for as long as I’ve been coding &mdash; and that’s a long time.
-          </p>
-          <p className="mt-6 prose dark:prose-invert">
-            With some friends, I wrote a <a href="https://www.manning.com/books/go-in-action">book about the Go programming language</a>.
-             I’ve given many <Link href={"/speaking"} >talks</Link> about Go, Distributed Computing, and programming in general.
-          </p>
-          <p className="mt-6 prose dark:prose-invert">
-            Poke around and see what I’m up to. It’s all open source, so feel free to contribute.
-          </p>
+          <div class="mt-6 prose dark:prose-invert">
+    <p class="mb-4">
+        I’m Abhik, and I lead the Machine Learning department at a burgeoning startup focused on computer vision. My journey in technology is marked by a deep commitment to leveraging cutting-edge tech to craft innovative solutions for safety and security.
+    </p>
+    <p class="mb-4">
+        With a foundation firmly rooted in deep learning and computer vision, Python is my go-to programming language. My role encompasses not just leading but also inspiring a team of like-minded professionals, all dedicated to pushing the boundaries of what's possible in machine learning.
+    </p>
+    <p class="mb-4">
+        As one of the early members of this startup, my responsibilities are diverse, extending from team leadership to strategic hiring, all aimed at building a robust and dynamic team.
+    </p>
+    <p>
+        Dive into what I do. It's a blend of innovation, passion, and teamwork, all geared towards making a meaningful impact.
+    </p>
+</div>
+
+          
           <div className="mt-6 flex gap-6">
             <SocialLink
               href={siteMeta.author.twitter}
