@@ -7,8 +7,8 @@ import {
   TwitterIcon,
   InstagramIcon,
   GitHubIcon,
-  LinkedInIcon,
-  MastodonIcon
+  LinkedInIcon
+  // MastodonIcon
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/abhik-head.jpg'
 import siteMeta from '@/data/siteMeta'

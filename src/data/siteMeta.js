@@ -25,7 +25,7 @@ const siteMeta = {
         twitch: "https://twitch.tv/bketelsen",
         youtube: "https://youtube.com/@bketelsen",
     },
-    siteUrl: "https://brian.dev"
+    siteUrl: "https://abhik.xyz"
 }
  export const resume = [
     {
@@ -42,8 +42,8 @@ const siteMeta = {
       company: 'Quantiphi Inc',
       title: 'Machine Learning Engineer',
       logo: logoQuantiphi,
-      start: '2020',
-      end: '2019',
+      start: '2019',
+      end: '2020',
     },
     {
       company: 'Deloitte',
