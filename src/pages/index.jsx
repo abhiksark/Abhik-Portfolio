@@ -213,13 +213,13 @@ export default function Home({ articles }) {
         I’m Abhik, and I lead the Machine Learning department at a burgeoning startup focused on computer vision. My journey in technology is marked by a deep commitment to leveraging cutting-edge tech to craft innovative solutions for safety and security.
     </p>
     <p class="mb-4">
-        With a foundation firmly rooted in deep learning and computer vision, Python is my go-to programming language. My role encompasses not just leading but also inspiring a team of like-minded professionals, all dedicated to pushing the boundaries of what's possible in machine learning.
+        With a foundation firmly rooted in deep learning and computer vision, Python is my go-to programming language. My role encompasses not just leading but also inspiring a team of like-minded professionals, all dedicated to pushing the boundaries of whats possible in machine learning.
     </p>
     <p class="mb-4">
         As one of the early members of this startup, my responsibilities are diverse, extending from team leadership to strategic hiring, all aimed at building a robust and dynamic team.
     </p>
     <p>
-        Dive into what I do. It's a blend of innovation, passion, and teamwork, all geared towards making a meaningful impact.
+        Dive into what I do. Its a blend of innovation, passion, and teamwork, all geared towards making a meaningful impact.
     </p>
 </div>
 
