@@ -48,7 +48,7 @@ export default function About() {
         description={siteMeta.description}
         canonical="https://abhik.xyz/about"
         openGraph={{
-          url: 'https://brian.dev/about',
+          url: 'https://abhik.xyz/about',
           images: [
             {
               url: `https://og.brian.dev/api/og?title=About&desc=${siteMeta.description}`,
@@ -58,7 +58,7 @@ export default function About() {
               type: 'image/jpeg',
             }
           ],
-          siteName: 'brian.dev',
+          siteName: 'abhik.xyz',
         }}
       />
       <Container className="mt-16 sm:mt-32">

@@ -200,7 +200,7 @@ export default function Home({ articles }) {
             type: 'image/jpeg',
           }
         ],
-        siteName: 'brian.dev',
+        siteName: 'abhik.xyz',
       }}
     />
       <Container className="mt-9">
@@ -224,12 +224,12 @@ export default function Home({ articles }) {
               aria-label="Follow on Twitter"
               icon={TwitterIcon}
             />
-            <SocialLink
+            {/* <SocialLink
               href={siteMeta.author.mastodon}
               aria-label="Follow on Mastodon"
               icon={MastodonIcon}
               rel="me"
-            />
+            /> */}
 
             <SocialLink
               href={siteMeta.author.instagram}
