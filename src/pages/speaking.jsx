@@ -12,15 +12,15 @@ function SpeakingSection({ children, ...props }) {
   )
 }
 
-function Appearance({ title, description, event, cta, href }) {
+function Appearance({ title, description, event }) {
   return (
     <Card as="article">
-      <Card.Title as="h3" href={href}>
+      <Card.Title as="h3">
         {title}
       </Card.Title>
       <Card.Eyebrow decorate>{event}</Card.Eyebrow>
       <Card.Description>{description}</Card.Description>
-      <Card.Cta>{cta}</Card.Cta>
+      {/* <Card.Cta>{cta}</Card.Cta> */}
     </Card>
   )
 }
@@ -53,18 +53,19 @@ export default function Speaking() {
         <div className="space-y-20">
           <SpeakingSection title="Conferences">
           <Appearance
-              href="https://www.youtube.com/watch?v=MzTcsI6tn-0"
-              title="Code Like the Go Team"
-              description="Tips, tricks, and best practices for writing Go code that's idiomatic, readable, and maintainable."
+              title="The Age of Digital Da Vinci: All About Image Generation"
+              description="Under Machine Learning and Data Science Track: Evolution of Image Generation Encoder Decoder, VAEs, GANs, and Stable Diffusion."
               event="Devfest 2023"
-              cta="Watch video"
             />
             <Appearance
-              href="https://www.youtube.com/watch?v=mxlJqrVSalY"
-              title="Bringing Go to the Enterprise"
-              description="In this talk I'll share my unique experiences as a trainer and author bringing Go to enterprise companies. We'll talk about what works well, what needs improvement, and what we can do as a community to foster Go adoption in more companies. In 2016 I quit my job and set out to train the world on how to use Go and Kubernetes. Over the course of the last 18 months I've learned a lot of things about Go, and I want to share them with you in this talk."
-              event="Devfest 2023"
-              cta="Watch video"
+              title="Speeding up Python with Cython"
+              description="Under Machine Learning and Data Science Track: Basics of Cython, how to speed up Python codr, how it helps in Preprocessing and Postprocessing of data with Object Detection."
+              event="Devfest 2022"
+            />
+            <Appearance
+              title="Introduction to Machine Learning"
+              description="As a guest speaker, I gave a talk on Introduction to Machine Learning and how it is used in the real world."
+              event="KJ Somaiya, Mumbai Techfest  2019"
             />
 
           </SpeakingSection>
