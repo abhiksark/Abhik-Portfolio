@@ -41,9 +41,9 @@ export default function ArticlesIndex({ articles }) {
   return (
     <>
     <NextSeo
-      title="Articles - Brian Ketelsen"
+      title="Articles - Abhik"
       description={siteMeta.description}
-      canonical="https://brian.dev/articles"
+      canonical="https://abhik.xyz/articles"
       openGraph={{
         url: 'https://brian.dev/articles',
         images: [
