@@ -1,0 +1,78 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+export const meta = {
+  author: 'Abhik Sarkar',
+  date: '2023-05-07',
+  title: "What is ASCII vs UTF8 vs UTF32 vs UTF16. Does it really matter?",
+  description:
+    "LLMs and Text Encoding",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## ASCII (American Standard Code for Information Interchange) - 1 Byte
+Originating in the 1960s, ASCII uses 7 bits to represent each character. This might prompt you to ask, "Why only 7?" Not every system had Byte Addressable Memory back in the day. And, a 7-bit length was adequate to signify the English alphabet (covering both lowercase and uppercase), numerals, punctuation marks, and select special control characters.
+
+## UTF (Unicode Transformation Format)
+As ASCII had only English alphabets the need arose to depict other global characters.UTF tried to resolve that. It offers a method to encode characters as "code points." Typically, these code points are penned as U+XXXX, where 'XXXX' is a series of hexadecimal numbers.
+
+
+### UTF-8 (8-bit) - Ranges from 1 Byte to 4 Bytes
+It is variable length encoding. UTF-8 can utilize sequences ranging from 1 to 4 bytes to signify each character. It is backward compatible with ASCII. 
+
+- 1 byte: Traditional ASCII
+- 2 bytes: Encompasses Arabic, Hebrew, and the majority of European scripts
+- 3 bytes: Refers to the Basic Multilingual Plane* (BMP).
+- 4 bytes: Accounts for all Unicode characters.
+
+![utf 8](https://wiki.ubc.ca/images/b/bf/FSS-UTF_1992_UTF-8_1993.png)
+
+Let’s take an example. 
+
+##### The letter "A" (U+0041):
+
+In UTF-8, the letter "A" is an ASCII character, which means it is encoded using a single byte. The binary representation of "A" in UTF-8 is as follows:
+
+**Binary**: 01000001
+
+**Hexadecimal**: 41
+
+#####  The Euro sign "€" (U+20AC):
+
+The Euro sign "€" is a non-ASCII character with a higher Unicode code point. It is encoded using three bytes in UTF-8. The binary representation of the Euro sign in UTF-8 is as follows:
+
+**Binary**: 11100010 10000010 10101100
+
+**Hexadecimal**: E2 82 AC
+
+In memory, the Euro sign "€" is represented using three consecutive bytes with the hexadecimal values E2, 82, and AC.
+
+### UTF-32 (32-bit) - A fixed 4 Bytes
+This encoding depicts every Unicode character with a direct 4-byte (32-bit) representation.
+4 bytes: Every character, ranging from U+0000 to U+10FFFF, gets a fixed representation. This makes applying string operation very easy. 
+
+
+### UTF-16 (16-bit) - Spans 2 Bytes to 4 Bytes
+Another variable-length encoding, UTF-16 predominantly employs sequences of either 1 or 2 units of 16 bits each.
+
+2 bytes: This engulfs the BMP, representing a gamut of characters from U+0000 to U+FFFF.
+
+4 bytes: Characters outside the BMP, covering characters from U+010000 to U+10FFFF.
+
+
+![Asian Char](https://i.stack.imgur.com/6C0C6.png)
+
+Now you might ask why we can't represent ‘あ’ in 2byte in UTF-8. See in UTF-8 Encoding Structure the 2-byte sequences are of the form 110xxxxx 10xxxxxx. We are wasting 5 bits out of 16 bits to make it compatible for variable-length encoding. We don’t have that issue with UTF16. So the character dictionary increases. 
+
+
+Summary:
+1. UTF-8 is Size Optimized 
+2. UTF-32 is Perfomance Optimized
+3. UTF-16 Tries to strike a balance between the two. 
+
+Choosing the right text encoding can significantly influence storage efficiency, interoperability, and compatibility. For instance, software designed for ASCII might malfunction when faced with UTF-8 data it wasn't expecting.
+
+The choice between UTF-8 and UTF-16 can also impact the performance of **training large language models**, especially when dealing with Asian characters. In UTF-8, many Asian characters take up 3 bytes, while in UTF-16, they usually occupy just 2 bytes. This difference might seem trivial, but it adds up when training on vast datasets. The more bytes required for each character in UTF-8, the longer the sequences, which means more computation during training. Longer sequences also demand more memory.
+
+So, for languages rich in Asian characters, UTF-16 could offer a more efficient training route, thanks to its relatively compact representation compared to UTF-8.
+
+
