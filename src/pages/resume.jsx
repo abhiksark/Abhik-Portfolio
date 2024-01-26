@@ -127,41 +127,14 @@ export default function Projects() {
                     unoptimized
                   />
                 </div>
-                <h4 className="font-medium text-gray-200 mb-0 mt-3">{person.name}</h4>
+                <h4 className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">{person.name}</h4>
               </a>
             </li>
           ))}
         </ul>
       </SimpleLayoutNew>
 
-      <SimpleLayoutNew title="Media I Like">
-        <ul role="list" className="grid grid-cols-1 gap-x-20 gap-y-24 sm:grid-cols-2 lg:grid-cols-6">
-
-
-          {peopleILearnFrom.map(person => (
-            <li key={person.name} className="flex flex-col items-center hover:translate-y-2 transition duration-300">
-              <a href={person.link} target="_blank" rel="noreferrer noopener" className="flex flex-col items-center">
-                <div className="relative z-10 flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                  <Image
-                    src={person.imageUrl}
-                    alt={person.name}
-                    layout="fill"
-                    objectFit="cover"
-                    width={96}
-                    height={96}
-                    unoptimized
-                  />
-                </div>
-                <h4 className="font-medium text-gray-200 mb-0 mt-3">{person.name}</h4>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </SimpleLayoutNew>
-
-
-
-
+    
 
     </>
   )
