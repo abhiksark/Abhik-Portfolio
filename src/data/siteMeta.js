@@ -20,6 +20,7 @@ const siteMeta = {
         twitter: "https://twitter.com/abhiksark",
         mastodon: "https://tty0.social/@bketelsen",
         instagram: "https://instagram.com/abhiksark",
+        stackoverflow: "https://stackoverflow.com/users/5103969/abhik-sarkar",
         github: "https://github.com/abhiksark",
         linkedin: "https://linkedin.com/in/abhiksark",
         twitch: "https://twitch.tv/bketelsen",
