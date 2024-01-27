@@ -45,17 +45,17 @@ export default function ArticlesIndex({ articles }) {
       description={siteMeta.description}
       canonical="https://abhik.xyz/articles"
       openGraph={{
-        url: 'https://brian.dev/articles',
+        url: 'https://abhik.xyz/articles',
         images: [
           {
-            url: `https://og.brian.dev/api/og?title=Articles&desc=${headline}`,
+            url: `https://og.abhik.xyz/api/og?title=Articles&desc=${headline}`,
             width: 1200,
             height: 600,
             alt: 'Og Image Alt',
             type: 'image/jpeg',
           }
         ],
-        siteName: 'brian.dev',
+        siteName: 'abhik.xyz',
       }}
     />
       <SimpleLayout

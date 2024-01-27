@@ -36,7 +36,7 @@ export default function Speaking() {
         url: 'https://abhik.xyz/speaking',
         images: [
           {
-            url: `https://og.brian.dev/api/og?title=Speaking&desc=I’ve spoken at events all around the world and been interviewed for many podcasts.`,
+            url: `https://og.abhik.xyz/api/og?title=Speaking&desc=I’ve spoken at events all around the world and been interviewed for many podcasts.`,
             width: 1200,
             height: 600,
             alt: 'Og Image Alt',

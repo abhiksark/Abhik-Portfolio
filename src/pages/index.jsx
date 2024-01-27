@@ -194,7 +194,7 @@ export default function Home({ articles }) {
         url: 'https://abhik.xyz',
         images: [
           {
-            url: `https://og.brian.dev/api/og?title=${siteMeta.title}&desc=${siteMeta.description}`,
+            url: `https://og.abhik.xyz/api/og?title=${siteMeta.title}&desc=${siteMeta.description}`,
             width: 1200,
             height: 600,
             alt: 'Og Image Alt',

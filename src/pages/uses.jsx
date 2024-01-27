@@ -36,7 +36,7 @@ export default function Uses() {
         url: 'https://abhik.xyz/uses',
         images: [
           {
-            url: `https://og.brian.dev/api/og?title=Uses&desc=Things I use every day to get my work done.`,
+            url: `https://og.abhik.xyz/api/og?title=Uses&desc=Things I use every day to get my work done.`,
             width: 1200,
             height: 600,
             alt: 'Og Image Alt',

@@ -68,7 +68,7 @@ export default function Projects() {
           url: 'https://abhik.xyz/shelf',
           images: [
             {
-              url: `https://og.brian.dev/api/og?title=shelf&desc=${headline}`,
+              url: `https://og.abhik.xyz/api/og?title=shelf&desc=${headline}`,
               width: 1200,
               height: 600,
               alt: 'Og Image Alt',

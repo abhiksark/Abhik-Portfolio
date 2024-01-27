@@ -51,7 +51,7 @@ export default function About() {
           url: 'https://abhik.xyz/about',
           images: [
             {
-              url: `https://og.brian.dev/api/og?title=About&desc=${siteMeta.description}`,
+              url: `https://abhik.xyz/api/og?title=About&desc=${siteMeta.description}`,
               width: 1200,
               height: 600,
               alt: 'Og Image Alt',
