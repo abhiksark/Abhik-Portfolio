@@ -2,9 +2,9 @@ import Image from 'next/future/image'
 import { NextSeo } from 'next-seo';
 
 import { Card } from '@/components/Card'
-import { SimpleLayout, NewLayout, SimpleLayoutNew } from '@/components/SimpleLayout'
+import { SimpleLayout,LearningResources, NewLayout, SimpleLayoutNew } from '@/components/SimpleLayout'
 
-import siteMeta, { projects } from '@/data/siteMeta'
+import siteMeta, { learningResourcesdata,projects } from '@/data/siteMeta'
 
 
 function LinkIcon(props) {
@@ -109,12 +109,13 @@ export default function Projects() {
         </ul>
       </SimpleLayout>
 
-      <SimpleLayoutNew title="People I Learn From">
+      {/* <SimpleLayoutNew title="My Favorites">
+        <h3 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-3xl">
+          People I learn from
+        </h3>
         <ul role="list" className="grid grid-cols-1 gap-x-20 gap-y-24 sm:grid-cols-2 lg:grid-cols-6">
-
-
           {peopleILearnFrom.map(person => (
-            <li key={person.name} className="flex flex-col items-center hover:translate-y-2 transition duration-300">
+            <li key={person.name} className="flex items-center hover:translate-y-2 transition duration-300">
               <a href={person.link} target="_blank" rel="noreferrer noopener" className="flex flex-col items-center">
                 <div className="w-24 h-24 rounded-full overflow-hidden relative">
                   <Image
@@ -127,13 +128,43 @@ export default function Projects() {
                     unoptimized
                   />
                 </div>
-                <h4 className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">{person.name}</h4>
+                <h4 className="relative mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100 text-center">{person.name}</h4>
+              </a>
+            </li>
+          ))}   
+        </ul>
+        
+        <h3 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-3xl">
+          Videos I Like
+        </h3>
+
+        <ul role="list" className="grid grid-cols-1 gap-x-20 gap-y-24 sm:grid-cols-2 lg:grid-cols-6">
+          {peopleILearnFrom.map(person => (
+            <li key={person.name} className="flex items-center hover:translate-y-2 transition duration-300">
+              <a href={person.link} target="_blank" rel="noreferrer noopener" className="flex flex-col items-center">
+                <div className="w-24 h-24 rounded-full overflow-hidden relative">
+                  <Image
+                    src={person.imageUrl}
+                    alt={person.name}
+                    layout="fill"
+                    objectFit="cover"
+                    width={96}
+                    height={96}
+                    unoptimized
+                  />
+                </div>
+                <h4 className="relative mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100 text-center">{person.name}</h4>
               </a>
             </li>
           ))}
         </ul>
-      </SimpleLayoutNew>
+      </SimpleLayoutNew> */}
+      <SimpleLayoutNew title="My Favorites"> 
+        
+      
+      <LearningResources categories={learningResourcesdata} />
 
+      </SimpleLayoutNew>
     
 
     </>

@@ -108,5 +108,56 @@ export const projects = [
 
 ]
 
+export const learningResourcesdata = [
+  {
+    name: 'People I Learn From',
+    items : [
+      {
+        name: "Kent C. Dodds",
+        link: "https://kentcdodds.com/",
+        imageUrl: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/290bc1ad-8054-452c-97a7-e4de8ffe57e2.webp"
+      },
+      {
+        name: "Kent Beck",
+        link: "https://www.kentbeck.com/",
+        imageUrl: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/d8befe08-823f-4407-b850-5248463272f8.webp"
+      },
+      {
+        name: "Eric Evans",
+        link: "https://www.domainlanguage.com/",
+        imageUrl: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/1364f4bf-def8-4ae0-ada1-2b78a006f234.webp"
+      },
+      {
+        name: "Martin Fowler",
+        link: "https://martinfowler.com/",
+        imageUrl: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/0d521200-3e72-4bb8-99eb-ae2dcae04498.webp"
+      },
+      {
+        name: "Robert C. Martin",
+        link: "http://cleancoder.com/",
+        imageUrl: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/d9950327-baed-4c42-9659-255e1d7970bb.webp"
+      },
+      {
+        name: "Adam Dymitruk",
+        link: "https://eventmodeling.org/",
+        imageUrl: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/eac29aec-8668-4278-ab7a-b38c9c66acec.webp"
+      }
+    ]
+  },
+  {
+    name: 'People I Learn From',
+    items : [
+      {
+        name: "Kent C. Dodds",
+        link: "https://kentcdodds.com/",
+        imageUrl: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/290bc1ad-8054-452c-97a7-e4de8ffe57e2.webp"
+      }
+    ]
+  },
+]
+    
+      
+      
+
 
 export default siteMeta;
