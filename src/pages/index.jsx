@@ -210,17 +210,11 @@ export default function Home({ articles }) {
             Teaching Machine to be Smart
           </h1>
           <div className="mt-6 prose dark:prose-invert">
-    <p className="mb-4">
-        I’m Abhik, and I lead the Machine Learning department at a burgeoning startup focused on computer vision. My journey in technology is marked by a deep commitment to leveraging cutting-edge tech to craft innovative solutions for safety and security.
-    </p>
-    <p className="mb-4">
-        With a foundation firmly rooted in deep learning and computer vision, Python is my go-to programming language. My role encompasses not just leading but also inspiring a team of like-minded professionals, all dedicated to pushing the boundaries of whats possible in machine learning.
-    </p>
-    <p className="mb-4">
-        As one of the early members of this startup, my responsibilities are diverse, extending from team leadership to strategic hiring, all aimed at building a robust and dynamic team.
-    </p>
-    <p>
-        Dive into what I do. Its a blend of innovation, passion, and teamwork, all geared towards making a meaningful impact.
+          <p className="mb-4">
+    I&apos;m Abhik, and I lead the Machine Learning department at a high growth startup focused on computer vision.
+          </p>
+          <p className="mb-4">
+          I blend deep learning and computer vision to craft innovative solutions for safety and security. My role involves team leadership, strategic hiring, and remote collaboration across 11 countries. I'm driven by a passion for innovation and making a meaningful impact through technology.
     </p>
 </div>
 
