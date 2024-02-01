@@ -214,7 +214,7 @@ export default function Home({ articles }) {
     I&apos;m Abhik, and I lead the Machine Learning department at a high growth startup focused on computer vision.
           </p>
           <p className="mb-4">
-          I blend deep learning and computer vision to craft innovative solutions for safety and security. My role involves team leadership, strategic hiring, and remote collaboration across 11 countries. I'm driven by a passion for innovation and making a meaningful impact through technology.
+          I blend deep learning and computer vision to craft innovative solutions for safety and security. My role involves team leadership, strategic hiring, and remote collaboration across 11 countries. I&apos;m driven by a passion for innovation and making a meaningful impact through technology.
     </p>
 </div>
 
