@@ -2,9 +2,9 @@ import Image from 'next/future/image'
 import { NextSeo } from 'next-seo';
 
 import { Card } from '@/components/Card'
-import { SimpleLayout,LearningResources, NewLayout, SimpleLayoutNew } from '@/components/SimpleLayout'
+import { SimpleLayout, LearningResources, NewLayout, SimpleLayoutNew } from '@/components/SimpleLayout'
 
-import siteMeta, { learningResourcesdata,projects } from '@/data/siteMeta'
+import siteMeta, { learningResourcesdata, projects } from '@/data/siteMeta'
 
 
 function LinkIcon(props) {
@@ -78,7 +78,7 @@ export default function Projects() {
           siteName: 'abhik.xyz',
         }}
       />
-      <SimpleLayout
+      {/* <SimpleLayout
         title={headline}
         intro={intro}
       >
@@ -107,7 +107,7 @@ export default function Projects() {
             </Card>
           ))}
         </ul>
-      </SimpleLayout>
+      </SimpleLayout> */}
 
       {/* <SimpleLayoutNew title="My Favorites">
         <h3 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-3xl">
@@ -159,13 +159,20 @@ export default function Projects() {
           ))}
         </ul>
       </SimpleLayoutNew> */}
-      <SimpleLayoutNew title="My Favorites"> 
-        
-      
-      <LearningResources categories={learningResourcesdata} />
+
+      <SimpleLayoutNew title="Skills">
+
+
 
       </SimpleLayoutNew>
-    
+
+      <SimpleLayoutNew title="My Favorites">
+
+
+        <LearningResources categories={learningResourcesdata} />
+
+      </SimpleLayoutNew>
+
 
     </>
   )

@@ -33,28 +33,31 @@ export function NewLayout({ title, children }) {
 export function SimpleLayoutNew({ title, children }) {
   return (
     <Container className="mt-16 sm:mt-32">
+      <div className="flex flex-col gap-6 bg-gray-800 p-8 rounded-2xl shadow-md">
       <header className="max-w-2xl">
-        <h2 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+        <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
           {title}
         </h2>
 
       </header>
-      <div className="mt-16 sm:mt-20">
+      {/* <div className="mt-16 sm:mt-20"> */}
       <div className="flex flex-col gap-16">
         {children}
       </div>
       </div>
+      {/* </div> */}
     </Container>
   )
 }
 
 export function CategoryList({ category }) {
   return (
-    <div>
-      <h3 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-3xl">
+    <div className="mt-5">
+      <h3 className="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-3xl">
         {category.name}
       </h3>
-      <ul role="list" className="grid grid-cols-1 gap-x-20 gap-y-24 sm:grid-cols-2 lg:grid-cols-6">
+      <div className="mt-5">
+      <ul role="list" className="grid grid-cols-1 gap-y-24 sm:grid-cols-2 lg:grid-cols-6">
         {category.items.map(item => (
           <li key={item.name} className="flex items-center hover:translate-y-2 transition duration-300">
             <a href={item.link} target="_blank" rel="noreferrer noopener" className="flex flex-col items-center">
@@ -74,6 +77,7 @@ export function CategoryList({ category }) {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 }
