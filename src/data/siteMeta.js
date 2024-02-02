@@ -209,7 +209,62 @@ export const learningResourcesdata = [
 ]
     
       
-      
+export const skillsData = [
+  {
+    name: "Things I'm Good At",
+    items: [
+      {
+        Name: "Python",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
+        link: "https://www.python.org/",
+        skillLevel: 5
+      }, 
+      {
+        Name: "React",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+        link: "https://reactjs.org/",
+        skillLevel: 4
+
+      },
+      {
+        Name: "Docker",
+        imageUrl: "https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/97_Docker_logo_logos-1024.png",
+        link: "https://www.docker.com/",
+        skillLevel: 3
+      },
+      {
+        Name: "Kubernetes",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/labs/b/ba/Kubernetes-icon-color.svg",
+        link: "https://kubernetes.io/",
+        skillLevel: 3
+        
+      },
+      {
+        Name : "PyTorch",
+        imageUrl: "https://pytorch.org/assets/images/pytorch-logo.png",
+        link: "https://pytorch.org/",
+        skillLevel: 4
+      }
+    ]
+  },
+  {
+    name : "Things I'm Learning",
+    items :[
+      {
+        Name: "Golang",
+        imageUrl: "https://blog.golang.org/go-brand/Go-Logo/SVG/Go-Logo_Blue.svg",
+        link: "https://golang.org/",
+      },
+      {
+        Name: "Kubernetes",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/labs/b/ba/Kubernetes-icon-color.svg",
+        link: "https://kubernetes.io/",
+      }
+    ]
+  }
+
+]
+
 
 
 export default siteMeta;
