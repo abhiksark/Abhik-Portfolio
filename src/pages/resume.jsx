@@ -4,7 +4,7 @@ import { NextSeo } from 'next-seo';
 import { Card } from '@/components/Card'
 import { SimpleLayout, LearningResources, NewLayout, SimpleLayoutNew } from '@/components/SimpleLayout'
 
-import siteMeta, { learningResourcesdata, projects } from '@/data/siteMeta'
+import siteMeta, { learningResourcesdata, skillsData } from '@/data/siteMeta'
 
 
 function LinkIcon(props) {
@@ -17,9 +17,100 @@ function LinkIcon(props) {
     </svg>
   )
 }
+const SkillProgress = ({ level }) => {
+  // Total number of levels (divs)
+  const totalLevels = 5;
+  // Array to hold each level's status
+  const levels = Array.from({ length: totalLevels }, (_, index) => index < level ? 'dark:bg-gray-300 bg-gray-500' : 'dark:bg-gray-500 bg-gray-300');
 
-function Skills(){
+  return (
+    <div className="flex gap-2">
+      {levels.map((color, index) => (
+        <div
+          key={index}
+          className={`${color} ${index === 0 ? 'first:rounded-l-sm' : ''} ${index === levels.length - 1 ? 'last:rounded-r-sm' : ''} first:rounded-r-none last:rounded-l-none h-2 w-9`}
+        ></div>
+      ))}
+    </div>
+  );
+};
 
+
+function Skills({ skillsData }) {
+  return (
+    <div>
+      {skillsData.map((category) => (
+        <div className="mb-12" key={category.name}>
+          <div key={category.name}>
+            <h3 className="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-4">
+              {category.name}
+            </h3>
+            <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+              {category.items.map((item) => (
+                <div key={item.Name} className="mb-4">
+                  <a
+                    href={item.link}
+                    className="flex items-center gap-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      className="w-8 h-8"
+                      src={item.imageUrl}
+                      alt={item.Name}
+                      width={32}
+                      height={32}
+                      unoptimized
+                    />
+                    <span className="font-medium text-base text-zinc-800 dark:text-zinc-100">
+                      {item.Name}
+                    </span>
+                  </a>
+                  {item.skillLevel && (
+                    <div className="mt-2">
+                      <SkillProgress level={item.skillLevel} />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+
+
+
+
+
+function SkillsOld({ skillsData }) {
+  return (
+    <div>
+      <h3 className="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-0">
+        Things I&apos;m good at
+      </h3>
+      <div className="flex flex-wrap gap-8 mt-8">
+        <div className="flex flex-col gap-2 w-1/2">
+          <div className="flex items-center h-5 justify-between gap-2">
+            <a href="https://reactjs.org/" className="flex gap-2 h-5" target="_blank" rel="noopener noreferrer">
+              <Image className="w-5	h-5"
+                src="https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9961f604-43bf-4f21-8bf2-15a9926bfedd.svg"
+                alt=""
+                width={20}
+                height={20}
+                unoptimized
+              />
+              <span className="font-medium text-sm text-zinc-800 dark:text-zinc-100">React.js</span>
+            </a>
+          </div>
+          <SkillProgress level={2} />
+        </div>
+      </div>
+    </div >
+  )
 }
 
 
@@ -130,8 +221,8 @@ export default function Projects() {
       </SimpleLayoutNew> */}
 
       <SimpleLayoutNew title="Skills">
-        
-      <Skills />
+
+        <Skills skillsData={skillsData} />
 
       </SimpleLayoutNew>
 
@@ -146,3 +237,4 @@ export default function Projects() {
     </>
   )
 }
+
