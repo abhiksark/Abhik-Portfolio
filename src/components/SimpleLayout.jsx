@@ -33,7 +33,7 @@ export function NewLayout({ title, children }) {
 export function SimpleLayoutNew({ title, children }) {
   return (
     <Container className="mt-16 sm:mt-32">
-      <div className="flex flex-col gap-6 bg-gray-800 p-8 rounded-2xl shadow-md">
+      <div className="flex flex-col gap-6 bg-zinc-100  dark:bg-gray-800 p-8 rounded-2xl shadow-md">
       <header className="max-w-2xl">
         <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
           {title}
