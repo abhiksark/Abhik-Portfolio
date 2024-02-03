@@ -11,6 +11,15 @@ import logoGolang from '@/images/logos/icons8-golang.svg'
 import logoKubernetes from '@/images/logos/kubernetes.svg'
 import logoCaptainhook from '@/images/logos/captainhook.svg'  
 
+
+function LinkedInIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" {...props}>
+      <path d="M18.335 18.339H15.67v-4.177c0-.996-.02-2.278-1.39-2.278-1.389 0-1.601 1.084-1.601 2.205v4.25h-2.666V9.75h2.56v1.17h.035c.358-.674 1.228-1.387 2.528-1.387 2.7 0 3.2 1.778 3.2 4.091v4.715zM7.003 8.575a1.546 1.546 0 01-1.548-1.549 1.548 1.548 0 111.547 1.549zm1.336 9.764H5.666V9.75H8.34v8.589zM19.67 3H4.329C3.593 3 3 3.58 3 4.297v15.406C3 20.42 3.594 21 4.328 21h15.338C20.4 21 21 20.42 21 19.703V4.297C21 3.58 20.4 3 19.666 3h.003z" />
+    </svg>
+  )
+}
+
 const siteMeta = {
     title: "Abhik Sarkar - MLE",
     description: "Abhik Sarkar is a Machine Learning Engineer.",
@@ -265,6 +274,101 @@ export const skillsData = [
   }
 
 ]
+
+export const experiencesData = [
+  {
+    id: 1,
+    title: "Director, Machine Learning",
+    company: "Cloudastucture Inc",
+    period: "Aug 2022 - now",
+    imageUrl: logoCas, // Replace with actual image URL
+    socialLinks: [
+      {
+        platform: "",
+        url: "https://www.linkedin.com/in/yourprofile",
+        iconUrl: "/icons/linkedin.png", // Local or external link to the icon image
+      }
+      // Add more social links as needed
+    ],
+    details: [
+      "In tristique vulputate augue vel egestas.",
+      "Quisque ac imperdiet tortor, at lacinia ex.",
+      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      // Add more details as needed
+    ]
+  },
+  {
+    id: 2,
+    title: "Founding Machine Learning Engineer",
+    company: "Cloudastucture Inc",
+    period: "Dec 2020 - Aug 2022",
+    imageUrl: logoCas, // Replace with actual image URL
+    socialLinks: [
+      {
+        platform: "",
+        url: "https://www.linkedin.com/in/yourprofile",
+        iconUrl: LinkedInIcon, // Local or external link to the icon image
+      }
+    ],
+    Technologies: [
+      {
+        name : "Python",
+        logo : "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9961f604-43bf-4f21-8bf2-15a9926bfedd.svg",
+      },
+      { name : "PyTorch",
+        logo: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9961f604-43bf-4f21-8bf2-15a9926bfedd.svg",
+    }
+    ],
+    details: [
+      "In tristique vulputate augue vel egestas.",
+      "Quisque ac imperdiet tortor, at lacinia ex.",
+      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      // Add more details as needed
+    ]
+  },
+  {
+    id: 3,
+    title: "Machine Learning Engineer",
+    company: "Quantiphi Analytics Solutions Pvt. Ltd. / AthenasOwl",
+    period: "April 2019 - Nov 2020",
+    imageUrl: logoQuantiphi, // Replace with actual image URL
+    socialLinks: [
+      {
+        platform: "",
+        url: "https://www.linkedin.com/in/yourprofile",
+        iconUrl: "/icons/linkedin.png", // Local or external link to the icon image
+      },
+      // Add more social links as needed
+    ],
+    details: [
+      "In tristique vulputate augue vel egestas.",
+      "Quisque ac imperdiet tortor, at lacinia ex.",
+      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      // Add more details as needed
+    ]
+  },
+  {
+    id: 4,
+    title: "Business Technology Analyst",
+    company: "Deloitte USI Consulting",
+    period: "June 2018 - March 2019",
+    imageUrl: logoDeloitte,
+    socialLinks: [
+      {
+        platform: "",
+        url: "https://www.linkedin.com/in/yourprofile",
+        iconUrl: "/icons/linkedin.png", // Local or external link to the icon image
+      }
+      // Add more social links as needed
+    ],
+    details: [
+      "In tristique vulputate augue vel egestas.",
+      "Quisque ac imperdiet tortor, at lacinia ex.",
+      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      // Add more details as needed
+    ]
+  },
+];
 
 
 
