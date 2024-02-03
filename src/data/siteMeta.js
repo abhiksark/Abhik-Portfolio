@@ -10,6 +10,7 @@ import logoUblue from '@/images/logos/ublue.png'
 import logoGolang from '@/images/logos/icons8-golang.svg'
 import logoKubernetes from '@/images/logos/kubernetes.svg'
 import logoCaptainhook from '@/images/logos/captainhook.svg'  
+
 const siteMeta = {
     title: "Abhik Sarkar - MLE",
     description: "Abhik Sarkar is a Machine Learning Engineer.",
