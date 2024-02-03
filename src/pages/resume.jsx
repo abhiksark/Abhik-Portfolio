@@ -5,8 +5,12 @@ import { Card } from '@/components/Card'
 import { SimpleLayout, LearningResources, NewLayout, SimpleLayoutNew } from '@/components/SimpleLayout'
 
 import siteMeta, { learningResourcesdata, skillsData } from '@/data/siteMeta'
-import portraitImage from '@/images/abhik-about.jpg'
+import portraitImage from '@/images/abhik-resume.jpg'
 
+
+import logoCas from '@/images/logos/cas.svg'
+import logoDeloitte from '@/images/logos/deloitte.webp'
+import logoQuantiphi from '@/images/logos/quantiphi.jpeg'
 
 function LinkIcon(props) {
   return (
@@ -148,7 +152,115 @@ function SkillsOld({ skillsData }) {
     </div >
   )
 }
+const experiences = [
+  {
+    id: 1,
+    title: "Director, Machine Learning",
+    company: "Cloudastucture Inc",
+    period: "Aug 2022 - now",
+    imageUrl: logoCas, // Replace with actual image URL
+    socialLinks: [
+      { platform: "facebook", url: "#", iconClassName: "fab fa-facebook-f" },
+      { platform: "linkedin", url: "#", iconClassName: "fab fa-linkedin-in" }
+    ],
+    details: [
+      "In tristique vulputate augue vel egestas.",
+      "Quisque ac imperdiet tortor, at lacinia ex.",
+      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      // Add more details as needed
+    ]
+  },
+  {
+    id: 2,
+    title: "Founding Machine Learning Engineer",
+    company: "Cloudastucture Inc",
+    period: "Dec 2020 - Aug 2022",
+    imageUrl: logoCas, // Replace with actual image URL
+    socialLinks: [
+      { platform: "facebook", url: "#", iconClassName: "fab fa-facebook-f" },
+      { platform: "linkedin", url: "#", iconClassName: "fab fa-linkedin-in" }
+    ],
+    details: [
+      "In tristique vulputate augue vel egestas.",
+      "Quisque ac imperdiet tortor, at lacinia ex.",
+      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      // Add more details as needed
+    ]
+  },
+  {
+    id: 3,
+    title: "Machine Learning Engineer",
+    company: "Quantiphi Analytics Solutions Pvt. Ltd. / AthenasOwl",
+    period: "April 2019 - Nov 2020",
+    imageUrl: logoQuantiphi, // Replace with actual image URL
+    socialLinks: [
+      { platform: "facebook", url: "#", iconClassName: "fab fa-facebook-f" },
+      { platform: "linkedin", url: "#", iconClassName: "fab fa-linkedin-in" }
+    ],
+    details: [
+      "In tristique vulputate augue vel egestas.",
+      "Quisque ac imperdiet tortor, at lacinia ex.",
+      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      // Add more details as needed
+    ]
+  },
+  {
+    id: 4,
+    title: "Business Technology Analyst",
+    company: "Deloitte USI Consulting",
+    period: "June 2018 - March 2019",
+    imageUrl: logoDeloitte, 
+    socialLinks: [
+      { platform: "facebook", url: "#", iconClassName: "fab fa-facebook-f" },
+      { platform: "linkedin", url: "#", iconClassName: "fab fa-linkedin-in" }
+    ],
+    details: [
+      "In tristique vulputate augue vel egestas.",
+      "Quisque ac imperdiet tortor, at lacinia ex.",
+      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      // Add more details as needed
+    ]
+  },
+];
 
+function ProfileSection() {
+  return (
+    <div className="flex flex-col gap-8">
+      {experiences.map((exp) => (
+        <div key={exp.id} className="flex flex-col gap-3">
+          <div className="flex flex-col sm:flex-row gap-4 justify-between w-full">
+            <Image
+              className="hidden sm:block rounded-md h-[4.5rem] w-[4.5rem]"
+              src={exp.imageUrl}
+              alt={exp.altText}
+              width={72}
+              height={72}
+            />
+            <div className="flex flex-col flex-grow">
+              <h3 className="font-extrabold mb-0 text-zinc-800 dark:text-zinc-100">{exp.title}</h3>
+              <p className="font-semibold leading-snug mb-0.5 text-zinc-800 dark:text-zinc-100">{exp.company}</p>
+              <p className="font-medium text-sm mb-0 text-zinc-800 dark:text-zinc-100">{exp.period}</p>
+            </div>
+            <div className="flex gap-3 flex-wrap sm:flex-nowrap">
+              {exp.socialLinks.map((link) => (
+                <a key={link.platform} href={link.url} className="flex items-center rounded active:translate-y-px bg-gray-600 text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 h-7 justify-center w-7" target="_blank" aria-label={link.platform} rel="noreferrer">
+                  <i className={`${link.iconClassName} text-base text-white`}></i>
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="text-sm font-normal leading-relaxed sm:leading-relaxed sm:text-base mb-3 text-zinc-800 dark:text-zinc-100">
+            <ul className="list-disc pl-5 text-zinc-800 dark:text-zinc-100">
+              {exp.details.map((detail, index) => (
+                <li key={index}>{detail}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function Projects() {
   const headline = "Things I’ve made trying to put my mark on the universe."
@@ -183,46 +295,7 @@ export default function Projects() {
 
       </SimpleLayoutNew>
       <SimpleLayoutNew title="Work Experience">
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-3">
-            <div className="flex gap-2 justify-between w-full">
-              <div className="flex gap-4">
-                <Image className="hidden rounded-md sm:block h-[4.5rem] w-[4.5rem]"
-                  src=""
-                  alt=""
-                  width={72}
-                  height={72}
-                />
-                <div className="flex flex-col">
-                  <h3 className="h3 font-extrabold mb-0  ">Director, Machine Learning</h3>
-                  <p className=" font-semibold leading-snug mb-0.5">Cloudastucture Inc</p>
-                  <p className="font-medium text-sm mb-0">Dec 2020 - now</p>
-                </div>
-                <div className="flex gap-3 flex-wrap sm:flex-nowrap">
-                  <a href="#" className="flex items-center rounded active:translate-y-px bg-gray-600 text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 h-7 justify-center w-7" target="_blank" aria-label="Facebook">
-                    <i className="text-base text-white -globe fab fa-facebook-f fa-3x"></i>
-                  </a>
-                  <a href="#" className="flex items-center rounded active:translate-y-px bg-gray-600 text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 h-7 justify-center w-7" target="_blank" aria-label="LinkedIn">
-                    <i className="text-base text-white fab fa-linkedin-in fa-3x"></i>
-                  </a>
-                </div>
-              </div>
-
-            </div>
-            <div className="text-sm font-normal leading-relaxed sm:leading-relaxed sm:text-base mb-3">
-              <ul className="list-disc pl-5">
-                <li>In tristique vulputate augue vel egestas.</li>
-                <li>Quisque ac imperdiet tortor, at lacinia ex.</li>
-                <li>Duis vel ex hendrerit, commodo odio sed, aliquam enim.</li>
-                <li>Ut arcu nulla, tincidunt eget arcu eget, molestie vulputate nisi.</li>
-                <li>Nunc malesuada leo et est iaculis facilisis.</li>
-                <li>Fusce eu urna ut magna malesuada fringilla.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-
+        <ProfileSection experiences={experiences} />
       </SimpleLayoutNew>
 
 
