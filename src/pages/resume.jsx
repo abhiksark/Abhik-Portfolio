@@ -86,40 +86,39 @@ function Skills({ skillsData }) {
 function ResumeAboutMe() {
   return (
     <div>
-      <h3 className="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-0">
+      <h3 className="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-4 sm:mb-6">
         Machine Learning Engineer
       </h3>
-      <div className="flex">
-        <div className="w-1/3 p-4">
+      <div className="flex flex-col sm:flex-row">
+        <div className="sm:w-1/3 p-4 flex justify-center">
           <Image
             src={portraitImage} // Replace with the URL of your image
             alt="Abhik Sarkar"
-            className="w-full h-auto rounded-lg"
+            className="w-32 h-32 sm:w-48 sm:h-48 rounded-lg"
             width={250}
             height={250}
           />
         </div>
-        <div className="w-2/3 p-4">
-          <div className="flex mb-5">
-            <h3 className="w-1/2 text-lg text-zinc-800 dark:text-zinc-100">
+        <div className="sm:w-2/3 p-4">
+          <div className="flex flex-wrap mb-5">
+            <h3 className="w-full sm:w-1/2 text-base sm:text-lg text-zinc-800 dark:text-zinc-100 mb-2 sm:mb-0">
               <span className="font-bold">Phone Number:</span> +91 9876543210
             </h3>
-            <h3 className="w-1/2 text-lg text-zinc-800 dark:text-zinc-100">
+            <h3 className="w-full sm:w-1/2 text-base sm:text-lg text-zinc-800 dark:text-zinc-100">
               <span className="font-bold">Email:</span> abhiksark@gmail.com
             </h3>
           </div>
 
-          <p className="mt-4 text-lg text-zinc-800 dark:text-zinc-100">
+          <p className="text-base sm:text-lg text-zinc-800 dark:text-zinc-100">
             I am a Machine Learning Engineer with a passion for building scalable and efficient machine learning models. I have experience in building and deploying machine learning models using modern tools and technologies. I am also a strong advocate for open-source and have contributed to various open-source projects.
           </p>
 
         </div>
-
       </div>
-
     </div>
   );
 }
+
 
 
 
