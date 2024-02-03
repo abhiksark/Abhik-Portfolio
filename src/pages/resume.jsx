@@ -5,6 +5,7 @@ import { Card } from '@/components/Card'
 import { SimpleLayout, LearningResources, NewLayout, SimpleLayoutNew } from '@/components/SimpleLayout'
 
 import siteMeta, { learningResourcesdata, skillsData } from '@/data/siteMeta'
+import portraitImage from '@/images/abhik-about.jpg'
 
 
 function LinkIcon(props) {
@@ -82,7 +83,43 @@ function Skills({ skillsData }) {
 }
 
 
+function ResumeAboutMe() {
+  return (
+    <div>
+      <h3 className="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-0">
+        Machine Learning Engineer
+      </h3>
+      <div className="flex">
+        <div className="w-1/3 p-4">
+          <Image
+            src={portraitImage} // Replace with the URL of your image
+            alt="Abhik Sarkar"
+            className="w-full h-auto rounded-lg"
+            width={250}
+            height={250}
+          />
+        </div>
+        <div className="w-2/3 p-4">
+          <div className="flex mb-5">
+            <h3 className="w-1/2 text-lg text-zinc-800 dark:text-zinc-100">
+              <span className="font-bold">Phone Number:</span> +91 9876543210
+            </h3>
+            <h3 className="w-1/2 text-lg text-zinc-800 dark:text-zinc-100">
+              <span className="font-bold">Email:</span> abhiksark@gmail.com
+            </h3>
+          </div>
 
+          <p className="mt-4 text-lg text-zinc-800 dark:text-zinc-100">
+            I am a Machine Learning Engineer with a passion for building scalable and efficient machine learning models. I have experience in building and deploying machine learning models using modern tools and technologies. I am also a strong advocate for open-source and have contributed to various open-source projects.
+          </p>
+          
+        </div>
+
+      </div>
+
+    </div>
+  );
+}
 
 
 
@@ -138,88 +175,9 @@ export default function Projects() {
           siteName: 'abhik.xyz',
         }}
       />
-      {/* <SimpleLayout
-        title={headline}
-        intro={intro}
-      >
-        <ul
-          role="list"
-          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {projects.map((project) => (
-            <Card as="li" key={project.name}>
-              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                <Image
-                  src={project.logo}
-                  alt=""
-                  className="h-8 w-8"
-                  unoptimized
-                />
-              </div>
-              <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                <Card.Link href={project.link.href}>{project.name}</Card.Link>
-              </h2>
-              <Card.Description>{project.description}</Card.Description>
-              <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
-                <LinkIcon className="h-6 w-6 flex-none" />
-                <span className="ml-2">{project.link.label}</span>
-              </p>
-            </Card>
-          ))}
-        </ul>
-      </SimpleLayout> */}
-
-      {/* <SimpleLayoutNew title="My Favorites">
-        <h3 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-3xl">
-          People I learn from
-        </h3>
-        <ul role="list" className="grid grid-cols-1 gap-x-20 gap-y-24 sm:grid-cols-2 lg:grid-cols-6">
-          {peopleILearnFrom.map(person => (
-            <li key={person.name} className="flex items-center hover:translate-y-2 transition duration-300">
-              <a href={person.link} target="_blank" rel="noreferrer noopener" className="flex flex-col items-center">
-                <div className="w-24 h-24 rounded-full overflow-hidden relative">
-                  <Image
-                    src={person.imageUrl}
-                    alt={person.name}
-                    layout="fill"
-                    objectFit="cover"
-                    width={96}
-                    height={96}
-                    unoptimized
-                  />
-                </div>
-                <h4 className="relative mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100 text-center">{person.name}</h4>
-              </a>
-            </li>
-          ))}   
-        </ul>
-        
-        <h3 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-3xl">
-          Videos I Like
-        </h3>
-
-        <ul role="list" className="grid grid-cols-1 gap-x-20 gap-y-24 sm:grid-cols-2 lg:grid-cols-6">
-          {peopleILearnFrom.map(person => (
-            <li key={person.name} className="flex items-center hover:translate-y-2 transition duration-300">
-              <a href={person.link} target="_blank" rel="noreferrer noopener" className="flex flex-col items-center">
-                <div className="w-24 h-24 rounded-full overflow-hidden relative">
-                  <Image
-                    src={person.imageUrl}
-                    alt={person.name}
-                    layout="fill"
-                    objectFit="cover"
-                    width={96}
-                    height={96}
-                    unoptimized
-                  />
-                </div>
-                <h4 className="relative mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100 text-center">{person.name}</h4>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </SimpleLayoutNew> */}
-
+      <SimpleLayoutNew title="Abhik Sarkar">
+        <ResumeAboutMe />
+      </SimpleLayoutNew>
       <SimpleLayoutNew title="Skills">
 
         <Skills skillsData={skillsData} />
