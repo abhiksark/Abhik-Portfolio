@@ -112,7 +112,7 @@ function ResumeAboutMe() {
           <p className="mt-4 text-lg text-zinc-800 dark:text-zinc-100">
             I am a Machine Learning Engineer with a passion for building scalable and efficient machine learning models. I have experience in building and deploying machine learning models using modern tools and technologies. I am also a strong advocate for open-source and have contributed to various open-source projects.
           </p>
-          
+
         </div>
 
       </div>
@@ -183,6 +183,49 @@ export default function Projects() {
         <Skills skillsData={skillsData} />
 
       </SimpleLayoutNew>
+      <SimpleLayoutNew title="Work Experience">
+        <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-3">
+            <div className="flex gap-2 justify-between w-full">
+              <div className="flex gap-4">
+                <Image className="hidden rounded-md sm:block h-[4.5rem] w-[4.5rem]"
+                  src=""
+                  alt=""
+                  width={72}
+                  height={72}
+                />
+                <div className="flex flex-col">
+                  <h3 className="h3 font-extrabold mb-0  ">Director, Machine Learning</h3>
+                  <p className=" font-semibold leading-snug mb-0.5">Cloudastucture Inc</p>
+                  <p className="font-medium text-sm mb-0">Dec 2020 - now</p>
+                </div>
+                <div className="flex gap-3 flex-wrap sm:flex-nowrap">
+                  <a href="#" className="flex items-center rounded active:translate-y-px bg-gray-600 text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 h-7 justify-center w-7" target="_blank" aria-label="Facebook">
+                    <i className="text-base text-white -globe fab fa-facebook-f fa-3x"></i>
+                  </a>
+                  <a href="#" className="flex items-center rounded active:translate-y-px bg-gray-600 text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 h-7 justify-center w-7" target="_blank" aria-label="LinkedIn">
+                    <i className="text-base text-white fab fa-linkedin-in fa-3x"></i>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+            <div className="text-sm font-normal leading-relaxed sm:leading-relaxed sm:text-base mb-3">
+              <ul className="list-disc pl-5">
+                <li>In tristique vulputate augue vel egestas.</li>
+                <li>Quisque ac imperdiet tortor, at lacinia ex.</li>
+                <li>Duis vel ex hendrerit, commodo odio sed, aliquam enim.</li>
+                <li>Ut arcu nulla, tincidunt eget arcu eget, molestie vulputate nisi.</li>
+                <li>Nunc malesuada leo et est iaculis facilisis.</li>
+                <li>Fusce eu urna ut magna malesuada fringilla.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+      </SimpleLayoutNew>
+
 
       <SimpleLayoutNew title="My Favorites">
 
