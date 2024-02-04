@@ -285,7 +285,7 @@ export const experiencesData = [
     socialLinks: [
       {
         platform: "",
-        url: "https://www.linkedin.com/in/yourprofile",
+        url: "https://www.linkedin.com/company/cloudastructure/",
         iconUrl: "/icons/linkedin.png", // Local or external link to the icon image
       }
       // Add more social links as needed
@@ -306,7 +306,7 @@ export const experiencesData = [
     socialLinks: [
       {
         platform: "",
-        url: "https://www.linkedin.com/in/yourprofile",
+        url: "https://www.linkedin.com/company/cloudastructure/",
         iconUrl: LinkedInIcon, // Local or external link to the icon image
       }
     ],
@@ -335,7 +335,7 @@ export const experiencesData = [
     socialLinks: [
       {
         platform: "",
-        url: "https://www.linkedin.com/in/yourprofile",
+        url: "https://www.linkedin.com/company/athenasowl/about/",
         iconUrl: "/icons/linkedin.png", // Local or external link to the icon image
       },
       // Add more social links as needed
@@ -356,15 +356,15 @@ export const experiencesData = [
     socialLinks: [
       {
         platform: "",
-        url: "https://www.linkedin.com/in/yourprofile",
+        url: "https://www.linkedin.com/company/deloitte/",
         iconUrl: "/icons/linkedin.png", // Local or external link to the icon image
       }
       // Add more social links as needed
     ],
     details: [
-      "In tristique vulputate augue vel egestas.",
-      "Quisque ac imperdiet tortor, at lacinia ex.",
-      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      "Worked in Human Capital Service Line which deals with research, analysis and design of critical programs involving different aspects of HR Processes.",
+      "Got Trained in Workday which is a cloud-based ERP Solution for human capital management and financial management applications.",
+      "Staffed in worldwide implementation of Financial Giant wherein Delivered both Inbound and Outbound Solutions using Workday Studio and EIBs(Enterprise Interface Builder).",
       // Add more details as needed
     ]
   },

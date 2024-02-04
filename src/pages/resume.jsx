@@ -13,8 +13,34 @@ function LinkedInIcon(props) {
     </svg>
   )
 }
+const educationData = [
+  {
+    id: 1,
+    title: 'Bachelor of Technology in Computer Science and Engineering',
+    institute: 'National Institute of Technology, Raipur',
+    period: '2014 - 2018',
+    imageUrl: '/images/iit-kharagpur-logo.png',
+    altText: 'NIT Raipur',
+    details: [
+      'Thesis: "A study of the impact of machine learning models on the financial sector"',
+    ],
 
 
+  },
+
+  {
+    id: 1,
+    title: 'Bachelor of Technology in Computer Science and Engineering',
+    institute: 'National Institute of Technology, Raipur',
+    period: '2014 - 2018',
+    imageUrl: '/images/iit-kharagpur-logo.png',
+    altText: 'NIT Raipur',
+    details: [
+      'Thesis: "A study of the impact of machine learning models on the financial sector"',
+    ],
+  },
+
+]
 const SkillProgress = ({ level }) => {
   // Total number of levels (divs)
   const totalLevels = 5;
@@ -87,7 +113,7 @@ function ResumeAboutMe() {
         Machine Learning Engineer
       </h3>
       <div className="flex flex-col sm:flex-row">
-        <div className="sm:w-1/3 p-4 flex justify-center">
+        <div className="sm:w-1/4 p-4 flex justify-center">
           <Image
             src={portraitImage} // Replace with the URL of your image
             alt="Abhik Sarkar"
@@ -96,7 +122,7 @@ function ResumeAboutMe() {
             height={250}
           />
         </div>
-        <div className="sm:w-2/3 p-4">
+        <div className="sm:w-3/4 p-4">
           <div className="flex flex-wrap mb-5">
             <h3 className="w-full sm:w-1/2 text-base sm:text-lg text-zinc-800 dark:text-zinc-100 mb-2 sm:mb-0">
               <span className="font-bold">Phone Number:</span> +91 9876543210
@@ -119,7 +145,7 @@ function ResumeAboutMe() {
 
 
 
-function ProfileSection({experiences}) {
+function WorkExperience({experiences}) {
   return (
     <div className="flex flex-col gap-8">
       {experiences.map((exp) => (
@@ -151,6 +177,41 @@ function ProfileSection({experiences}) {
           <div className="text-sm font-normal leading-relaxed sm:leading-relaxed sm:text-base mb-3 text-zinc-800 dark:text-zinc-100">
             <ul className="list-disc pl-5 text-zinc-800 dark:text-zinc-100">
               {exp.details.map((detail, index) => (
+                <li key={index}>{detail}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Education({ education }) {
+  return (
+    <div className="flex flex-col gap-8">
+      {education.map((edu) => (
+        <div key={edu.id} className="flex flex-col gap-3">
+          <div className="flex flex-col sm:flex-row gap-4 justify-between w-full">
+            <Image
+              className="hidden sm:block rounded-md h-[4.5rem] w-[4.5rem]"
+              src={edu.imageUrl}
+              alt={edu.altText}
+              width={72}
+              height={72}
+            />
+            <div className="flex flex-col flex-grow">
+              <h3 className="font-extrabold mb-0 text-zinc-800 dark:text-zinc-100">{edu.title}</h3>
+              <p className="font-semibold leading-snug mb-0.5 text-zinc-800 dark:text-zinc-100">{edu.institute}</p>
+              <p className="font-medium text-sm mb-0 text-zinc-800 dark:text-zinc-100">{edu.period}</p>
+            </div>
+            <div className="flex gap-3 flex-wrap sm:flex-nowrap">
+
+            </div>
+          </div>
+          <div className="text-sm font-normal leading-relaxed sm:leading-relaxed sm:text-base mb-3 text-zinc-800 dark:text-zinc-100">
+            <ul className="list-disc pl-5 text-zinc-800 dark:text-zinc-100">
+              {edu.details.map((detail, index) => (
                 <li key={index}>{detail}</li>
               ))}
             </ul>
@@ -194,10 +255,12 @@ export default function Projects() {
 
       </SimpleLayoutNew>
       <SimpleLayoutNew title="Work Experience">
-        <ProfileSection experiences={experiencesData} />
+        <WorkExperience experiences={experiencesData} />
       </SimpleLayoutNew>
 
-
+      <SimpleLayoutNew title="Education">
+        <Education education={educationData} />
+      </SimpleLayoutNew>
       <SimpleLayoutNew title="My Favorites">
 
 
