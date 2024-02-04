@@ -221,7 +221,7 @@ export const learningResourcesdata = [
       
 export const skillsData = [
   {
-    name: "Things I'm Good At",
+    name: "Languages",
     items: [
       {
         Name: "Python",
@@ -229,6 +229,51 @@ export const skillsData = [
         link: "https://www.python.org/",
         skillLevel: 5
       }, 
+    
+
+      {
+        Name: "C++",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg",
+        link: "https://isocpp.org/",
+        skillLevel: 2
+      },
+      
+     
+      {
+        Name: "JavaScript",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg",
+        link: "https://www.javascript.com/",
+        skillLevel: 2
+      }
+
+
+      
+    ]
+  },
+  {
+    name: "Frameworks, Libraries and Tools",
+    items: [
+      
+      {
+        Name: "FastAPI",
+        imageUrl: "https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png",
+        link: "https://fastapi.tiangolo.com/",
+        skillLevel: 2
+      },
+      {
+        Name : "Next.js",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
+        link: "https://nextjs.org/",
+        skillLevel: 2
+
+      },
+      {
+        Name: "Tailwind CSS",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/46/Tailwind_CSS_Logo.svg",
+        link: "https://tailwindcss.com/",
+        skillLevel: 2
+
+      },
       {
         Name: "React",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
@@ -254,9 +299,81 @@ export const skillsData = [
         imageUrl: "https://pytorch.org/assets/images/pytorch-logo.png",
         link: "https://pytorch.org/",
         skillLevel: 4
+      },
+    ],
+
+  },
+  {
+    name: "Databases",
+    items: [
+      {
+        Name: "MongoDB",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg",
+        link: "https://www.mongodb.com/",
+        skillLevel: 3
+      },
+      {
+        Name: "PostgreSQL",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
+        link: "https://www.postgresql.org/",
+        skillLevel: 3
+      },
+      {
+        Name: "Redis",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Redis_Logo.svg",
+        link: "https://redis.io/",
+        skillLevel: 3
+      },
+      {
+        Name: "Elasticsearch",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Elasticsearch_logo_color.svg",
+        link: "https://www.elastic.co/",
+        skillLevel: 3
       }
     ]
   },
+  {
+    name: "Concepts",
+    items: [
+      {
+        Name: "Machine Learning",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg",
+        link: "https://scikit-learn.org/",
+        skillLevel: 4
+      },
+      {
+        Name: "Deep Learning",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/11/TensorFlowLogo.svg",
+        link: "https://www.tensorflow.org/",
+        skillLevel: 4
+      },
+      {
+        Name: "Natural Language Processing",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Python3-powered_hello-world.svg",
+        link: "https://www.nltk.org/",
+        skillLevel: 3
+      },
+      {
+        Name: "Computer Vision",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg",
+        link: "https://opencv.org/",
+        skillLevel: 3
+      },
+      {
+        Name: "Reinforcement Learning",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Keras_logo.svg",
+        link: "https://keras.io/",
+        skillLevel: 3
+      },
+      {
+        Name: "Time Series Analysis",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/69/Seaborn_logo.svg",
+        link: "https://seaborn.pydata.org/",
+        skillLevel: 3
+      }
+    ]
+  },
+
   {
     name : "Things I'm Learning",
     items :[
@@ -269,7 +386,28 @@ export const skillsData = [
         Name: "Kubernetes",
         imageUrl: "https://upload.wikimedia.org/wikipedia/labs/b/ba/Kubernetes-icon-color.svg",
         link: "https://kubernetes.io/",
-      }
+      },
+      {
+        Name: "Rust",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg",
+        link: "https://www.rust-lang.org/",
+      },
+      {
+        Name: "Distributed Systems",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Consul_Logo.svg",
+        link: "https://www.consul.io/",
+      },
+      {
+        Name: "Microservices",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Consul_Logo.svg",
+        link: "https://www.consul.io/",
+      },
+      {
+        Name: "WASM",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1f/WebAssembly_Logo.svg",
+        link: "https://webassembly.org/",
+      },
+      
     ]
   }
 

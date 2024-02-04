@@ -22,7 +22,11 @@ const educationData = [
     imageUrl: '/images/iit-kharagpur-logo.png',
     altText: 'NIT Raipur',
     details: [
-      'Thesis: "A study of the impact of machine learning models on the financial sector"',
+      'Thesis: "Diabetic Retinopathy Detection using Deep Learning"',
+      "Pre-Thesis: Deposist Prediction using Machine Learning Models",
+      "Finalist in the Smart India Hackathon 2018",
+      "Winner of the NIT Raipur Model Making 2017",
+      
     ],
 
 
@@ -30,15 +34,43 @@ const educationData = [
 
   {
     id: 1,
-    title: 'Bachelor of Technology in Computer Science and Engineering',
-    institute: 'National Institute of Technology, Raipur',
-    period: '2014 - 2018',
-    imageUrl: '/images/iit-kharagpur-logo.png',
-    altText: 'NIT Raipur',
+    title: 'Data Analyst Nanodegree',
+    institute: 'Udacity',
+    period: '2018 - 2019',
+    imageUrl: '/images/udacity-logo.png',
+    altText: 'Udacity',
     details: [
-      'Thesis: "A study of the impact of machine learning models on the financial sector"',
+      'Completed the Data Analyst Nanodegree',
+      "Projects: Investigate a Dataset, Analyze A/B Test Results, Wrangle and Analyze Data, Communicate Data Findings",
+      "Skills: Python, Pandas, Numpy, Matplotlib, Seaborn, Jupyter Notebook",
     ],
   },
+  {
+    id: 2,
+    title: 'CS 224w: Machine Learning with Graphs',
+    institute: 'Stanford Center for Professional Development',
+    period: '2021',
+    imageUrl: '/images/stanford-logo.png',
+    altText: 'Stanford University',
+    details: [
+      'Completed the course on Machine Learning with Graphs',
+      "Skills: Graph Neural Networks, Graph Convolutional Networks, GraphSAGE, Graph Attention Networks",
+    ],
+  },
+  {
+    id: 3,
+    title: 'Introduction to High-Performance Computing',
+    institute: 'CCE Indian Institute of Science, Bangalore',
+    period: 'Aug 2023 - Dec 2023',
+    imageUrl: '/images/iisc-logo.png',
+    altText: 'IISc Bangalore',
+    details: [
+      'Single Semester Course on High-Performance Computing',
+      "Skills: MPI, OpenMP, CUDA, Parallel Programming",
+      
+    ],
+
+  }
 
 ]
 const SkillProgress = ({ level }) => {
