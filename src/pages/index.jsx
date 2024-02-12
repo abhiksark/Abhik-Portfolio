@@ -227,7 +227,7 @@ export default function Home({ articles }) {
             />
             <SocialLink
               href={siteMeta.author.stackoverflow}
-              aria-label="Follow on Mastodon"
+              aria-label="View on Stack Overflow"
               icon={StackOverflowIcon}
               rel="me"
             />
