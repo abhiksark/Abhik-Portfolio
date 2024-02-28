@@ -7,11 +7,12 @@ import { Card } from '@/components/Card'
 import { SimpleLayout, LearningResources, NewLayout, SimpleLayoutNew } from '@/components/SimpleLayout'
 
 import siteMeta, { learningResourcesdata, experiencesData, skillsData } from '@/data/siteMeta'
-import portraitImage from '@/images/abhik-resume.jpg'
-import udacityLogo from '@/images/udacity-logo.png'
-import iiscLogo from '@/images/iisc-logo.jpg'
-import StanfordLogo from '@/images/stanford-logo.png'
-import NITLogo from '@/images/nit-raipur-logo.png'
+// import { educationData } from '@/data/siteMeta'
+import portraitImage from 'public/fixed/images/abhik-resume.jpg'
+import udacityLogo from 'public/fixed/images/logos/udacity-logo.png'
+import iiscLogo from 'public/fixed/images/logos/iisc-logo.jpg'
+import StanfordLogo from 'public/fixed/images/logos/stanford-logo.png'
+import NITLogo from 'public/fixed/images/logos/nit-raipur-logo.png'
 
 function LinkedInIcon(props) {
   return (
@@ -35,8 +36,6 @@ const educationData = [
       "Winner of the NIT Raipur Model Making 2017",
 
     ],
-
-
   },
 
   {
@@ -317,13 +316,8 @@ export default function Projects() {
         <Education education={educationData} />
       </SimpleLayoutNew>
       <SimpleLayoutNew title="My Favorites">
-
-
         <LearningResources categories={learningResourcesdata} />
-
       </SimpleLayoutNew>
-
-
     </>
   )
 }

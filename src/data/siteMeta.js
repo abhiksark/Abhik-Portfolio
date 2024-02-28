@@ -1,22 +1,23 @@
 
-import logoCas from '@/images/logos/cas.svg'
-import logoDeloitte from '@/images/logos/deloitte.webp'
-import logoQuantiphi from '@/images/logos/quantiphi.jpeg'
-import logoXOR from '@/images/logos/xor.jpg'
-import logoVanilla from '@/images/logos/vanilla.svg'
-import logoFleek from '@/images/logos/fleeksvg.svg'
-import logoUblue from '@/images/logos/ublue.png'
+import logoCas from 'public/fixed/images/logos/cas.svg'
+import logoDeloitte from 'public/fixed/images/logos/deloitte.svg'
+import logoQuantiphi from 'public/fixed/images/logos/quantiphi.jpeg'
 
-import logoGolang from '@/images/logos/icons8-golang.svg'
-import logoKubernetes from '@/images/logos/kubernetes.svg'
-import logoCaptainhook from '@/images/logos/captainhook.svg'  
-import ElasticLogo from '@/images/elasticsearch.png'
+import logoGolang from 'public/fixed/images/logos/icons8-golang.svg'
+import logoKubernetes from 'public/fixed/images/logos/kubernetes.svg'
+import ElasticLogo from 'public/fixed/images/logos/elasticsearch.png'
 
-import RedisLogo from '@/images/redis.jpg'
-import TailWindLogo from '@/images/Tailwind_CSS_Logo.svg'
-import FastAPILogo from '@/images/fastapi.png'
+import RedisLogo from 'public/fixed/images/logos/redis.jpg'
+import TailWindLogo from 'public/fixed/images/logos/Tailwind_CSS_Logo.svg'
+import FastAPILogo from 'public/fixed/images/logos/fastapi.png'
 
-import ShellLogo from '@/images/shell.png'
+import ShellLogo from 'public/fixed/images/logos/shell.png'
+
+import portraitImage from 'public/fixed/images/abhik-resume.jpg'
+import udacityLogo from 'public/fixed/images/logos/udacity-logo.png'
+import iiscLogo from 'public/fixed/images/logos/iisc-logo.jpg'
+import StanfordLogo from 'public/fixed/images/logos/stanford-logo.png'
+import NITLogo from 'public/fixed/images/logos/nit-raipur-logo.png'
 
 function LinkedInIcon(props) {
   return (
@@ -71,57 +72,7 @@ const siteMeta = {
     }
   ]
 export const projects = [
-  {
-    name: 'Fleek',
-    description:
-      'Install and manage all the tools you need to be productive.',
-    link: { href: 'https://getfleek.dev', label: 'getfleek.dev' },
-    logo: logoFleek,
-  },
-  {
-    name: 'Universal Blue',
-    description:
-      'Custom Operating System images based on Fedora.',
-    link: { href: 'https://ublue.it', label: 'Universal Blue' },
-    logo: logoUblue,
-  },
-  {
-    name: 'Bluefin',
-    description:
-      'The next generation Linux workstation. Built for cloud-native, using cloud-native.',
-    link: { href: 'https://projectbluefin.io', label: 'Bluefin' },
-    logo: logoUblue,
-  },
-  {
-    name: 'Vanilla OS',
-    description:
-      'Vanilla OS is an immutable and atomic Ubuntu Linux-based Point Release distribution, that receives updates at the right time, neither before nor after, without sacrificing security and functionality.',
-    link: { href: 'https://vanillaos.org', label: 'vanillaos.org' },
-    logo: logoVanilla,
-  },
-  {
-    name: 'Captain Hook',
-    description:
-      'Custom commands as webhooks.',
-    link: { href: 'https://github.com/bketelsen/captainhook', label: 'github.com' },
-    logo: logoCaptainhook,
-  },
-  {
-    name: 'Kubernetes',
-    description:
-      'Production-Grade Container Scheduling and Management',
-    link: { href: 'https://github.com/kubernetes/kubernetes', label: 'github.com' },
-    logo: logoKubernetes,
-  },
-  {
-    name: 'Go',
-    description:
-      'Build fast, reliable, and efficient software at scale',
-    link: { href: 'https://go.dev', label: 'go.dev' },
-    logo: logoGolang,
-  },
-
-
+  
 ]
 
 export const learningResourcesdata = [
@@ -524,3 +475,64 @@ export const experiencesData = [
 
 
 export default siteMeta;
+
+export const educationData = [
+  {
+    id: 1,
+    title: 'Bachelor of Technology in Computer Science and Engineering',
+    institute: 'National Institute of Technology, Raipur',
+    period: '2014 - 2018',
+    imageUrl: NITLogo,
+    altText: 'NIT Raipur',
+    details: [
+      'Thesis: "Diabetic Retinopathy Detection using Deep Learning"',
+      "Pre-Thesis: Deposist Prediction using Machine Learning Models",
+      "Finalist in the Smart India Hackathon 2018",
+      "Winner of the NIT Raipur Model Making 2017",
+
+    ],
+
+
+  },
+
+  {
+    id: 1,
+    title: 'Data Analyst Nanodegree',
+    institute: 'Udacity',
+    period: '2018 - 2019',
+    imageUrl: udacityLogo, // Replace with the URL of your image
+    altText: 'Udacity',
+    details: [
+      'Completed the Data Analyst Nanodegree',
+      "Projects: Investigate a Dataset, Analyze A/B Test Results, Wrangle and Analyze Data, Communicate Data Findings",
+      "Skills: Python, Pandas, Numpy, Matplotlib, Seaborn, Jupyter Notebook",
+    ],
+  },
+  {
+    id: 2,
+    title: 'CS 224w: Machine Learning with Graphs',
+    institute: 'Stanford Center for Professional Development',
+    period: '2021',
+    imageUrl: StanfordLogo,
+    altText: 'Stanford University',
+    details: [
+      'Completed the course on Machine Learning with Graphs',
+      "Skills: Graph Neural Networks, Graph Convolutional Networks, GraphSAGE, Graph Attention Networks",
+    ],
+  },
+  {
+    id: 3,
+    title: 'Introduction to High-Performance Computing',
+    institute: 'CCE Indian Institute of Science, Bangalore',
+    period: 'Aug 2023 - Dec 2023',
+    imageUrl: iiscLogo,
+    altText: 'IISc Bangalore',
+    details: [
+      'Single Semester Course on High-Performance Computing',
+      "Skills: MPI, OpenMP, CUDA, Parallel Programming",
+
+    ],
+
+  }
+
+]
