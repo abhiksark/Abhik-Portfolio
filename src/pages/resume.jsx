@@ -96,49 +96,63 @@ const SkillProgress = ({ level }) => {
   );
 };
 
-
 function Skills({ skillsData }) {
-  // Function to render each skill item
-  const renderSkillItem = (item) => (
-    <div key={item.Name} className="mb-4">
-      <a
-        href={item.link}
-        className="flex items-center gap-4"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {item.imageUrl && item.imageUrl !== 'incorrect_url' && (
+  const renderSkillItem = (item) => {
+    const hasValidImage = item.imageUrl && item.imageUrl !== 'incorrect_url';
+
+    return (
+      <div key={item.Name} className="flex items-center mb-4 rounded-lg hover:bg-gray-50 transition-colors duration-150 ease-in-out">
+        {hasValidImage ? (
           <Image
-            className="w-8 h-8 mb-4"
+            className="w-8 h-8 mr-4 object-contain" // Ensure images are not zoomed in
             src={item.imageUrl}
             alt={item.Name}
             width={32}
             height={32}
             unoptimized
           />
+        ) : (
+          <span className="mr-4 font-medium">{item.Name}</span> // Directly display the skill name if no image
         )}
-        <span className="text-base font-medium text-zinc-800 dark:text-zinc-100">
-          {item.Name}
-        </span>
-      </a>
-      {item.skillLevel && <SkillProgress level={item.skillLevel} />}
-    </div>
-  );
-
-  // Function to render the skill category and its items
-  const renderSkillCategory = (category) => (
-    <div key={category.name} className="mb-8">
-      <h3 className="mb-4 text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-        {category.name}
-      </h3>
-      <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
-        {category.items.map(renderSkillItem)}
+        <div className="flex-grow">
+          <a
+            href={item.link}
+            className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 hover:text-blue-600 transition-colors duration-150 ease-in-out"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {hasValidImage ? item.Name : ''}
+          </a>
+          {item.skillLevel && (
+            <div className="mt-2">
+              <SkillProgress level={item.skillLevel} />
+            </div>
+          )}
+        </div>
       </div>
+    );
+  };
+
+  return (
+    <div className="space-y-6">
+      {skillsData.map((category) => (
+        <section key={category.name}>
+          <h3 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-4">
+            {category.name}
+          </h3>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {category.items.map(renderSkillItem)}
+          </div>
+        </section>
+      ))}
     </div>
   );
-
-  return <div>{skillsData.map(renderSkillCategory)}</div>;
 }
+
+
+
+
+
 
 
 

@@ -349,26 +349,27 @@ export const skillsData = [
     items: [
       {
         Name: "Machine Learning",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg",
-        link: "https://scikit-learn.org/",
+        // imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg",
+        // link: "https://scikit-learn.org/",
         skillLevel: 4
       },
       {
         Name: "Deep Learning",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/11/TensorFlowLogo.svg",
-        link: "https://www.tensorflow.org/",
+        // imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/11/TensorFlowLogo.svg",
+        // link: "https://www.tensorflow.org/",
+        skillLevel: 4
+      },
+      
+      {
+        Name: "Computer Vision",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg",
+        link: "https://opencv.org/",
         skillLevel: 4
       },
       {
         Name: "Natural Language Processing",
         // imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Python3-powered_hello-world.svg",
-        link: "https://www.nltk.org/",
-        skillLevel: 3
-      },
-      {
-        Name: "Computer Vision",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg",
-        link: "https://opencv.org/",
+        // link: "https://www.nltk.org/",
         skillLevel: 3
       },
       // {
@@ -404,11 +405,11 @@ export const skillsData = [
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg",
         link: "https://www.rust-lang.org/",
       },
-      // {
-      //   Name: "Distributed Systems",
-      //   imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Consul_Logo.svg",
-      //   link: "https://www.consul.io/",
-      // },
+      {
+        Name: "Distributed Systems",
+        // imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Consul_Logo.svg",
+        // link: "https://www.consul.io/",
+      },
       // {
       //   Name: "Microservices",
       //   imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Consul_Logo.svg",
