@@ -1,3 +1,5 @@
+// src/pages/resume.jsx
+
 import Image from 'next/future/image'
 import { NextSeo } from 'next-seo';
 
