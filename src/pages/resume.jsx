@@ -4,8 +4,13 @@ import { NextSeo } from 'next-seo';
 import { Card } from '@/components/Card'
 import { SimpleLayout, LearningResources, NewLayout, SimpleLayoutNew } from '@/components/SimpleLayout'
 
-import siteMeta, { learningResourcesdata,experiencesData, skillsData } from '@/data/siteMeta'
+import siteMeta, { learningResourcesdata, experiencesData, skillsData } from '@/data/siteMeta'
 import portraitImage from '@/images/abhik-resume.jpg'
+import udacityLogo from '@/images/udacity-logo.png'
+import iiscLogo from '@/images/iisc-logo.jpg'
+import StanfordLogo from '@/images/stanford-logo.png'
+import NITLogo from '@/images/nit-raipur-logo.png'
+
 function LinkedInIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
@@ -19,14 +24,14 @@ const educationData = [
     title: 'Bachelor of Technology in Computer Science and Engineering',
     institute: 'National Institute of Technology, Raipur',
     period: '2014 - 2018',
-    imageUrl: '/images/iit-kharagpur-logo.png',
+    imageUrl: NITLogo,
     altText: 'NIT Raipur',
     details: [
       'Thesis: "Diabetic Retinopathy Detection using Deep Learning"',
       "Pre-Thesis: Deposist Prediction using Machine Learning Models",
       "Finalist in the Smart India Hackathon 2018",
       "Winner of the NIT Raipur Model Making 2017",
-      
+
     ],
 
 
@@ -37,7 +42,7 @@ const educationData = [
     title: 'Data Analyst Nanodegree',
     institute: 'Udacity',
     period: '2018 - 2019',
-    imageUrl: '/images/udacity-logo.png',
+    imageUrl: udacityLogo, // Replace with the URL of your image
     altText: 'Udacity',
     details: [
       'Completed the Data Analyst Nanodegree',
@@ -50,7 +55,7 @@ const educationData = [
     title: 'CS 224w: Machine Learning with Graphs',
     institute: 'Stanford Center for Professional Development',
     period: '2021',
-    imageUrl: '/images/stanford-logo.png',
+    imageUrl: StanfordLogo,
     altText: 'Stanford University',
     details: [
       'Completed the course on Machine Learning with Graphs',
@@ -62,12 +67,12 @@ const educationData = [
     title: 'Introduction to High-Performance Computing',
     institute: 'CCE Indian Institute of Science, Bangalore',
     period: 'Aug 2023 - Dec 2023',
-    imageUrl: '/images/iisc-logo.png',
+    imageUrl: iiscLogo,
     altText: 'IISc Bangalore',
     details: [
       'Single Semester Course on High-Performance Computing',
       "Skills: MPI, OpenMP, CUDA, Parallel Programming",
-      
+
     ],
 
   }
@@ -93,49 +98,48 @@ const SkillProgress = ({ level }) => {
 
 
 function Skills({ skillsData }) {
-  return (
-    <div>
-      {skillsData.map((category) => (
-        <div className="mb-12" key={category.name}>
-          <div key={category.name}>
-            <h3 className="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-4">
-              {category.name}
-            </h3>
-            <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-              {category.items.map((item) => (
-                <div key={item.Name} className="mb-4">
-                  <a
-                    href={item.link}
-                    className="flex items-center gap-4"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      className="w-8 h-8"
-                      src={item.imageUrl}
-                      alt={item.Name}
-                      width={32}
-                      height={32}
-                      unoptimized
-                    />
-                    <span className="font-medium text-base text-zinc-800 dark:text-zinc-100">
-                      {item.Name}
-                    </span>
-                  </a>
-                  {item.skillLevel && (
-                    <div className="mt-2">
-                      <SkillProgress level={item.skillLevel} />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      ))}
+  // Function to render each skill item
+  const renderSkillItem = (item) => (
+    <div key={item.Name} className="mb-4">
+      <a
+        href={item.link}
+        className="flex items-center gap-4"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {item.imageUrl && item.imageUrl !== 'incorrect_url' && (
+          <Image
+            className="w-8 h-8 mb-4"
+            src={item.imageUrl}
+            alt={item.Name}
+            width={32}
+            height={32}
+            unoptimized
+          />
+        )}
+        <span className="text-base font-medium text-zinc-800 dark:text-zinc-100">
+          {item.Name}
+        </span>
+      </a>
+      {item.skillLevel && <SkillProgress level={item.skillLevel} />}
     </div>
   );
+
+  // Function to render the skill category and its items
+  const renderSkillCategory = (category) => (
+    <div key={category.name} className="mb-8">
+      <h3 className="mb-4 text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+        {category.name}
+      </h3>
+      <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+        {category.items.map(renderSkillItem)}
+      </div>
+    </div>
+  );
+
+  return <div>{skillsData.map(renderSkillCategory)}</div>;
 }
+
 
 
 function ResumeAboutMe() {
@@ -145,15 +149,18 @@ function ResumeAboutMe() {
         Machine Learning Engineer
       </h3>
       <div className="flex flex-col sm:flex-row">
-        <div className="sm:w-1/4 p-4 flex justify-center">
-          <Image
-            src={portraitImage} // Replace with the URL of your image
-            alt="Abhik Sarkar"
-            className="w-32 h-32 sm:w-48 sm:h-48 rounded-lg"
-            width={250}
-            height={250}
-          />
-        </div>
+        {portraitImage && (
+          <div className="sm:w-1/4 p-4 flex justify-center">
+            <Image
+              src={portraitImage} // Replace with the URL of your image
+              alt="Abhik Sarkar"
+              className="w-32 h-32 sm:w-48 sm:h-48 rounded-lg"
+              width={250}
+              height={250}
+            />
+          </div>
+        )}
+
         <div className="sm:w-3/4 p-4">
           <div className="flex flex-wrap mb-5">
             <h3 className="w-full sm:w-1/2 text-base sm:text-lg text-zinc-800 dark:text-zinc-100 mb-2 sm:mb-0">
@@ -177,7 +184,7 @@ function ResumeAboutMe() {
 
 
 
-function WorkExperience({experiences}) {
+function WorkExperience({ experiences }) {
   return (
     <div className="flex flex-col gap-8">
       {experiences.map((exp) => (
@@ -200,10 +207,10 @@ function WorkExperience({experiences}) {
                 <a key={link.platform} href={link.url} className="flex items-center justify-center rounded bg-gray-600 text-gray-200 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 active:translate-y-px w-8 h-8" target="_blank" aria-label={link.platform} rel="noreferrer noopener">
                   <LinkedInIcon className="fill-current bg-gray-200 text-gray-600" />
                 </a>
-              
+
 
               ))}
-  
+
             </div>
           </div>
           <div className="text-sm font-normal leading-relaxed sm:leading-relaxed sm:text-base mb-3 text-zinc-800 dark:text-zinc-100">
