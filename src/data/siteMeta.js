@@ -10,7 +10,13 @@ import logoUblue from '@/images/logos/ublue.png'
 import logoGolang from '@/images/logos/icons8-golang.svg'
 import logoKubernetes from '@/images/logos/kubernetes.svg'
 import logoCaptainhook from '@/images/logos/captainhook.svg'  
+import ElasticLogo from '@/images/elasticsearch.png'
 
+import RedisLogo from '@/images/redis.jpg'
+import TailWindLogo from '@/images/Tailwind_CSS_Logo.svg'
+import FastAPILogo from '@/images/fastapi.png'
+
+import ShellLogo from '@/images/shell.png'
 
 function LinkedInIcon(props) {
   return (
@@ -244,6 +250,12 @@ export const skillsData = [
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg",
         link: "https://www.javascript.com/",
         skillLevel: 2
+      },
+      {
+        Name: "Shell",
+        imageUrl: ShellLogo,
+        link: "https://www.gnu.org/software/bash/",
+        skillLevel: 3
       }
 
 
@@ -256,7 +268,7 @@ export const skillsData = [
       
       {
         Name: "FastAPI",
-        imageUrl: "https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png",
+        imageUrl: FastAPILogo,
         link: "https://fastapi.tiangolo.com/",
         skillLevel: 2
       },
@@ -269,7 +281,7 @@ export const skillsData = [
       },
       {
         Name: "Tailwind CSS",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/46/Tailwind_CSS_Logo.svg",
+        imageUrl: TailWindLogo,
         link: "https://tailwindcss.com/",
         skillLevel: 2
 
@@ -320,13 +332,13 @@ export const skillsData = [
       },
       {
         Name: "Redis",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Redis_Logo.svg",
+        imageUrl: RedisLogo,
         link: "https://redis.io/",
         skillLevel: 3
       },
       {
         Name: "Elasticsearch",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Elasticsearch_logo_color.svg",
+        imageUrl: ElasticLogo,
         link: "https://www.elastic.co/",
         skillLevel: 3
       }
@@ -349,7 +361,7 @@ export const skillsData = [
       },
       {
         Name: "Natural Language Processing",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Python3-powered_hello-world.svg",
+        // imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Python3-powered_hello-world.svg",
         link: "https://www.nltk.org/",
         skillLevel: 3
       },
@@ -359,18 +371,18 @@ export const skillsData = [
         link: "https://opencv.org/",
         skillLevel: 3
       },
-      {
-        Name: "Reinforcement Learning",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Keras_logo.svg",
-        link: "https://keras.io/",
-        skillLevel: 3
-      },
-      {
-        Name: "Time Series Analysis",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/69/Seaborn_logo.svg",
-        link: "https://seaborn.pydata.org/",
-        skillLevel: 3
-      }
+      // {
+      //   Name: "Reinforcement Learning",
+      //   imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Keras_logo.svg",
+      //   link: "https://keras.io/",
+      //   skillLevel: 3
+      // },
+      // {
+      //   Name: "Time Series Analysis",
+      //   imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/69/Seaborn_logo.svg",
+      //   link: "https://seaborn.pydata.org/",
+      //   skillLevel: 3
+      // }
     ]
   },
 
@@ -382,26 +394,26 @@ export const skillsData = [
         imageUrl: "https://blog.golang.org/go-brand/Go-Logo/SVG/Go-Logo_Blue.svg",
         link: "https://golang.org/",
       },
-      {
-        Name: "Kubernetes",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/labs/b/ba/Kubernetes-icon-color.svg",
-        link: "https://kubernetes.io/",
-      },
+      // {
+      //   Name: "Kubernetes",
+      //   imageUrl: "https://upload.wikimedia.org/wikipedia/labs/b/ba/Kubernetes-icon-color.svg",
+      //   link: "https://kubernetes.io/",
+      // },
       {
         Name: "Rust",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg",
         link: "https://www.rust-lang.org/",
       },
-      {
-        Name: "Distributed Systems",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Consul_Logo.svg",
-        link: "https://www.consul.io/",
-      },
-      {
-        Name: "Microservices",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Consul_Logo.svg",
-        link: "https://www.consul.io/",
-      },
+      // {
+      //   Name: "Distributed Systems",
+      //   imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Consul_Logo.svg",
+      //   link: "https://www.consul.io/",
+      // },
+      // {
+      //   Name: "Microservices",
+      //   imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Consul_Logo.svg",
+      //   link: "https://www.consul.io/",
+      // },
       {
         Name: "WASM",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1f/WebAssembly_Logo.svg",
