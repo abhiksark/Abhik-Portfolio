@@ -90,7 +90,7 @@ const SkillProgress = ({ level }) => {
       {levels.map((color, index) => (
         <div
           key={index}
-          className={`${color} ${index === 0 ? 'first:rounded-l-sm' : ''} ${index === levels.length - 1 ? 'last:rounded-r-sm' : ''} first:rounded-r-none last:rounded-l-none h-2 w-9`}
+          className={`${color} ${index === 0 ? 'first:rounded-l-sm' : ''} ${index === levels.length - 1 ? 'last:rounded-r-sm' : ''} first:rounded-r-none last:rounded-l-none h-2 w-4`}
         ></div>
       ))}
     </div>
@@ -141,7 +141,7 @@ function Skills({ skillsData }) {
           <h3 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-4">
             {category.name}
           </h3>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {category.items.map(renderSkillItem)}
           </div>
         </section>

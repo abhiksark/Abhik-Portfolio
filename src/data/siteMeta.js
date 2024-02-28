@@ -382,7 +382,7 @@ export const experiencesData = [
     id: 1,
     title: "Director, Machine Learning",
     company: "Cloudastucture Inc",
-    period: "Aug 2022 - now",
+    period: "Dec 2020 - now",
     imageUrl: logoCas, // Replace with actual image URL
     socialLinks: [
       {
@@ -393,41 +393,44 @@ export const experiencesData = [
       // Add more social links as needed
     ],
     details: [
-      "In tristique vulputate augue vel egestas.",
-      "Quisque ac imperdiet tortor, at lacinia ex.",
-      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      "Successfully set up and led a team, fostering collaboration and expertise in machine learning and deep learning technologies.",
+      "Led the design and construction of an end-to-end platform for scalable deep learning model deployment, leveraging Kubernetes (K8s) for efficiency.",
+      "Implemented a robust model version control pipeline to ensure accurate tracking of model changes and reproducibility.",
+      "Achieved a highly performant pipeline, scaling up from processing 100k videos to 2 million per day.",
+      "Led migration project from cloud to colocation servers, reducing costs by 75%.",
+      "Effectively managed and negotiated with external stakeholders in my geography to offset company costs, resulting in significant cost savings"
       // Add more details as needed
     ]
   },
-  {
-    id: 2,
-    title: "Founding Machine Learning Engineer",
-    company: "Cloudastucture Inc",
-    period: "Dec 2020 - Aug 2022",
-    imageUrl: logoCas, // Replace with actual image URL
-    socialLinks: [
-      {
-        platform: "",
-        url: "https://www.linkedin.com/company/cloudastructure/",
-        iconUrl: LinkedInIcon, // Local or external link to the icon image
-      }
-    ],
-    Technologies: [
-      {
-        name : "Python",
-        logo : "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9961f604-43bf-4f21-8bf2-15a9926bfedd.svg",
-      },
-      { name : "PyTorch",
-        logo: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9961f604-43bf-4f21-8bf2-15a9926bfedd.svg",
-    }
-    ],
-    details: [
-      "In tristique vulputate augue vel egestas.",
-      "Quisque ac imperdiet tortor, at lacinia ex.",
-      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
-      // Add more details as needed
-    ]
-  },
+  // {
+  //   id: 2,
+  //   title: "Founding Machine Learning Engineer",
+  //   company: "Cloudastucture Inc",
+  //   period: "Dec 2020 - Aug 2022",
+  //   imageUrl: logoCas, // Replace with actual image URL
+  //   socialLinks: [
+  //     {
+  //       platform: "",
+  //       url: "https://www.linkedin.com/company/cloudastructure/",
+  //       iconUrl: LinkedInIcon, // Local or external link to the icon image
+  //     }
+  //   ],
+  //   Technologies: [
+  //     {
+  //       name : "Python",
+  //       logo : "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9961f604-43bf-4f21-8bf2-15a9926bfedd.svg",
+  //     },
+  //     { name : "PyTorch",
+  //       logo: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9961f604-43bf-4f21-8bf2-15a9926bfedd.svg",
+  //   }
+  //   ],
+  //   details: [
+  //     "In tristique vulputate augue vel egestas.",
+  //     "Quisque ac imperdiet tortor, at lacinia ex.",
+  //     "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+  //     // Add more details as needed
+  //   ]
+  // },
   {
     id: 3,
     title: "Machine Learning Engineer",
@@ -443,9 +446,10 @@ export const experiencesData = [
       // Add more social links as needed
     ],
     details: [
-      "In tristique vulputate augue vel egestas.",
-      "Quisque ac imperdiet tortor, at lacinia ex.",
-      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      "Worked as part of the Video Intelligence Team at Athenas Owl, a Media-Based AI Product company.",
+      "Contributed to the development of a cutting-edge product aimed at assisting marketers in cataloging sports moments from vast video content libraries, spanning thousands of hours. Utilized a complex pipeline for different types of classification, object detection, and Siamese Network.",
+      "Responsible for generating new AI features in the product.",
+      "Contributed as an Engineer to a cutting-edge project aimed at developing a comprehensive athlete tracking solution across different sporting categories for amajor global sporting event. Focused heavily on OCR and Tracking. Ensured strict adherence to GDPR (General Data Protection Regulation) guidelines throughout the development process, prioritizing the protection of athletes' privacy and data rights."
       // Add more details as needed
     ]
   },
