@@ -6,7 +6,7 @@ import logoQuantiphi from 'public/fixed/images/logos/quantiphi.jpeg'
 import logoGolang from 'public/fixed/images/logos/icons8-golang.svg'
 import logoKubernetes from 'public/fixed/images/logos/kubernetes.svg'
 import ElasticLogo from 'public/fixed/images/logos/elasticsearch.png'
-
+import KafkaLogo from 'public/fixed/images/logos/kafka.svg'
 import RedisLogo from 'public/fixed/images/logos/redis.jpg'
 import TailWindLogo from 'public/fixed/images/logos/Tailwind_CSS_Logo.svg'
 import FastAPILogo from 'public/fixed/images/logos/fastapi.png'
@@ -18,6 +18,7 @@ import udacityLogo from 'public/fixed/images/logos/udacity-logo.png'
 import iiscLogo from 'public/fixed/images/logos/iisc-logo.jpg'
 import StanfordLogo from 'public/fixed/images/logos/stanford-logo.png'
 import NITLogo from 'public/fixed/images/logos/nit-raipur-logo.png'
+import QdrantLogo from 'public/fixed/images/logos/qdrant.jpeg'
 
 function LinkedInIcon(props) {
   return (
@@ -292,7 +293,23 @@ export const skillsData = [
         imageUrl: ElasticLogo,
         link: "https://www.elastic.co/",
         skillLevel: 3
-      }
+      },
+      {
+        Name: "ClickHouse",
+        // imageUrl: ClickHouseLogo,
+        link: "https://clickhouse.com/",
+        skillLevel: 3
+      },
+      {
+        Name: "Kafka",
+        imageUrl: KafkaLogo,
+        link: "https://kafka.apache.org/",
+        skillLevel: 3
+      },
+      {Name:"Qdrant",
+      imageUrl: QdrantLogo,
+      link: "https://qdrant.tech/",
+      skillLevel: 3}
     ]
   },
   {
