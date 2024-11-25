@@ -2,7 +2,6 @@ import NITLogo from 'public/fixed/images/logos/nit-raipur-logo.png'
 import udacityLogo from 'public/fixed/images/logos/udacity-logo.png'
 import iiscLogo from 'public/fixed/images/logos/iisc-logo.jpg'
 import StanfordLogo from 'public/fixed/images/logos/stanford-logo.png'
-import KubernetesLogo from 'public/fixed/images/logos/kubernetes.svg'
 
 
 export const educationData = [

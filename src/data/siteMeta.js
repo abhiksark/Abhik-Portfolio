@@ -19,6 +19,7 @@ import iiscLogo from 'public/fixed/images/logos/iisc-logo.jpg'
 import StanfordLogo from 'public/fixed/images/logos/stanford-logo.png'
 import NITLogo from 'public/fixed/images/logos/nit-raipur-logo.png'
 import QdrantLogo from 'public/fixed/images/logos/qdrant.jpeg'
+import ClickHouseLogo from 'public/fixed/images/logos/clickhouse.svg'
 
 function LinkedInIcon(props) {
   return (
@@ -296,7 +297,7 @@ export const skillsData = [
       },
       {
         Name: "ClickHouse",
-        // imageUrl: ClickHouseLogo,
+        imageUrl: ClickHouseLogo,
         link: "https://clickhouse.com/",
         skillLevel: 3
       },
