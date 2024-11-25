@@ -4,7 +4,7 @@ import logoDeloitte from 'public/fixed/images/logos/deloitte.svg'
 import logoQuantiphi from 'public/fixed/images/logos/quantiphi.jpeg'
 
 import logoGolang from 'public/fixed/images/logos/icons8-golang.svg'
-import logoKubernetes from 'public/fixed/images/logos/kubernetes.svg'
+import KubernetesLogo from 'public/fixed/images/logos/kubernetes.svg'
 import ElasticLogo from 'public/fixed/images/logos/elasticsearch.png'
 import KafkaLogo from 'public/fixed/images/logos/kafka.svg'
 import RedisLogo from 'public/fixed/images/logos/redis.jpg'
@@ -253,7 +253,7 @@ export const skillsData = [
       },
       {
         Name: "Kubernetes",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/labs/b/ba/Kubernetes-icon-color.svg",
+        imageUrl: KubernetesLogo,
         link: "https://kubernetes.io/",
         skillLevel: 3
         
