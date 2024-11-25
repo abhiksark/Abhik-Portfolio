@@ -3,95 +3,37 @@
 import Image from 'next/future/image'
 import { NextSeo } from 'next-seo';
 
-import { Card } from '@/components/Card'
-import { SimpleLayout, LearningResources, NewLayout, SimpleLayoutNew } from '@/components/SimpleLayout'
+import {  LearningResources, SimpleLayoutNew } from '@/components/SimpleLayout'
 
 import siteMeta, { learningResourcesdata, experiencesData, skillsData } from '@/data/siteMeta'
 // import { educationData } from '@/data/siteMeta'
 import portraitImage from 'public/fixed/images/abhik-resume.jpg'
-import udacityLogo from 'public/fixed/images/logos/udacity-logo.png'
-import iiscLogo from 'public/fixed/images/logos/iisc-logo.jpg'
-import StanfordLogo from 'public/fixed/images/logos/stanford-logo.png'
-import NITLogo from 'public/fixed/images/logos/nit-raipur-logo.png'
 
-function LinkedInIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" {...props}>
-      <path d="M18.335 18.339H15.67v-4.177c0-.996-.02-2.278-1.39-2.278-1.389 0-1.601 1.084-1.601 2.205v4.25h-2.666V9.75h2.56v1.17h.035c.358-.674 1.228-1.387 2.528-1.387 2.7 0 3.2 1.778 3.2 4.091v4.715zM7.003 8.575a1.546 1.546 0 01-1.548-1.549 1.548 1.548 0 111.547 1.549zm1.336 9.764H5.666V9.75H8.34v8.589zM19.67 3H4.329C3.593 3 3 3.58 3 4.297v15.406C3 20.42 3.594 21 4.328 21h15.338C20.4 21 21 20.42 21 19.703V4.297C21 3.58 20.4 3 19.666 3h.003z" />
-    </svg>
-  )
-}
-const educationData = [
-  {
-    id: 1,
-    title: 'Bachelor of Technology in Computer Science and Engineering',
-    institute: 'National Institute of Technology, Raipur',
-    period: '2014 - 2018',
-    imageUrl: NITLogo,
-    altText: 'NIT Raipur',
-    details: [
-      'Thesis: "Diabetic Retinopathy Detection using Deep Learning"',
-      "Pre-Thesis: Deposist Prediction using Machine Learning Models",
-      "Finalist in the Smart India Hackathon 2018",
-      "Winner of the NIT Raipur Model Making 2017",
+import LinkedInIcon from '@/components/icons/LinkedInIcon'
+import { educationData } from '@/data/resume';
 
-    ],
-  },
-
-  {
-    id: 1,
-    title: 'Data Analyst Nanodegree',
-    institute: 'Udacity',
-    period: '2018 - 2019',
-    imageUrl: udacityLogo, // Replace with the URL of your image
-    altText: 'Udacity',
-    details: [
-      'Completed the Data Analyst Nanodegree',
-      "Projects: Investigate a Dataset, Analyze A/B Test Results, Wrangle and Analyze Data, Communicate Data Findings",
-      "Skills: Python, Pandas, Numpy, Matplotlib, Seaborn, Jupyter Notebook",
-    ],
-  },
-  {
-    id: 2,
-    title: 'CS 224w: Machine Learning with Graphs',
-    institute: 'Stanford Center for Professional Development',
-    period: '2021',
-    imageUrl: StanfordLogo,
-    altText: 'Stanford University',
-    details: [
-      'Completed the course on Machine Learning with Graphs',
-      "Skills: Graph Neural Networks, Graph Convolutional Networks, GraphSAGE, Graph Attention Networks",
-    ],
-  },
-  {
-    id: 3,
-    title: 'Introduction to High-Performance Computing',
-    institute: 'CCE Indian Institute of Science, Bangalore',
-    period: 'Aug 2023 - Dec 2023',
-    imageUrl: iiscLogo,
-    altText: 'IISc Bangalore',
-    details: [
-      'Single Semester Course on High-Performance Computing',
-      "Skills: MPI, OpenMP, CUDA, Parallel Programming",
-
-    ],
-
-  }
-
-]
 const SkillProgress = ({ level }) => {
-  // Total number of levels (divs)
   const totalLevels = 5;
-  // Array to hold each level's status
-  const levels = Array.from({ length: totalLevels }, (_, index) => index < level ? 'dark:bg-gray-300 bg-gray-500' : 'dark:bg-gray-500 bg-gray-300');
+  const levels = Array.from({ length: totalLevels }, (_, index) => ({
+    filled: index < level,
+    isFirst: index === 0,
+    isLast: index === totalLevels - 1,
+  }));
 
   return (
-    <div className="flex gap-2">
-      {levels.map((color, index) => (
+    <div className="flex gap-1.5">
+      {levels.map(({ filled, isFirst, isLast }, index) => (
         <div
           key={index}
-          className={`${color} ${index === 0 ? 'first:rounded-l-sm' : ''} ${index === levels.length - 1 ? 'last:rounded-r-sm' : ''} first:rounded-r-none last:rounded-l-none h-2 w-4`}
-        ></div>
+          className={`
+            ${filled ? 'bg-teal-500 dark:bg-teal-400' : 'bg-zinc-200 dark:bg-zinc-700'}
+            ${isFirst ? 'rounded-l-full' : ''} 
+            ${isLast ? 'rounded-r-full' : ''} 
+            h-1.5 w-4
+            transition-all duration-300 ease-in-out
+            group-hover:h-2
+          `}
+        />
       ))}
     </div>
   );
@@ -102,30 +44,78 @@ function Skills({ skillsData }) {
     const hasValidImage = item.imageUrl && item.imageUrl !== 'incorrect_url';
 
     return (
-      <div key={item.Name} className="flex items-center mb-4 rounded-lg hover:bg-gray-50 transition-colors duration-150 ease-in-out">
-        {hasValidImage ? (
-          <Image
-            className="w-8 h-8 mr-4 object-contain" // Ensure images are not zoomed in
-            src={item.imageUrl}
-            alt={item.Name}
-            width={32}
-            height={32}
-            unoptimized
-          />
-        ) : (
-          <span className="mr-4 font-medium">{item.Name}</span> // Directly display the skill name if no image
-        )}
+      <div 
+        key={item.Name} 
+        className="group flex items-center mb-4 rounded-lg 
+          bg-white dark:bg-zinc-900
+          hover:bg-zinc-50 dark:hover:bg-zinc-800/50 
+          ring-1 ring-zinc-100 dark:ring-zinc-300/10
+          transition-all duration-150 ease-in-out
+          p-4 shadow-sm hover:shadow-md dark:shadow-zinc-800/5"
+      >
+        <div className="shrink-0 w-12 mr-4 flex items-center justify-center">
+          {hasValidImage ? (
+            <Image
+              className="w-8 h-8 object-contain 
+                transition-transform duration-150 ease-in-out
+                group-hover:scale-110"
+              src={item.imageUrl}
+              alt={item.Name}
+              width={32}
+              height={32}
+              unoptimized
+            />
+          ) : (
+            <div className="w-8 h-8 rounded-full bg-teal-500/10 dark:bg-teal-400/10 
+              flex items-center justify-center
+              transition-transform duration-150 ease-in-out
+              group-hover:scale-110">
+              <span className="text-sm font-semibold text-teal-600 dark:text-teal-400">
+                {item.Name.charAt(0).toUpperCase()}
+              </span>
+            </div>
+          )}
+        </div>
+
         <div className="flex-grow">
-          <a
-            href={item.link}
-            className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 hover:text-blue-600 transition-colors duration-150 ease-in-out"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {hasValidImage ? item.Name : ''}
-          </a>
+          <div className="flex items-center gap-2">
+            <span
+              className="text-lg font-semibold 
+                text-zinc-800 dark:text-zinc-100 
+                transition-colors duration-150 ease-in-out
+                group-hover:text-teal-500 dark:group-hover:text-teal-400"
+            >
+              {item.Name}
+            </span>
+            {item.link && (
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="opacity-0 group-hover:opacity-100 
+                  transition-opacity duration-150 ease-in-out"
+              >
+                <svg
+                  className="w-4 h-4 text-zinc-400 hover:text-teal-500 
+                    dark:text-zinc-500 dark:hover:text-teal-400"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            )}
+          </div>
+          
           {item.skillLevel && (
-            <div className="mt-2">
+            <div className="mt-2 transition-opacity duration-150 
+              opacity-80 group-hover:opacity-100">
               <SkillProgress level={item.skillLevel} />
             </div>
           )}
@@ -135,13 +125,16 @@ function Skills({ skillsData }) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {skillsData.map((category) => (
-        <section key={category.name}>
-          <h3 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-4">
+        <section key={category.name} className="rounded-2xl 
+          bg-zinc-50 dark:bg-zinc-800/50 
+          p-6 ring-1 ring-zinc-100 dark:ring-zinc-300/10">
+          <h3 className="text-2xl font-bold tracking-tight 
+            text-zinc-800 dark:text-zinc-100 mb-6">
             {category.name}
           </h3>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {category.items.map(renderSkillItem)}
           </div>
         </section>
