@@ -3,7 +3,6 @@ import logoCas from 'public/fixed/images/logos/cas.svg'
 import logoDeloitte from 'public/fixed/images/logos/deloitte.svg'
 import logoQuantiphi from 'public/fixed/images/logos/quantiphi.jpeg'
 
-import logoGolang from 'public/fixed/images/logos/icons8-golang.svg'
 import KubernetesLogo from 'public/fixed/images/logos/kubernetes.svg'
 import ElasticLogo from 'public/fixed/images/logos/elasticsearch.png'
 import KafkaLogo from 'public/fixed/images/logos/kafka.svg'
@@ -19,6 +18,15 @@ import iiscLogo from 'public/fixed/images/logos/iisc-logo.jpg'
 import StanfordLogo from 'public/fixed/images/logos/stanford-logo.png'
 import NITLogo from 'public/fixed/images/logos/nit-raipur-logo.png'
 import QdrantLogo from 'public/fixed/images/logos/qdrant.jpeg'
+import ClickHouseLogo from 'public/fixed/images/logos/clickhouse.svg'
+
+import karpathyimage from 'public/fixed/images/people/akarpathy.jpg'
+import ghotzimage from 'public/fixed/images/people/ghotz.jpg'
+import ngimage from 'public/fixed/images/people/ayang.avif'
+import rmartinimage from 'public/fixed/images/people/rmartin.webp'
+import arpitimage from 'public/fixed/images/people/arpit.jpg'
+import adamimage from 'public/fixed/images/people/adam.webp'
+
 
 function LinkedInIcon(props) {
   return (
@@ -83,32 +91,32 @@ export const learningResourcesdata = [
       {
         name: "George Hotz",
         link: "https://geohot.com/",
-        imageUrl: "https://pbs.twimg.com/profile_images/772342671721455616/FE79-7Ev_400x400.jpg"
+        imageUrl: ghotzimage
       },
       {
         name: "Andrew Ng",
         link: "https://www.andrewng.org/",
-        imageUrl: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/2a/6192a04f1311e7ba12057425631cbc/AndrewNg-Headshot.jpg?auto=format%2Ccompress&dpr=2&w=200&h=200"
+        imageUrl: ngimage
       },
       {
         name: "Andrej Karpathy",
         link: "https://karpathy.ai/",
-        imageUrl: "https://yt3.googleusercontent.com/ytc/AIf8zZQiL93FUj3x_4AZoTCr_XT6GQZ7N0UJjIpBVgeAH70=s176-c-k-c0x00ffffff-no-rj"
+        imageUrl: karpathyimage
       },
       {
         name: "Robert C. Martin",
         link: "http://cleancoder.com/",
-        imageUrl: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/d9950327-baed-4c42-9659-255e1d7970bb.webp"
+        imageUrl: rmartinimage
       },
       {
         name: "Arpit Bhayani",
         link: "https://arpitbhayani.me/",
-        imageUrl: "https://yt3.googleusercontent.com/q4pQdGZdT9Suk5Yu7cm0KI9pLMSaFhEeKQtyZCYjFeJRcbODjS4V5J9AQhN96TYOHXI-rgZ5TA=s176-c-k-c0x00ffffff-no-rj"
+        imageUrl: arpitimage
       },
       {
         name: "Adam Dymitruk",
         link: "https://eventmodeling.org/",
-        imageUrl: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/eac29aec-8668-4278-ab7a-b38c9c66acec.webp"
+        imageUrl: adamimage
       }
     ]
   },
@@ -146,7 +154,6 @@ export const learningResourcesdata = [
         imageUrl: "https://yt3.googleusercontent.com/efrVnDJbJOQ5XcXrrFhA9V2wTXh6gP_i0KycoYjqhN3nEh6VbCgqMQakAcFqEsguw7wxhHEjnA=s176-c-k-c0x00ffffff-no-rj"
       }
     ]
-
   },
   {
     name: 'Podcasts',
@@ -173,7 +180,6 @@ export const learningResourcesdata = [
       }
     ]      
   }
-
 ]
     
       
@@ -296,7 +302,7 @@ export const skillsData = [
       },
       {
         Name: "ClickHouse",
-        // imageUrl: ClickHouseLogo,
+        imageUrl: ClickHouseLogo,
         link: "https://clickhouse.com/",
         skillLevel: 3
       },
