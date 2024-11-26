@@ -187,21 +187,29 @@ export default function Home({ articles }) {
   return (
     <>
     <NextSeo
-      title="Abhik Sarkar"
+      title="Abhik Sarkar - Machine Learning & Computer Vision Expert"
       description={siteMeta.description}
       canonical="https://abhik.xyz/"
       openGraph={{
         url: 'https://abhik.xyz',
+        title: 'Abhik Sarkar - Machine Learning & Computer Vision Expert',
+        description: siteMeta.description,
+        type: 'website',
         images: [
           {
             url: `https://og.abhik.xyz/api/og?title=${siteMeta.title}&desc=${siteMeta.description}`,
             width: 1200,
             height: 600,
-            alt: 'Og Image Alt',
+            alt: 'Abhik Sarkar - ML Expert',
             type: 'image/jpeg',
           }
         ],
         siteName: 'abhik.xyz',
+      }}
+      twitter={{
+        handle: '@yourtwitterhandle',
+        site: '@yourtwitterhandle',
+        cardType: 'summary_large_image',
       }}
     />
       <Container className="mt-9">

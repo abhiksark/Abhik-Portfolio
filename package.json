@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cz": "git cz"
+    "cz": "git cz",
+    "postbuild": "next-sitemap"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
@@ -35,7 +36,8 @@
     "sharp": "^0.31.1",
     "tailwindcss": "^3.1.4",
     "unist-util-visit": "^4.1.1",
-    "vite": "^4.5.2"
+    "vite": "^4.5.2",
+    "next-sitemap": "^3.1.32"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
