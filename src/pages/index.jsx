@@ -1,3 +1,4 @@
+import * as React from 'react'
 import Image from 'next/future/image'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -20,7 +21,6 @@ import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
 import  siteMeta, {resume} from '@/data/siteMeta'
 import { NextSeo } from 'next-seo';
-
 
 function MailIcon(props) {
   return (
@@ -183,50 +183,121 @@ function Resume() {
   )
 }
 
+function CalendarIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path
+        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
+        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+      />
+    </svg>
+  )
+}
+
+function TopmateMeeting() {
+  return (
+    <Link
+      href="https://topmate.io/abhiksark"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group fixed z-50 bottom-4 right-4 sm:bottom-8 sm:right-8 flex items-center rounded-full bg-zinc-200 px-3 py-3 hover:px-4 text-zinc-800 shadow-lg transition-all duration-300 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-600 border border-zinc-300/50 dark:border-zinc-500/50 hover:shadow-xl"
+      aria-label="Schedule Meeting"
+    >
+      <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
+        <CalendarIcon className="w-full h-full" />
+      </div>
+      <span className="text-sm sm:text-base font-medium whitespace-nowrap overflow-hidden w-0 group-hover:w-auto group-hover:ml-2 transition-all duration-300">
+        Schedule Meeting
+      </span>
+    </Link>
+  );
+}
+
 export default function Home({ articles }) {
   return (
     <>
-    <NextSeo
-      title="Abhik Sarkar - Machine Learning & Computer Vision Expert"
-      description={siteMeta.description}
-      canonical="https://abhik.xyz/"
-      openGraph={{
-        url: 'https://abhik.xyz',
-        title: 'Abhik Sarkar - Machine Learning & Computer Vision Expert',
-        description: siteMeta.description,
-        type: 'website',
-        images: [
-          {
-            url: `https://og.abhik.xyz/api/og?title=${siteMeta.title}&desc=${siteMeta.description}`,
-            width: 1200,
-            height: 600,
-            alt: 'Abhik Sarkar - ML Expert',
-            type: 'image/jpeg',
+      <NextSeo
+        title="Abhik Sarkar - Machine Learning & Computer Vision Expert"
+        description={siteMeta.description}
+        canonical="https://abhik.xyz/"
+        openGraph={{
+          url: 'https://abhik.xyz',
+          title: 'Abhik Sarkar - Machine Learning & Computer Vision Expert',
+          description: siteMeta.description,
+          type: 'website',
+          images: [
+            {
+              url: `https://og.abhik.xyz/api/og?title=${siteMeta.title}&desc=${siteMeta.description}`,
+              width: 1200,
+              height: 600,
+              alt: 'Abhik Sarkar - Machine Learning Expert',
+              type: 'image/jpeg',
+            }
+          ],
+          siteName: 'abhik.xyz',
+          profile: {
+            firstName: 'Abhik',
+            lastName: 'Sarkar',
+            username: 'abhiksark',
+            gender: 'male'
           }
-        ],
-        siteName: 'abhik.xyz',
-      }}
-      twitter={{
-        handle: '@yourtwitterhandle',
-        site: '@yourtwitterhandle',
-        cardType: 'summary_large_image',
-      }}
-    />
+        }}
+        twitter={{
+          handle: '@abhiksark',
+          site: '@abhiksark',
+          cardType: 'summary_large_image'
+        }}
+        additionalMetaTags={[
+          {
+            name: 'keywords',
+            content: 'Machine Learning, Computer Vision, Deep Learning, AI, Artificial Intelligence, ML Engineer, Tech Lead'
+          },
+          {
+            name: 'author',
+            content: 'Abhik Sarkar'
+          }
+        ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Abhik Sarkar',
+            jobTitle: 'Machine Learning Engineer',
+            url: 'https://abhik.xyz',
+            sameAs: [
+              siteMeta.author.twitter,
+              siteMeta.author.linkedin,
+              siteMeta.author.github,
+              siteMeta.author.stackoverflow
+            ],
+            description: siteMeta.description
+          })
+        }}
+      />
       <Container className="mt-9">
         <div className="max-w-2xl text-lg">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Teaching Machine to be Smart
           </h1>
           <div className="mt-6 prose dark:prose-invert">
-          <p className="mb-4">
-    I&apos;m Abhik, and I lead the Machine Learning department at a high growth startup focused on computer vision.
-          </p>
-          <p className="mb-4">
-          I blend deep learning and computer vision to craft innovative solutions for safety and security. My role involves team leadership, strategic hiring, and remote collaboration across 11 countries. I&apos;m driven by a passion for innovation and making a meaningful impact through technology.
-    </p>
-</div>
-
-          
+            <p className="mb-4">
+              I&apos;m Abhik, and I lead the Machine Learning department at a high growth startup focused on computer vision.
+            </p>
+            <p className="mb-4">
+              I blend deep learning and computer vision to craft innovative solutions for safety and security. My role involves team leadership, strategic hiring, and remote collaboration across 11 countries. I&apos;m driven by a passion for innovation and making a meaningful impact through technology.
+            </p>
+          </div>
           <div className="mt-6 flex gap-6">
             <SocialLink
               href={siteMeta.author.twitter}
@@ -239,7 +310,6 @@ export default function Home({ articles }) {
               icon={StackOverflowIcon}
               rel="me"
             />
-
             <SocialLink
               href={siteMeta.author.instagram}
               aria-label="Follow on Instagram"
@@ -271,6 +341,7 @@ export default function Home({ articles }) {
           </div>
         </div>
       </Container>
+      <TopmateMeeting />
     </>
   )
 }

@@ -1,4 +1,3 @@
-
 import logoCas from 'public/fixed/images/logos/cas.svg'
 import logoDeloitte from 'public/fixed/images/logos/deloitte.svg'
 import logoQuantiphi from 'public/fixed/images/logos/quantiphi.jpeg'
@@ -37,8 +36,8 @@ function LinkedInIcon(props) {
 }
 
 const siteMeta = {
-    title: "Abhik Sarkar - MLE",
-    description: "Abhik Sarkar is a Machine Learning Engineer.",
+    title: "Abhik Sarkar - Machine Learning Engineer",
+    description: "Abhik Sarkar is a Machine Learning Engineer specializing in Computer Vision and Deep Learning. Leading ML teams and building innovative solutions for safety and security.",
     copyright: "Abhik Sarkar",
     author: {
         name: "Abhik Sarkar",
