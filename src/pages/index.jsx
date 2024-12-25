@@ -1,3 +1,4 @@
+import * as React from 'react'
 import Image from 'next/future/image'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -20,7 +21,6 @@ import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
 import  siteMeta, {resume} from '@/data/siteMeta'
 import { NextSeo } from 'next-seo';
-
 
 function MailIcon(props) {
   return (
@@ -183,6 +183,50 @@ function Resume() {
   )
 }
 
+function CalendarIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path
+        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
+        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+      />
+    </svg>
+  )
+}
+
+function TopmateMeeting() {
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  return (
+    <Link
+      href="https://topmate.io/abhiksark"
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`fixed bottom-8 right-8 flex items-center gap-2 rounded-full bg-zinc-900 p-4 text-white shadow-lg transition-all duration-300 hover:bg-zinc-800 dark:bg-zinc-700 dark:hover:bg-zinc-600 ${
+        isHovered ? 'pl-6 pr-8' : ''
+      }`}
+      aria-label="Schedule a meeting"
+    >
+      <CalendarIcon className="h-6 w-6" />
+      {isHovered && (
+        <span className="text-sm font-medium whitespace-nowrap">
+          Schedule Meeting
+        </span>
+      )}
+    </Link>
+  );
+}
+
 export default function Home({ articles }) {
   return (
     <>
@@ -271,6 +315,7 @@ export default function Home({ articles }) {
           </div>
         </div>
       </Container>
+      <TopmateMeeting />
     </>
   )
 }
