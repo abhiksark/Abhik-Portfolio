@@ -53,15 +53,21 @@ export default function Speaking() {
         <div className="space-y-20">
           <SpeakingSection title="Conferences">
           <Appearance
+              title="Rolling with Python: Intro to Python Wheels"
+              description="Introduction to Python Wheels, why it is important, how it helps in packaging and distributing Python libraries. How C/C++ libraries can be included in Python Wheels."
+              event="BangPypers Meetup 2024, Bangalore"
+            />
+          <Appearance
+              title="Speeding up Python with Cython"
+              description="Under Core Python: Basic of PVM, Cython, how to speed up Python code, how it helps in Preprocessing and Postprocessing of data with Object Detection."
+              event="Pycon India 2024, Bangalore / Pycon Japan 2024, Tokyo"
+            />
+          <Appearance
               title="The Age of Digital Da Vinci: All About Image Generation"
               description="Under Machine Learning and Data Science Track: Evolution of Image Generation Encoder Decoder, VAEs, GANs, and Stable Diffusion."
               event="Devfest 2023"
             />
-            <Appearance
-              title="Speeding up Python with Cython"
-              description="Under Machine Learning and Data Science Track: Basics of Cython, how to speed up Python codr, how it helps in Preprocessing and Postprocessing of data with Object Detection."
-              event="Devfest 2022"
-            />
+            
             <Appearance
               title="Introduction to Machine Learning"
               description="As a guest speaker, I gave a talk on Introduction to Machine Learning and how it is used in the real world."

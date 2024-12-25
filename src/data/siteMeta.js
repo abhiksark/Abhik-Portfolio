@@ -1,22 +1,32 @@
 
-import logoCas from '@/images/logos/cas.svg'
-import logoDeloitte from '@/images/logos/deloitte.webp'
-import logoQuantiphi from '@/images/logos/quantiphi.jpeg'
-import logoXOR from '@/images/logos/xor.jpg'
-import logoVanilla from '@/images/logos/vanilla.svg'
-import logoFleek from '@/images/logos/fleeksvg.svg'
-import logoUblue from '@/images/logos/ublue.png'
+import logoCas from 'public/fixed/images/logos/cas.svg'
+import logoDeloitte from 'public/fixed/images/logos/deloitte.svg'
+import logoQuantiphi from 'public/fixed/images/logos/quantiphi.jpeg'
 
-import logoGolang from '@/images/logos/icons8-golang.svg'
-import logoKubernetes from '@/images/logos/kubernetes.svg'
-import logoCaptainhook from '@/images/logos/captainhook.svg'  
-import ElasticLogo from '@/images/elasticsearch.png'
+import KubernetesLogo from 'public/fixed/images/logos/kubernetes.svg'
+import ElasticLogo from 'public/fixed/images/logos/elasticsearch.png'
+import KafkaLogo from 'public/fixed/images/logos/kafka.svg'
+import RedisLogo from 'public/fixed/images/logos/redis.jpg'
+import TailWindLogo from 'public/fixed/images/logos/Tailwind_CSS_Logo.svg'
+import FastAPILogo from 'public/fixed/images/logos/fastapi.png'
 
-import RedisLogo from '@/images/redis.jpg'
-import TailWindLogo from '@/images/Tailwind_CSS_Logo.svg'
-import FastAPILogo from '@/images/fastapi.png'
+import ShellLogo from 'public/fixed/images/logos/shell.png'
 
-import ShellLogo from '@/images/shell.png'
+import portraitImage from 'public/fixed/images/abhik-resume.jpg'
+import udacityLogo from 'public/fixed/images/logos/udacity-logo.png'
+import iiscLogo from 'public/fixed/images/logos/iisc-logo.jpg'
+import StanfordLogo from 'public/fixed/images/logos/stanford-logo.png'
+import NITLogo from 'public/fixed/images/logos/nit-raipur-logo.png'
+import QdrantLogo from 'public/fixed/images/logos/qdrant.jpeg'
+import ClickHouseLogo from 'public/fixed/images/logos/clickhouse.svg'
+
+import karpathyimage from 'public/fixed/images/people/akarpathy.jpg'
+import ghotzimage from 'public/fixed/images/people/ghotz.jpg'
+import ngimage from 'public/fixed/images/people/ayang.avif'
+import rmartinimage from 'public/fixed/images/people/rmartin.webp'
+import arpitimage from 'public/fixed/images/people/arpit.jpg'
+import adamimage from 'public/fixed/images/people/adam.webp'
+
 
 function LinkedInIcon(props) {
   return (
@@ -71,57 +81,7 @@ const siteMeta = {
     }
   ]
 export const projects = [
-  {
-    name: 'Fleek',
-    description:
-      'Install and manage all the tools you need to be productive.',
-    link: { href: 'https://getfleek.dev', label: 'getfleek.dev' },
-    logo: logoFleek,
-  },
-  {
-    name: 'Universal Blue',
-    description:
-      'Custom Operating System images based on Fedora.',
-    link: { href: 'https://ublue.it', label: 'Universal Blue' },
-    logo: logoUblue,
-  },
-  {
-    name: 'Bluefin',
-    description:
-      'The next generation Linux workstation. Built for cloud-native, using cloud-native.',
-    link: { href: 'https://projectbluefin.io', label: 'Bluefin' },
-    logo: logoUblue,
-  },
-  {
-    name: 'Vanilla OS',
-    description:
-      'Vanilla OS is an immutable and atomic Ubuntu Linux-based Point Release distribution, that receives updates at the right time, neither before nor after, without sacrificing security and functionality.',
-    link: { href: 'https://vanillaos.org', label: 'vanillaos.org' },
-    logo: logoVanilla,
-  },
-  {
-    name: 'Captain Hook',
-    description:
-      'Custom commands as webhooks.',
-    link: { href: 'https://github.com/bketelsen/captainhook', label: 'github.com' },
-    logo: logoCaptainhook,
-  },
-  {
-    name: 'Kubernetes',
-    description:
-      'Production-Grade Container Scheduling and Management',
-    link: { href: 'https://github.com/kubernetes/kubernetes', label: 'github.com' },
-    logo: logoKubernetes,
-  },
-  {
-    name: 'Go',
-    description:
-      'Build fast, reliable, and efficient software at scale',
-    link: { href: 'https://go.dev', label: 'go.dev' },
-    logo: logoGolang,
-  },
-
-
+  
 ]
 
 export const learningResourcesdata = [
@@ -131,32 +91,32 @@ export const learningResourcesdata = [
       {
         name: "George Hotz",
         link: "https://geohot.com/",
-        imageUrl: "https://pbs.twimg.com/profile_images/772342671721455616/FE79-7Ev_400x400.jpg"
+        imageUrl: ghotzimage
       },
       {
         name: "Andrew Ng",
         link: "https://www.andrewng.org/",
-        imageUrl: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/2a/6192a04f1311e7ba12057425631cbc/AndrewNg-Headshot.jpg?auto=format%2Ccompress&dpr=2&w=200&h=200"
+        imageUrl: ngimage
       },
       {
         name: "Andrej Karpathy",
         link: "https://karpathy.ai/",
-        imageUrl: "https://yt3.googleusercontent.com/ytc/AIf8zZQiL93FUj3x_4AZoTCr_XT6GQZ7N0UJjIpBVgeAH70=s176-c-k-c0x00ffffff-no-rj"
+        imageUrl: karpathyimage
       },
       {
         name: "Robert C. Martin",
         link: "http://cleancoder.com/",
-        imageUrl: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/d9950327-baed-4c42-9659-255e1d7970bb.webp"
+        imageUrl: rmartinimage
       },
       {
         name: "Arpit Bhayani",
         link: "https://arpitbhayani.me/",
-        imageUrl: "https://yt3.googleusercontent.com/q4pQdGZdT9Suk5Yu7cm0KI9pLMSaFhEeKQtyZCYjFeJRcbODjS4V5J9AQhN96TYOHXI-rgZ5TA=s176-c-k-c0x00ffffff-no-rj"
+        imageUrl: arpitimage
       },
       {
         name: "Adam Dymitruk",
         link: "https://eventmodeling.org/",
-        imageUrl: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/eac29aec-8668-4278-ab7a-b38c9c66acec.webp"
+        imageUrl: adamimage
       }
     ]
   },
@@ -194,7 +154,6 @@ export const learningResourcesdata = [
         imageUrl: "https://yt3.googleusercontent.com/efrVnDJbJOQ5XcXrrFhA9V2wTXh6gP_i0KycoYjqhN3nEh6VbCgqMQakAcFqEsguw7wxhHEjnA=s176-c-k-c0x00ffffff-no-rj"
       }
     ]
-
   },
   {
     name: 'Podcasts',
@@ -221,7 +180,6 @@ export const learningResourcesdata = [
       }
     ]      
   }
-
 ]
     
       
@@ -301,7 +259,7 @@ export const skillsData = [
       },
       {
         Name: "Kubernetes",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/labs/b/ba/Kubernetes-icon-color.svg",
+        imageUrl: KubernetesLogo,
         link: "https://kubernetes.io/",
         skillLevel: 3
         
@@ -341,7 +299,23 @@ export const skillsData = [
         imageUrl: ElasticLogo,
         link: "https://www.elastic.co/",
         skillLevel: 3
-      }
+      },
+      {
+        Name: "ClickHouse",
+        imageUrl: ClickHouseLogo,
+        link: "https://clickhouse.com/",
+        skillLevel: 3
+      },
+      {
+        Name: "Kafka",
+        imageUrl: KafkaLogo,
+        link: "https://kafka.apache.org/",
+        skillLevel: 3
+      },
+      {Name:"Qdrant",
+      imageUrl: QdrantLogo,
+      link: "https://qdrant.tech/",
+      skillLevel: 3}
     ]
   },
   {
@@ -349,26 +323,27 @@ export const skillsData = [
     items: [
       {
         Name: "Machine Learning",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg",
-        link: "https://scikit-learn.org/",
+        // imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg",
+        // link: "https://scikit-learn.org/",
         skillLevel: 4
       },
       {
         Name: "Deep Learning",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/11/TensorFlowLogo.svg",
-        link: "https://www.tensorflow.org/",
+        // imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/11/TensorFlowLogo.svg",
+        // link: "https://www.tensorflow.org/",
+        skillLevel: 4
+      },
+      
+      {
+        Name: "Computer Vision",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg",
+        link: "https://opencv.org/",
         skillLevel: 4
       },
       {
         Name: "Natural Language Processing",
         // imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Python3-powered_hello-world.svg",
-        link: "https://www.nltk.org/",
-        skillLevel: 3
-      },
-      {
-        Name: "Computer Vision",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg",
-        link: "https://opencv.org/",
+        // link: "https://www.nltk.org/",
         skillLevel: 3
       },
       // {
@@ -404,11 +379,11 @@ export const skillsData = [
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg",
         link: "https://www.rust-lang.org/",
       },
-      // {
-      //   Name: "Distributed Systems",
-      //   imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Consul_Logo.svg",
-      //   link: "https://www.consul.io/",
-      // },
+      {
+        Name: "Distributed Systems",
+        // imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Consul_Logo.svg",
+        // link: "https://www.consul.io/",
+      },
       // {
       //   Name: "Microservices",
       //   imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Consul_Logo.svg",
@@ -430,7 +405,7 @@ export const experiencesData = [
     id: 1,
     title: "Director, Machine Learning",
     company: "Cloudastucture Inc",
-    period: "Aug 2022 - now",
+    period: "Dec 2020 - now",
     imageUrl: logoCas, // Replace with actual image URL
     socialLinks: [
       {
@@ -441,41 +416,44 @@ export const experiencesData = [
       // Add more social links as needed
     ],
     details: [
-      "In tristique vulputate augue vel egestas.",
-      "Quisque ac imperdiet tortor, at lacinia ex.",
-      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      "Successfully set up and led a team, fostering collaboration and expertise in machine learning and deep learning technologies.",
+      "Led the design and construction of an end-to-end platform for scalable deep learning model deployment, leveraging Kubernetes (K8s) for efficiency.",
+      "Implemented a robust model version control pipeline to ensure accurate tracking of model changes and reproducibility.",
+      "Achieved a highly performant pipeline, scaling up from processing 100k videos to 2 million per day.",
+      "Led migration project from cloud to colocation servers, reducing costs by 75%.",
+      "Effectively managed and negotiated with external stakeholders in my geography to offset company costs, resulting in significant cost savings"
       // Add more details as needed
     ]
   },
-  {
-    id: 2,
-    title: "Founding Machine Learning Engineer",
-    company: "Cloudastucture Inc",
-    period: "Dec 2020 - Aug 2022",
-    imageUrl: logoCas, // Replace with actual image URL
-    socialLinks: [
-      {
-        platform: "",
-        url: "https://www.linkedin.com/company/cloudastructure/",
-        iconUrl: LinkedInIcon, // Local or external link to the icon image
-      }
-    ],
-    Technologies: [
-      {
-        name : "Python",
-        logo : "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9961f604-43bf-4f21-8bf2-15a9926bfedd.svg",
-      },
-      { name : "PyTorch",
-        logo: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9961f604-43bf-4f21-8bf2-15a9926bfedd.svg",
-    }
-    ],
-    details: [
-      "In tristique vulputate augue vel egestas.",
-      "Quisque ac imperdiet tortor, at lacinia ex.",
-      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
-      // Add more details as needed
-    ]
-  },
+  // {
+  //   id: 2,
+  //   title: "Founding Machine Learning Engineer",
+  //   company: "Cloudastucture Inc",
+  //   period: "Dec 2020 - Aug 2022",
+  //   imageUrl: logoCas, // Replace with actual image URL
+  //   socialLinks: [
+  //     {
+  //       platform: "",
+  //       url: "https://www.linkedin.com/company/cloudastructure/",
+  //       iconUrl: LinkedInIcon, // Local or external link to the icon image
+  //     }
+  //   ],
+  //   Technologies: [
+  //     {
+  //       name : "Python",
+  //       logo : "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9961f604-43bf-4f21-8bf2-15a9926bfedd.svg",
+  //     },
+  //     { name : "PyTorch",
+  //       logo: "https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9961f604-43bf-4f21-8bf2-15a9926bfedd.svg",
+  //   }
+  //   ],
+  //   details: [
+  //     "In tristique vulputate augue vel egestas.",
+  //     "Quisque ac imperdiet tortor, at lacinia ex.",
+  //     "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+  //     // Add more details as needed
+  //   ]
+  // },
   {
     id: 3,
     title: "Machine Learning Engineer",
@@ -491,9 +469,10 @@ export const experiencesData = [
       // Add more social links as needed
     ],
     details: [
-      "In tristique vulputate augue vel egestas.",
-      "Quisque ac imperdiet tortor, at lacinia ex.",
-      "Duis vel ex hendrerit, commodo odio sed, aliquam enim.",
+      "Worked as part of the Video Intelligence Team at Athenas Owl, a Media-Based AI Product company.",
+      "Contributed to the development of a cutting-edge product aimed at assisting marketers in cataloging sports moments from vast video content libraries, spanning thousands of hours. Utilized a complex pipeline for different types of classification, object detection, and Siamese Network.",
+      "Responsible for generating new AI features in the product.",
+      "Contributed as an Engineer to a cutting-edge project aimed at developing a comprehensive athlete tracking solution across different sporting categories for amajor global sporting event. Focused heavily on OCR and Tracking. Ensured strict adherence to GDPR (General Data Protection Regulation) guidelines throughout the development process, prioritizing the protection of athletes' privacy and data rights."
       // Add more details as needed
     ]
   },
@@ -523,3 +502,64 @@ export const experiencesData = [
 
 
 export default siteMeta;
+
+export const educationData = [
+  {
+    id: 1,
+    title: 'Bachelor of Technology in Computer Science and Engineering',
+    institute: 'National Institute of Technology, Raipur',
+    period: '2014 - 2018',
+    imageUrl: NITLogo,
+    altText: 'NIT Raipur',
+    details: [
+      'Thesis: "Diabetic Retinopathy Detection using Deep Learning"',
+      "Pre-Thesis: Deposist Prediction using Machine Learning Models",
+      "Finalist in the Smart India Hackathon 2018",
+      "Winner of the NIT Raipur Model Making 2017",
+
+    ],
+
+
+  },
+
+  {
+    id: 1,
+    title: 'Data Analyst Nanodegree',
+    institute: 'Udacity',
+    period: '2018 - 2019',
+    imageUrl: udacityLogo, // Replace with the URL of your image
+    altText: 'Udacity',
+    details: [
+      'Completed the Data Analyst Nanodegree',
+      "Projects: Investigate a Dataset, Analyze A/B Test Results, Wrangle and Analyze Data, Communicate Data Findings",
+      "Skills: Python, Pandas, Numpy, Matplotlib, Seaborn, Jupyter Notebook",
+    ],
+  },
+  {
+    id: 2,
+    title: 'CS 224w: Machine Learning with Graphs',
+    institute: 'Stanford Center for Professional Development',
+    period: '2021',
+    imageUrl: StanfordLogo,
+    altText: 'Stanford University',
+    details: [
+      'Completed the course on Machine Learning with Graphs',
+      "Skills: Graph Neural Networks, Graph Convolutional Networks, GraphSAGE, Graph Attention Networks",
+    ],
+  },
+  {
+    id: 3,
+    title: 'Introduction to High-Performance Computing',
+    institute: 'CCE Indian Institute of Science, Bangalore',
+    period: 'Aug 2023 - Dec 2023',
+    imageUrl: iiscLogo,
+    altText: 'IISc Bangalore',
+    details: [
+      'Single Semester Course on High-Performance Computing',
+      "Skills: MPI, OpenMP, CUDA, Parallel Programming",
+
+    ],
+
+  }
+
+]
