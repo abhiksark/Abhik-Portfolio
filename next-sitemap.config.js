@@ -1,5 +1,6 @@
 module.exports = {
-  siteUrl: 'https://abhik.xyz',
+  siteUrl: 'https://www.abhik.xyz',
   generateRobotsTxt: true,
   exclude: ['/thank-you'],
 }
+
