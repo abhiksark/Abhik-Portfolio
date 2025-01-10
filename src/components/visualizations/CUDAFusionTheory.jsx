@@ -23,32 +23,32 @@ const CUDAFusionTheory = () => {
 
   const ThreadBlock = ({ data, operations, isLast }) => (
     <div className="flex flex-col items-center space-y-2">
-      <div className="grid grid-cols-2 gap-1 bg-gray-100 p-2 rounded">
+      <div className="grid grid-cols-2 gap-1 bg-gray-100 dark:bg-gray-800 p-2 rounded">
         {data.map((value, idx) => (
-          <div key={idx} className="text-xs bg-white p-1 rounded shadow-sm">
+          <div key={idx} className="text-xs bg-white dark:bg-gray-700 p-1 rounded shadow-sm dark:text-gray-200">
             {value}
           </div>
         ))}
       </div>
-      {!isLast && <ArrowRight className="text-gray-400" size={16} />}
+      {!isLast && <ArrowRight className="text-gray-400 dark:text-gray-500" size={16} />}
     </div>
   );
 
   const MemoryAccessPattern = ({ showCoalesced }) => (
-    <div className="bg-gray-50 p-3 md:p-4 rounded-lg">
-      <h3 className="text-sm font-semibold mb-2">Memory Access Pattern</h3>
+    <div className="bg-gray-50 dark:bg-gray-800 p-3 md:p-4 rounded-lg">
+      <h3 className="text-sm font-semibold mb-2 dark:text-gray-200">Memory Access Pattern</h3>
       {showCoalesced ? (
         <div className="space-y-3 md:space-y-4">
           <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2">
-            <div className="w-full md:w-2/5 min-h-[32px] bg-blue-100 border border-blue-300 rounded flex items-center justify-center text-xs p-1 text-center break-words">
+            <div className="w-full md:w-2/5 min-h-[32px] bg-blue-100 dark:bg-blue-900/50 border border-blue-300 dark:border-blue-700 rounded flex items-center justify-center text-xs p-1 text-center break-words dark:text-blue-100">
               <span className="inline-block">Thread Block (32 threads)</span>
             </div>
-            <ArrowRight className="text-blue-500 rotate-90 md:rotate-0 shrink-0" size={20} />
-            <div className="w-full md:w-3/5 min-h-[32px] bg-green-100 border border-green-300 rounded flex items-center justify-center text-xs p-1 text-center break-words">
+            <ArrowRight className="text-blue-500 dark:text-blue-400 rotate-90 md:rotate-0 shrink-0" size={20} />
+            <div className="w-full md:w-3/5 min-h-[32px] bg-green-100 dark:bg-green-900/50 border border-green-300 dark:border-green-700 rounded flex items-center justify-center text-xs p-1 text-center break-words dark:text-green-100">
               <span className="inline-block">128-byte Memory Transaction</span>
             </div>
           </div>
-          <div className="text-xs text-green-600 font-medium">
+          <div className="text-xs text-green-600 dark:text-green-400 font-medium">
             <div className="space-y-1">
               <p>✓ Single memory transaction for 32 consecutive elements</p>
               <p>✓ Maximum memory bandwidth utilization</p>
@@ -61,17 +61,17 @@ const CUDAFusionTheory = () => {
           <div className="grid grid-cols-1 gap-2">
             {Array(4).fill(0).map((_, i) => (
               <div key={i} className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2">
-                <div className="w-full md:w-24 h-6 bg-blue-100 border border-blue-300 rounded flex items-center justify-center text-xs shrink-0">
+                <div className="w-full md:w-24 h-6 bg-blue-100 dark:bg-blue-900/50 border border-blue-300 dark:border-blue-700 rounded flex items-center justify-center text-xs shrink-0 dark:text-blue-100">
                   8 Threads
                 </div>
-                <ArrowRight className="text-red-500 rotate-90 md:rotate-0 shrink-0" size={16} />
-                <div className="w-full md:flex-1 min-h-[24px] bg-red-100 border border-red-300 rounded flex items-center justify-center text-xs px-1 text-center break-words">
+                <ArrowRight className="text-red-500 dark:text-red-400 rotate-90 md:rotate-0 shrink-0" size={16} />
+                <div className="w-full md:flex-1 min-h-[24px] bg-red-100 dark:bg-red-900/50 border border-red-300 dark:border-red-700 rounded flex items-center justify-center text-xs px-1 text-center break-words dark:text-red-100">
                   <span className="inline-block">32-byte Scattered Memory Access</span>
                 </div>
               </div>
             ))}
           </div>
-          <div className="text-xs text-red-600 font-medium">
+          <div className="text-xs text-red-600 dark:text-red-400 font-medium">
             <div className="space-y-1">
               <p>✗ Multiple smaller memory transactions</p>
               <p>✗ Poor memory bandwidth utilization</p>
@@ -85,27 +85,27 @@ const CUDAFusionTheory = () => {
 
   const FusionExample = () => {
     const OperationBox = ({ title, value, color, isMemoryOp }) => (
-      <div className={`p-2 rounded ${color} ${isMemoryOp ? 'border-2 border-dashed border-gray-400' : ''}`}>
-        <div className="text-xs font-medium mb-1">{title}</div>
-        <div className="text-sm font-bold">{value}</div>
-        {isMemoryOp && <div className="text-xs mt-1 text-gray-600">Global Memory</div>}
+      <div className={`p-2 rounded ${color} ${isMemoryOp ? 'border-2 border-dashed border-gray-400 dark:border-gray-600' : ''}`}>
+        <div className="text-xs font-medium mb-1 dark:text-gray-200">{title}</div>
+        <div className="text-sm font-bold dark:text-gray-100">{value}</div>
+        {isMemoryOp && <div className="text-xs mt-1 text-gray-600 dark:text-gray-400">Global Memory</div>}
       </div>
     );
 
     const DataPath = () => (
       <div className="flex items-center justify-center">
-        <ArrowRight className="text-gray-400" size={16} />
+        <ArrowRight className="text-gray-400 dark:text-gray-500" size={16} />
       </div>
     );
 
     return (
       <div className="space-y-4 md:space-y-6">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-          <h4 className="font-medium">Example with input value: 3</h4>
+          <h4 className="font-medium dark:text-gray-200">Example with input value: 3</h4>
           <button
             onClick={() => setIsFused(!isFused)}
             className={`w-full md:w-auto px-4 py-2 rounded ${
-              isFused ? 'bg-green-500 text-white' : 'bg-blue-500 text-white'
+              isFused ? 'bg-green-500 dark:bg-green-600 text-white' : 'bg-blue-500 dark:bg-blue-600 text-white'
             }`}
           >
             {isFused ? 'Show Separate Kernels' : 'Show Fused Kernel'}
@@ -115,56 +115,56 @@ const CUDAFusionTheory = () => {
         {!isFused ? (
           <div className="space-y-4">
             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 justify-between">
-              <OperationBox title="Input" value="3" color="bg-gray-100" isMemoryOp={true} />
+              <OperationBox title="Input" value="3" color="bg-gray-100 dark:bg-gray-800" isMemoryOp={true} />
               <DataPath />
-              <OperationBox title="Scale (×2)" value="6" color="bg-blue-100" />
+              <OperationBox title="Scale (×2)" value="6" color="bg-blue-100 dark:bg-blue-900/50" />
               <DataPath />
-              <OperationBox title="Store" value="6" color="bg-gray-100" isMemoryOp={true} />
+              <OperationBox title="Store" value="6" color="bg-gray-100 dark:bg-gray-800" isMemoryOp={true} />
             </div>
             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 justify-between">
-              <OperationBox title="Load" value="6" color="bg-gray-100" isMemoryOp={true} />
+              <OperationBox title="Load" value="6" color="bg-gray-100 dark:bg-gray-800" isMemoryOp={true} />
               <DataPath />
-              <OperationBox title="ReLU" value="6" color="bg-green-100" />
+              <OperationBox title="ReLU" value="6" color="bg-green-100 dark:bg-green-900/50" />
               <DataPath />
-              <OperationBox title="Store" value="6" color="bg-gray-100" isMemoryOp={true} />
+              <OperationBox title="Store" value="6" color="bg-gray-100 dark:bg-gray-800" isMemoryOp={true} />
             </div>
             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 justify-between">
-              <OperationBox title="Load" value="6" color="bg-gray-100" isMemoryOp={true} />
+              <OperationBox title="Load" value="6" color="bg-gray-100 dark:bg-gray-800" isMemoryOp={true} />
               <DataPath />
-              <OperationBox title="Add (+1)" value="7" color="bg-purple-100" />
+              <OperationBox title="Add (+1)" value="7" color="bg-purple-100 dark:bg-purple-900/50" />
               <DataPath />
-              <OperationBox title="Final" value="7" color="bg-gray-100" isMemoryOp={true} />
+              <OperationBox title="Final" value="7" color="bg-gray-100 dark:bg-gray-800" isMemoryOp={true} />
             </div>
-            <div className="text-sm text-red-500 mt-2">
+            <div className="text-sm text-red-500 dark:text-red-400 mt-2">
               6 memory operations (3 loads + 3 stores)
             </div>
           </div>
         ) : (
           <div className="space-y-4">
             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 justify-between">
-              <OperationBox title="Input" value="3" color="bg-gray-100" isMemoryOp={true} />
+              <OperationBox title="Input" value="3" color="bg-gray-100 dark:bg-gray-800" isMemoryOp={true} />
               <DataPath />
-              <div className="w-full md:flex-1 space-y-2 bg-gradient-to-r from-blue-50 via-green-50 to-purple-50 p-3 rounded-lg">
-                <div className="text-xs font-medium">Fused Operations (Register Only)</div>
+              <div className="w-full md:flex-1 space-y-2 bg-gradient-to-r from-blue-50 via-green-50 to-purple-50 dark:from-blue-900/30 dark:via-green-900/30 dark:to-purple-900/30 p-3 rounded-lg">
+                <div className="text-xs font-medium dark:text-gray-200">Fused Operations (Register Only)</div>
                 <div className="flex items-center space-x-2">
-                  <span className="text-xs">3</span>
-                  <ArrowRight className="text-blue-400" size={12} />
-                  <span className="text-xs">6</span>
-                  <ArrowRight className="text-green-400" size={12} />
-                  <span className="text-xs">6</span>
-                  <ArrowRight className="text-purple-400" size={12} />
-                  <span className="text-xs">7</span>
+                  <span className="text-xs dark:text-gray-200">3</span>
+                  <ArrowRight className="text-blue-400 dark:text-blue-500" size={12} />
+                  <span className="text-xs dark:text-gray-200">6</span>
+                  <ArrowRight className="text-green-400 dark:text-green-500" size={12} />
+                  <span className="text-xs dark:text-gray-200">6</span>
+                  <ArrowRight className="text-purple-400 dark:text-purple-500" size={12} />
+                  <span className="text-xs dark:text-gray-200">7</span>
                 </div>
-                <div className="flex justify-between text-xs text-gray-500">
+                <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
                   <span>Scale</span>
                   <span>ReLU</span>
                   <span>Add</span>
                 </div>
               </div>
               <DataPath />
-              <OperationBox title="Final" value="7" color="bg-gray-100" isMemoryOp={true} />
+              <OperationBox title="Final" value="7" color="bg-gray-100 dark:bg-gray-800" isMemoryOp={true} />
             </div>
-            <div className="text-sm text-green-500 mt-2">
+            <div className="text-sm text-green-500 dark:text-green-400 mt-2">
               Only 2 memory operations (1 load + 1 store)
             </div>
           </div>
@@ -177,35 +177,35 @@ const CUDAFusionTheory = () => {
     <div className="w-full max-w-4xl mx-auto px-4 md:px-6 space-y-6 md:space-y-8">
       <div className="space-y-4 md:space-y-6">
         <div className="space-y-4 md:space-y-6">
-          <h3 className="text-lg font-semibold">1. Thread Block Organization</h3>
+          <h3 className="text-lg font-semibold dark:text-gray-200">1. Thread Block Organization</h3>
           
           <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-8">
             {/* Unfused Kernel Organization */}
             <div className="w-full lg:w-1/2 space-y-4">
-              <h4 className="text-sm font-medium text-gray-600">Unfused Kernels (3 Separate Launches)</h4>
+              <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400">Unfused Kernels (3 Separate Launches)</h4>
               <div className="space-y-4 md:space-y-6">
                 {/* Scale Kernel */}
                 <div className="space-y-2">
-                  <div className="text-sm font-medium text-blue-600">Kernel 1: Scale</div>
-                  <div className="border border-blue-200 rounded-lg p-2 md:p-3 bg-blue-50">
+                  <div className="text-sm font-medium text-blue-600 dark:text-blue-400">Kernel 1: Scale</div>
+                  <div className="border border-blue-200 dark:border-blue-800 rounded-lg p-2 md:p-3 bg-blue-50 dark:bg-blue-900/30">
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-1">
                       {[...Array(16)].map((_, i) => (
-                        <div key={i} className="h-6 bg-blue-100 rounded flex items-center justify-center text-xs">
+                        <div key={i} className="h-6 bg-blue-100 dark:bg-blue-800 rounded flex items-center justify-center text-xs dark:text-blue-100">
                           T{i}
                         </div>
                       ))}
                     </div>
-                    <div className="mt-2 text-xs text-center text-blue-600">Thread Block (16 threads)</div>
+                    <div className="mt-2 text-xs text-center text-blue-600 dark:text-blue-400">Thread Block (16 threads)</div>
                   </div>
                 </div>
 
                 {/* ReLU Kernel */}
                 <div className="space-y-2">
-                  <div className="text-sm font-medium text-green-600">Kernel 2: ReLU</div>
-                  <div className="border border-green-200 rounded-lg p-2 md:p-3 bg-green-50">
+                  <div className="text-sm font-medium text-green-600 dark:text-green-400">Kernel 2: ReLU</div>
+                  <div className="border border-green-200 dark:border-green-800 rounded-lg p-2 md:p-3 bg-green-50 dark:bg-green-900/30">
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-1">
                       {[...Array(16)].map((_, i) => (
-                        <div key={i} className="h-6 bg-green-100 rounded flex items-center justify-center text-xs">
+                        <div key={i} className="h-6 bg-green-100 dark:bg-green-800 rounded flex items-center justify-center text-xs dark:text-green-100">
                           T{i}
                         </div>
                       ))}
@@ -233,47 +233,47 @@ const CUDAFusionTheory = () => {
 
             {/* Fused Kernel Organization */}
             <div className="w-full lg:w-1/2 space-y-4">
-              <h4 className="text-sm font-medium text-gray-600">Fused Kernel (Single Launch)</h4>
-              <div className="border-2 border-gray-200 rounded-lg p-3 md:p-4">
+              <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400">Fused Kernel (Single Launch)</h4>
+              <div className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-3 md:p-4">
                 <div className="space-y-4">
-                  <div className="border border-gray-200 rounded-lg p-2 md:p-3 bg-gradient-to-r from-blue-50 via-green-50 to-purple-50">
+                  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-2 md:p-3 bg-gradient-to-r from-blue-50 via-green-50 to-purple-50 dark:from-blue-900/30 dark:via-green-900/30 dark:to-purple-900/30">
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-1">
                       {[...Array(16)].map((_, i) => (
                         <div key={i} className="relative h-12 rounded overflow-hidden">
-                          <div className="absolute inset-0 bg-blue-100 flex items-center justify-center text-xs">
+                          <div className="absolute inset-0 bg-blue-100 dark:bg-blue-800 flex items-center justify-center text-xs dark:text-blue-100">
                             Scale
                           </div>
-                          <div className="absolute inset-0 bg-green-100 flex items-center justify-center text-xs translate-y-4">
+                          <div className="absolute inset-0 bg-green-100 dark:bg-green-800 flex items-center justify-center text-xs dark:text-green-100 translate-y-4">
                             ReLU
                           </div>
-                          <div className="absolute inset-0 bg-purple-100 flex items-center justify-center text-xs translate-y-8">
+                          <div className="absolute inset-0 bg-purple-100 dark:bg-purple-800 flex items-center justify-center text-xs dark:text-purple-100 translate-y-8">
                             Add
                           </div>
                         </div>
                       ))}
                     </div>
-                    <div className="mt-3 text-xs text-center text-gray-600">
+                    <div className="mt-3 text-xs text-center text-gray-600 dark:text-gray-400">
                       Each thread executes all operations sequentially
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <div className="flex flex-col md:flex-row items-center justify-between text-xs text-gray-600 space-y-2 md:space-y-0">
+                    <div className="flex flex-col md:flex-row items-center justify-between text-xs text-gray-600 dark:text-gray-400 space-y-2 md:space-y-0">
                       <span>Warp 0 (Threads 0-15)</span>
                       <span>Single SM Assignment</span>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                      <div className="bg-gray-50 p-2 rounded">
-                        <div className="font-medium mb-1">Benefits:</div>
-                        <ul className="list-disc pl-4 space-y-1">
+                      <div className="bg-gray-50 dark:bg-gray-800 p-2 rounded border border-gray-100 dark:border-gray-700">
+                        <div className="font-medium mb-1 dark:text-gray-200">Benefits:</div>
+                        <ul className="list-disc pl-4 space-y-1 text-gray-600 dark:text-gray-300">
                           <li>Register data reuse</li>
                           <li>Single kernel launch</li>
                           <li>Reduced scheduling overhead</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-50 p-2 rounded">
-                        <div className="font-medium mb-1">Resources:</div>
-                        <ul className="list-disc pl-4 space-y-1">
+                      <div className="bg-gray-50 dark:bg-gray-800 p-2 rounded border border-gray-100 dark:border-gray-700">
+                        <div className="font-medium mb-1 dark:text-gray-200">Resources:</div>
+                        <ul className="list-disc pl-4 space-y-1 text-gray-600 dark:text-gray-300">
                           <li>Shared memory: 1 block</li>
                           <li>Registers: All ops</li>
                           <li>L1 Cache: Unified</li>
@@ -300,22 +300,22 @@ const CUDAFusionTheory = () => {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">3. Operation Fusion Example</h3>
+          <h3 className="text-lg font-semibold dark:text-gray-200">3. Operation Fusion Example</h3>
           <FusionExample />
         </div>
 
-        <div className="bg-gray-50 p-3 md:p-4 rounded-lg space-y-2">
-          <h3 className="font-semibold">Mathematical Properties:</h3>
-          <div className="text-xs md:text-sm space-y-1">
+        <div className="bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 rounded-lg space-y-2 border border-gray-100 dark:border-gray-700">
+          <h3 className="font-semibold dark:text-gray-200">Mathematical Properties:</h3>
+          <div className="text-xs md:text-sm space-y-1 text-gray-700 dark:text-gray-300">
             <p>• Fusion preserves computational equivalence: f₃(f₂(f₁(x))) ≡ f_fused(x)</p>
             <p>• Memory bandwidth utilization: (R + W)_fused &lt; Σ(R + W)_individual</p>
             <p>• Theoretical speedup: S = T_separate / T_fused ≈ (n_ops + n_sync) / (1 + 1)</p>
           </div>
         </div>
 
-        <div className="bg-blue-50 p-3 md:p-4 rounded-lg">
-          <h3 className="font-semibold mb-2">Performance Implications:</h3>
-          <div className="text-xs md:text-sm space-y-2">
+        <div className="bg-blue-50 dark:bg-blue-900/20 p-3 md:p-4 rounded-lg border border-blue-100 dark:border-blue-800">
+          <h3 className="font-semibold mb-2 dark:text-gray-200">Performance Implications:</h3>
+          <div className="text-xs md:text-sm space-y-2 text-gray-700 dark:text-gray-300">
             <p>• Reduced memory transactions: {inputMatrix.length * inputMatrix[0].length} → {inputMatrix.length * inputMatrix[0].length / 3} global loads</p>
             <p>• Register reuse: Intermediate results stored in registers instead of global memory</p>
             <p>• Improved instruction cache utilization through unified kernel execution</p>
