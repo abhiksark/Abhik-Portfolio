@@ -1,6 +1,9 @@
-# Allow all crawlers
+# *
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://www.abhik.xyz/sitemap.xml 
+# Host
+Host: https://www.abhik.xyz
+
+# Sitemaps
+Sitemap: https://www.abhik.xyz/sitemap.xml

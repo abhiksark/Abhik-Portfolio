@@ -13,8 +13,8 @@ export async function generateRssFeed() {
   }
 
   let feed = new Feed({
-    title: author.name,
-    description: 'Abhik - Blog',
+    title: 'Abhik Sarkar Tech Blog',
+    description: 'Abhik Sarkar Tech Blog',
     author,
     id: siteUrl,
     link: siteUrl,

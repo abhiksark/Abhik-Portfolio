@@ -51,7 +51,7 @@ const siteMeta = {
         twitch: "https://twitch.tv/bketelsen",
         youtube: "https://youtube.com/@bketelsen",
     },
-    siteUrl: "https://abhik.xyz"
+    siteUrl: "https://www.abhik.xyz"
 }
  export const resume = [
     {

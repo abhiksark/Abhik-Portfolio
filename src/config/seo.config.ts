@@ -1,11 +1,11 @@
 export const defaultSEO = {
   titleTemplate: '%s - Abhik Sarkar',
-  defaultTitle: 'Abhik Sarkar - MLE',
+  defaultTitle: 'Abhik Sarkar - Tech Blog',
   description: 'Machine Learning Engineer and Software Developer',
   openGraph: {
     type: 'website',
-    locale: 'en_IE',
-    url: 'https://abhik.xyz',
+    locale: 'en_US',
+    url: 'https://www.abhik.xyz',
     siteName: 'Abhik Sarkar',
     images: [
       {

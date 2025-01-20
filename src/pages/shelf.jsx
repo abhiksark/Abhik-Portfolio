@@ -25,9 +25,9 @@ export default function Projects() {
     <NextSeo
       title="Shelf - Abhik"
       description={siteMeta.description}
-      canonical="https://abhik.xyz/shelf"
+      canonical="https://www.abhik.xyz/shelf"
       openGraph={{
-        url: 'https://abhik.xyz/shelf',
+        url: 'https://www.abhik.xyz/shelf',
         images: [
           {
             url: `https://og.abhik.xyz/api/og?title=shelf&desc=${headline}`,

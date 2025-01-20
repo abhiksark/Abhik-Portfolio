@@ -37,9 +37,9 @@ export default function Papers({ papers }) {
       <NextSeo
         title="Paper Reviews - Abhik"
         description="Deep dives into influential machine learning and computer vision papers"
-        canonical="https://abhik.xyz/papers"
+        canonical="https://www.abhik.xyz/papers"
         openGraph={{
-          url: 'https://abhik.xyz/papers',
+          url: 'https://www.abhik.xyz/papers',
           images: [
             {
               url: `https://og.abhik.xyz/api/og?title=Paper Reviews&desc=Deep dives into influential machine learning papers`,

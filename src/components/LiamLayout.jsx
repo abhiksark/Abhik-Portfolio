@@ -36,12 +36,12 @@ export function LiamLayout({
     <NextSeo
       title={meta.title}
       description={meta.description}
-      canonical={`https://abhik.xyz${router.pathname}`}
+      canonical={`https://www.abhik.xyz${router.pathname}`}
       openGraph={{
-        url: `https://abhik.xyz${router.pathname}`,
+        url: `https://www.abhik.xyz${router.pathname}`,
         images: [
           {
-            url: `https://og.abhik.xyz/api/og?title=${meta.title}&desc=${meta.description}&imgUrl=https://abhik.xyz/fixed/images/IMG_7808.png`,
+            url: `https://og.abhik.xyz/api/og?title=${meta.title}&desc=${meta.description}&imgUrl=https://www.abhik.xyz/fixed/images/IMG_7808.png`,
             width: 1200,
             height: 600,
             alt: 'Og Image Alt',

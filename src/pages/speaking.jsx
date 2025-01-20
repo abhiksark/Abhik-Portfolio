@@ -31,9 +31,9 @@ export default function Speaking() {
     <NextSeo
       title="Speaking - Abhik"
       description={siteMeta.description}
-      canonical="https://abhik.xyz/speaking"
+      canonical="https://www.abhik.xyz/speaking"
       openGraph={{
-        url: 'https://abhik.xyz/speaking',
+        url: 'https://www.abhik.xyz/speaking',
         images: [
           {
             url: `https://og.abhik.xyz/api/og?title=Speaking&desc=I’ve spoken at events all around the world and been interviewed for many podcasts.`,

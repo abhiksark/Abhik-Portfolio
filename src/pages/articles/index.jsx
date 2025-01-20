@@ -43,9 +43,9 @@ export default function ArticlesIndex({ articles }) {
     <NextSeo
       title="Articles - Abhik"
       description={siteMeta.description}
-      canonical="https://abhik.xyz/articles"
+      canonical="https://www.abhik.xyz/articles"
       openGraph={{
-        url: 'https://abhik.xyz/articles',
+        url: 'https://www.abhik.xyz/articles',
         images: [
           {
             url: `https://og.abhik.xyz/api/og?title=Articles&desc=${headline}`,

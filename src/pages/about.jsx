@@ -46,12 +46,12 @@ export default function About() {
       <NextSeo
         title="About - Abhik"
         description={siteMeta.description}
-        canonical="https://abhik.xyz/about"
+        canonical="https://www.abhik.xyz/about"
         openGraph={{
-          url: 'https://abhik.xyz/about',
+          url: 'https://www.abhik.xyz/about',
           images: [
             {
-              url: `https://abhik.xyz/api/og?title=About&desc=${siteMeta.description}`,
+              url: `https://og.abhik.xyz/api/og?title=About&desc=${siteMeta.description}`,
               width: 1200,
               height: 600,
               alt: 'Og Image Alt',

@@ -49,9 +49,9 @@ export default function Uses() {
     <NextSeo
       title="Uses - Abhik"
       description={siteMeta.description}
-      canonical="https://abhik.xyz/uses"
+      canonical="https://www.abhik.xyz/uses"
       openGraph={{
-        url: 'https://abhik.xyz/uses',
+        url: 'https://www.abhik.xyz/uses',
         images: [
           {
             url: `https://og.abhik.xyz/api/og?title=Uses&desc=Things I use every day to get my work done.`,

@@ -227,9 +227,9 @@ export default function Home({ articles }) {
       <NextSeo
         title="Abhik Sarkar - Machine Learning & Computer Vision Expert"
         description={siteMeta.description}
-        canonical="https://abhik.xyz/"
+        canonical="https://www.abhik.xyz/"
         openGraph={{
-          url: 'https://abhik.xyz',
+          url: 'https://www.abhik.xyz',
           title: 'Abhik Sarkar - Machine Learning & Computer Vision Expert',
           description: siteMeta.description,
           type: 'website',
@@ -274,7 +274,7 @@ export default function Home({ articles }) {
             '@type': 'Person',
             name: 'Abhik Sarkar',
             jobTitle: 'Machine Learning Engineer',
-            url: 'https://abhik.xyz',
+            url: 'https://www.abhik.xyz',
             sameAs: [
               siteMeta.author.twitter,
               siteMeta.author.linkedin,
