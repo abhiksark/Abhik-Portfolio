@@ -43,13 +43,13 @@ const siteMeta = {
         name: "Abhik Sarkar",
         email: "abhiksark@gmail.com",
         twitter: "https://twitter.com/abhiksark",
-        mastodon: "https://tty0.social/@bketelsen",
+        mastodon: "https://tty0.social/@abhiksark",
         instagram: "https://instagram.com/abhiksark",
         stackoverflow: "https://stackoverflow.com/users/5103969/abhik-sarkar",
         github: "https://github.com/abhiksark",
         linkedin: "https://linkedin.com/in/abhiksark",
-        twitch: "https://twitch.tv/bketelsen",
-        youtube: "https://youtube.com/@bketelsen",
+        // twitch: "https://twitch.tv/bketelsen",
+        // youtube: "https://youtube.com/@bketelsen",
     },
     siteUrl: "https://www.abhik.xyz"
 }

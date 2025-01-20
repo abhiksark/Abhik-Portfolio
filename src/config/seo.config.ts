@@ -9,7 +9,7 @@ export const defaultSEO = {
     siteName: 'Abhik Sarkar',
     images: [
       {
-        url: 'https://og.abhik.xyz/api/og',
+        url: 'https://og.abhik.xyz/api/og?title=Abhik Sarkar&desc=Machine Learning Engineer and Software Developer',
         width: 1200,
         height: 630,
         alt: 'Abhik Sarkar',
