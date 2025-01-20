@@ -27,6 +27,14 @@ import arpitimage from 'public/fixed/images/people/arpit.jpg'
 import adamimage from 'public/fixed/images/people/adam.webp'
 
 
+import ThreeBlue1Brown from 'public/fixed/images/people/3blue1Brown.jpg'
+import YannicKilcher from 'public/fixed/images/people/yannickilcher.jpg'
+import DaveXiang from 'public/fixed/images/people/DaveXiang.jpg'
+import Theo from 'public/fixed/images/people/theo.jpg'
+import Fireship from 'public/fixed/images/people/fireship.jpg'
+import ByteByteGo from 'public/fixed/images/people/bytebytego.jpg'
+
+
 function LinkedInIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
@@ -125,32 +133,32 @@ export const learningResourcesdata = [
       {
         name: "3Blue1Brown",
         link: "https://www.youtube.com/c/3blue1brown",
-        imageUrl: "https://yt3.googleusercontent.com/ytc/AIf8zZSApZdSBilmxjGARJbX1WdIFYXFv69aixy9FcJraA=s176-c-k-c0x00ffffff-no-rj"
+        imageUrl: ThreeBlue1Brown
       },
       {
         name: "Yannic Kilcher",
         link: "https://www.youtube.com/c/YannicKilcher",
-        imageUrl: "https://yt3.googleusercontent.com/ytc/AIf8zZTtFAmxsoXUJ0BLZvk_xeUeoycW1qIT5-DckCoGIkk=s176-c-k-c0x00ffffff-no-rj"
+        imageUrl: YannicKilcher
       },
       {
         name : "Dave Xiang",
         link: "https://www.youtube.com/c/DaveXiang",
-        imageUrl: "https://yt3.googleusercontent.com/ytc/AIf8zZTGhWR1SubNCdvrcxJB4CzHDhbYzghi3D7vM9DQJA=s176-c-k-c0x00ffffff-no-rj"
+        imageUrl: DaveXiang
       },
       {
         name: "Theo - t3․gg",
         link: "https://www.youtube.com/c/Theot3gg",
-        imageUrl: "https://yt3.googleusercontent.com/4NapxEtLcHQ6wN2zA_DMmkOk47RFb_gy6sjSmUZGg_ARHjlIUjFsrNFddrcKMkTYpBNxCp3J=s176-c-k-c0x00ffffff-no-rj"
+        imageUrl: Theo
       },
       {
         name: "Fireship",
         link: "https://www.youtube.com/c/Fireship",
-        imageUrl: "https://yt3.googleusercontent.com/ytc/AIf8zZTUVa5AeFd3m5-4fdY2hEaKof3Byp8VruZ0f0FNEA=s176-c-k-c0x00ffffff-no-rj"
+        imageUrl: Fireship
       },
       {
         name: "Byte Byte Go",
         link: "https://www.youtube.com/c/ByteByteGo",
-        imageUrl: "https://yt3.googleusercontent.com/efrVnDJbJOQ5XcXrrFhA9V2wTXh6gP_i0KycoYjqhN3nEh6VbCgqMQakAcFqEsguw7wxhHEjnA=s176-c-k-c0x00ffffff-no-rj"
+        imageUrl: ByteByteGo
       }
     ]
   },
