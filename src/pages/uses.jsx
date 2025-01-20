@@ -71,13 +71,13 @@ export default function Uses() {
       >
         <div className="space-y-16">
           <ToolsSection title="Workstation">
-            <Tool title="13” MacBook M1 Air, 16GB RAM (2021)" href="https://www.apple.com/macbook-air-m1/">
+            <Tool title="13” MacBook M1 Air, 16GB RAM (2021)">
               RISC FTW. I love this machine. It&apos;s fast, light, and has great battery life.
             </Tool>
             <Tool title="AMD Ryzen 9 + RTX A6000" href="https://www.nvidia.com/en-gb/design-visualization/rtx-a6000/">
               You need to train those models, right?
             </Tool>
-            <Tool title="12.9 inch iPad Pro" href="https://www.apple.com/in/ipad-pro/">
+            <Tool title="12.9 inch iPad Pro">
               I use this for reading, taking notes and my second screen while i am travelling.
             </Tool>
             <Tool title="MSI GS66 Stealth" href="https://www.msi.com/Laptop/GS66-Stealth-10SX">
