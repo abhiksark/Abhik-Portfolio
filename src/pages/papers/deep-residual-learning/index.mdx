@@ -1,0 +1,26 @@
+import { PaperLayout } from '@/components/PaperLayout'
+
+export const meta = {
+  author: 'Abhik Sarkar',
+  date: '2024-01-15',
+  title: 'Deep Residual Learning for Image Recognition',
+  conference: 'CVPR',
+  year: '2015',
+  authors: ['Kaiming He', 'Xiangyu Zhang', 'Shaoqing Ren', 'Jian Sun'],
+  tags: ['Computer Vision', 'CNN', 'ResNet', 'Deep Learning'],
+  description: 'Analysis of the groundbreaking ResNet architecture that enabled training of ultra-deep neural networks.',
+  paper_url: 'https://arxiv.org/abs/1512.03385',
+  code_url: 'https://github.com/KaimingHe/deep-residual-networks',
+  citation_count: '145k+',
+  year_published: 2015
+}
+
+export default (props) => <PaperLayout meta={meta} {...props} />
+
+
+## Paper Overview
+
+The paper introduces the ResNet architecture, which has become the foundation of modern computer vision. It completely eliminates recurrence and convolutions, relying entirely on attention mechanisms to draw global dependencies between input and output.
+
+## Key Contributions
+
