@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 
 const CUDAFusionTheory = () => {
   const [isFused, setIsFused] = useState(false);
-  
+
   // Example matrix data
   const inputMatrix = [
     [1, 2, 3, 4],
@@ -104,9 +104,8 @@ const CUDAFusionTheory = () => {
           <h4 className="font-medium dark:text-gray-200">Example with input value: 3</h4>
           <button
             onClick={() => setIsFused(!isFused)}
-            className={`w-full md:w-auto px-4 py-2 rounded ${
-              isFused ? 'bg-green-500 dark:bg-green-600 text-white' : 'bg-blue-500 dark:bg-blue-600 text-white'
-            }`}
+            className={`w-full md:w-auto px-4 py-2 rounded ${isFused ? 'bg-green-500 dark:bg-green-600 text-white' : 'bg-blue-500 dark:bg-blue-600 text-white'
+              }`}
           >
             {isFused ? 'Show Separate Kernels' : 'Show Fused Kernel'}
           </button>
@@ -178,7 +177,7 @@ const CUDAFusionTheory = () => {
       <div className="space-y-4 md:space-y-6">
         <div className="space-y-4 md:space-y-6">
           <h3 className="text-lg font-semibold dark:text-gray-200">1. Thread Block Organization</h3>
-          
+
           <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-8">
             {/* Unfused Kernel Organization */}
             <div className="w-full lg:w-1/2 space-y-4">
@@ -304,26 +303,11 @@ const CUDAFusionTheory = () => {
           <FusionExample />
         </div>
 
-        <div className="bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 rounded-lg space-y-2 border border-gray-100 dark:border-gray-700">
-          <h3 className="font-semibold dark:text-gray-200">Mathematical Properties:</h3>
-          <div className="text-xs md:text-sm space-y-1 text-gray-700 dark:text-gray-300">
-            <p>• Fusion preserves computational equivalence: f₃(f₂(f₁(x))) ≡ f_fused(x)</p>
-            <p>• Memory bandwidth utilization: (R + W)_fused &lt; Σ(R + W)_individual</p>
-            <p>• Theoretical speedup: S = T_separate / T_fused ≈ (n_ops + n_sync) / (1 + 1)</p>
-          </div>
-        </div>
 
-        <div className="bg-blue-50 dark:bg-blue-900/20 p-3 md:p-4 rounded-lg border border-blue-100 dark:border-blue-800">
-          <h3 className="font-semibold mb-2 dark:text-gray-200">Performance Implications:</h3>
-          <div className="text-xs md:text-sm space-y-2 text-gray-700 dark:text-gray-300">
-            <p>• Reduced memory transactions: {inputMatrix.length * inputMatrix[0].length} → {inputMatrix.length * inputMatrix[0].length / 3} global loads</p>
-            <p>• Register reuse: Intermediate results stored in registers instead of global memory</p>
-            <p>• Improved instruction cache utilization through unified kernel execution</p>
-          </div>
-        </div>
       </div>
     </div>
   );
 };
 
 export default CUDAFusionTheory; 
+
