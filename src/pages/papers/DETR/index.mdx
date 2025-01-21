@@ -1,0 +1,44 @@
+import { PaperLayout } from '@/components/PaperLayout'
+
+export const meta = {
+  author: 'Abhik Sarkar',
+  date: '2024-01-21',
+  title: 'End-to-End Object Detection with Transformers',
+  year: '2020',
+  authors: ['Nicolas Carion', 'Francisco Massa', 'Gabriel Synnaeve', 'Nicolas Usunier', 'Alexander Kirillov', 'Sergey Zagoruyko'],
+  tags: ['Transformers', 'Computer Vision', 'Object Detection', 'Deep Learning', 'DETR'],
+  description: 'Introducing DETR, a novel end-to-end object detection framework that leverages Transformers to directly predict a set of object bounding boxes.',
+  paper_url: 'https://arxiv.org/abs/2005.12872',
+  year_published: 2020
+}
+
+export default (props) => <PaperLayout meta={meta} {...props} />
+
+
+### Paper Overview
+
+This paper introduces **DETR (DEtection TRansformer)**, a groundbreaking end-to-end object detection framework that leverages the power of Transformers to directly predict a set of object bounding boxes. Unlike traditional object detection methods that rely on hand-designed components like anchor boxes and non-maximum suppression (NMS), DETR simplifies the detection pipeline by using a set-based prediction approach. This allows DETR to achieve competitive performance with state-of-the-art detectors while offering a more elegant and streamlined architecture.
+
+### Key Contributions
+
+1. **DETR Architecture:**
+   - **CNN Backbone:** DETR utilizes a convolutional neural network (CNN) backbone to extract image features.
+   - **Transformer Encoder-Decoder:** The extracted features are then fed into a Transformer encoder-decoder architecture. 
+     - **Encoder:** The encoder processes the image features globally, capturing long-range dependencies.
+     - **Decoder:** The decoder attends to the encoded image features and uses learned object queries to directly predict a set of object bounding boxes and class labels.
+   - **Bipartite Matching:**  A bipartite matching algorithm is used to assign predicted boxes to ground-truth objects, enabling set-based supervision during training.
+   - **Feed-Forward Networks:**  Small feed-forward networks (FFNs) are used to predict the bounding box coordinates and class labels for each object.
+
+2. **End-to-End Training:**
+   - DETR is trained end-to-end with a set prediction loss that combines a classification loss and a bounding box regression loss.
+   - This eliminates the need for hand-designed components like anchor boxes and NMS, simplifying the training process and reducing hyperparameter tuning.
+
+3. **Performance and Analysis:**
+   - The paper evaluates DETR on the COCO object detection benchmark, demonstrating competitive performance with state-of-the-art detectors.
+   - **Strengths:** DETR excels at detecting large objects and exhibits good generalization capabilities.
+   - **Limitations:** DETR struggles with detecting small objects and requires longer training times compared to some traditional detectors.
+
+
+### Conclusion
+
+This paper introduces DETR, a novel end-to-end object detection framework that leverages Transformers to simplify the detection pipeline and achieve competitive performance. By eliminating hand-designed components and using a set-based prediction approach, DETR offers a more elegant and streamlined architecture. While DETR has limitations in detecting small objects, its strong performance on large objects and its end-to-end trainability make it a significant contribution to the field of object detection. This work opens up new avenues for research in object detection, demonstrating the potential of Transformers to revolutionize computer vision tasks.

@@ -1,0 +1,40 @@
+import { PaperLayout } from '@/components/PaperLayout'
+
+export const meta = {
+  author: 'Abhik Sarkar',
+  date: '2024-01-21',
+  title: 'Swin Transformer: Hierarchical Vision Transformer using Shifted Windows',
+  year: '2021',
+  authors: ['Ze Liu', 'Yutong Lin', 'Yue Cao', 'Han Hu', 'Yixuan Wei', 'Zheng Zhang', 'Stephen Lin', 'Baining Guo'],
+  tags: ['Transformers', 'Computer Vision', 'Image Classification', 'Object Detection', 'Semantic Segmentation', 'Deep Learning'],
+  description: 'Introducing Swin Transformer, a hierarchical Vision Transformer that uses shifted windows to achieve improved efficiency and performance in various vision tasks.',
+  paper_url: 'https://arxiv.org/abs/2103.14030',
+  year_published: 2021
+}
+
+export default (props) => <PaperLayout meta={meta} {...props} />
+
+
+### Paper Overview
+
+This paper introduces the **Swin Transformer**, a novel Vision Transformer architecture that utilizes a hierarchical design and shifted windows to address the limitations of previous ViT models, particularly in terms of computational efficiency and ability to handle inputs of varying scales. Swin Transformer achieves state-of-the-art performance on a variety of computer vision tasks, including image classification, object detection, and semantic segmentation, while being more efficient than previous ViT models.
+
+### Key Contributions
+
+1. **Hierarchical Feature Representation:**
+   - **Patch Merging:** Swin Transformer constructs a hierarchical feature representation by progressively merging image patches in deeper layers. This allows the model to capture both local and global information, making it suitable for tasks requiring multi-scale understanding.
+   - **Varying Resolutions:** This hierarchical design enables Swin Transformer to handle inputs of different resolutions efficiently, which is crucial for tasks like object detection and semantic segmentation where objects appear at various scales.
+
+2. **Shifted Window based Self-Attention:**
+   - **Computational Efficiency:** Swin Transformer introduces a shifted windowing scheme for computing self-attention. This significantly reduces the computational complexity, especially for high-resolution images, making it more efficient than standard ViT models that compute self-attention globally.
+   - **Cross-Window Connections:** The shifted window approach also introduces connections between adjacent non-overlapping windows in successive layers, allowing for information exchange and capturing broader context.
+
+3. **Extensive Experiments and Results:**
+   - **ImageNet Classification:** Swin Transformer achieves state-of-the-art accuracy on ImageNet classification, surpassing previous ViT models and CNN-based approaches.
+   - **COCO Object Detection and Segmentation:** Swin Transformer demonstrates superior performance on COCO object detection and instance segmentation tasks, outperforming previous state-of-the-art methods.
+   - **ADE20K Semantic Segmentation:** Swin Transformer also achieves impressive results on ADE20K semantic segmentation, showcasing its effectiveness in dense prediction tasks.
+
+
+### Conclusion
+
+This paper presents Swin Transformer, a hierarchical Vision Transformer with shifted windows that addresses key limitations of previous ViT models. By combining a hierarchical design with efficient self-attention computation, Swin Transformer achieves state-of-the-art performance on various vision tasks while being more efficient. This architecture has significant implications for the future of computer vision, demonstrating the potential of Transformers to excel in a wide range of visual tasks and paving the way for more advanced and efficient vision models.
