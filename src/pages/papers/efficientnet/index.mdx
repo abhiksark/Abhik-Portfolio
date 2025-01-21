@@ -1,0 +1,43 @@
+import { PaperLayout } from '@/components/PaperLayout'
+
+export const meta = {
+  author: 'Abhik Sarkar',
+  date: '2024-01-22',
+  title: 'EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks',
+  year: '2019',
+  authors: ['Mingxing Tan', 'Quoc V. Le'],
+  tags: ['Computer Vision', 'Deep Learning', 'Convolutional Neural Networks', 'Model Scaling', 'EfficientNet'],
+  description: 'Introducing EfficientNet, a family of convolutional neural networks that achieve state-of-the-art accuracy with significantly improved efficiency through a novel compound scaling method.',
+  paper_url: 'https://arxiv.org/abs/1905.11946',
+  year_published: 2019
+}
+
+export default (props) => <PaperLayout meta={meta} {...props} />
+
+### Paper Overview
+
+This paper introduces **EfficientNet**, a family of convolutional neural networks (CNNs) that achieve state-of-the-art accuracy on image classification tasks while being significantly more efficient than previous CNN architectures. [1] The key innovation behind EfficientNet is a novel **compound scaling method** that uniformly scales the network's depth, width, and resolution in a principled way. [1] This approach allows for efficient scaling of CNNs, resulting in models that are smaller, faster, and more accurate. [1]
+
+### Key Contributions
+
+1. **Compound Scaling:**
+   - **Traditional Scaling:** Previous approaches to scaling CNNs typically focused on scaling one dimension at a time, such as increasing depth (number of layers), width (number of channels), or resolution (input image size). [1, 2]
+   - **Balanced Scaling:** EfficientNet proposes compound scaling, which involves scaling all three dimensions (depth, width, and resolution) simultaneously with a fixed set of scaling coefficients. [1, 2] This balanced scaling ensures that the network is optimized for all dimensions, leading to improved efficiency and accuracy. [1, 2]
+
+2. **EfficientNet Architecture:**
+   - **Baseline Model (EfficientNet-B0):** The authors first develop a baseline model, EfficientNet-B0, using a neural architecture search approach. [1] This baseline model is already more efficient than existing CNNs. [1]
+   - **Scaled Models (B1 to B7):**  Using the compound scaling method, they then scale up the baseline model to create a family of EfficientNets (B1 to B7) with increasing size and accuracy. [1]
+
+3. **Improved Efficiency and Accuracy:**
+   - **Smaller and Faster:** EfficientNets are significantly smaller and faster than previous CNNs while achieving the same or better accuracy. [2] For example, EfficientNet-B7 achieves state-of-the-art accuracy on ImageNet while being 8.4x smaller and 6.1x faster than the previous best model. [2]
+   - **Generalization:**  EfficientNets also demonstrate strong generalization capabilities, performing well on other image classification datasets and transfer learning tasks. [2]
+
+### Conclusion
+
+This paper presents EfficientNet, a family of CNNs that achieve state-of-the-art accuracy with significantly improved efficiency through a novel compound scaling method. [2] By balancing the scaling of depth, width, and resolution, EfficientNet provides a principled way to scale CNNs, resulting in models that are smaller, faster, and more accurate. [2] This work has had a significant impact on the field of computer vision, demonstrating the importance of efficient model scaling and providing a new paradigm for designing high-performance CNN architectures. [2]
+
+
+### Sources
+
+[1] [Understanding EfficientNet with Charts and Visualizations](https://victorcalinaojr.medium.com/paper-review-understanding-efficientnet-with-charts-and-visualizations-1272be56c08d)
+
