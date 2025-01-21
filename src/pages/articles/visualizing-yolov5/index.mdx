@@ -1,7 +1,7 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
 import FPNDetailedVisualization from '@/components/visualizations/visualizing-yolov5/FPNDetailedVisualization'
 import YOLOv5MultiScaleFusion from '@/components/visualizations/visualizing-yolov5/YOLOv5MultiScaleFusion'
-
+import YOLOv5m from '@/components/visualizations/visualizing-yolov5/YOLOv5m'
 export const meta = {
   author: 'Abhik Sarkar',
   date: '2024-08-20',
@@ -17,6 +17,8 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 YOLOv5 is a popular object detection model that has been widely used in various applications. However, it can be challenging to understand how the model works, especially for beginners. In this article, we will explore the YOLOv5 model architecture and visualize its components to gain a better understanding of how it works.
 
 
+<YOLOv5m />
+
 <FPNDetailedVisualization />
 
 
@@ -24,3 +26,5 @@ YOLOv5 is a popular object detection model that has been widely used in various 
 
 
 <YOLOv5MultiScaleFusion />
+
+
