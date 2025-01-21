@@ -50,7 +50,7 @@ const BlockMapping = () => {
   return (
     <div className="w-full max-w-4xl bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden">
       <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-        <h2 className="text-2xl font-bold dark:text-gray-100">Complete GGML Block Structures</h2>
+        {/* <h2 className="text-2xl font-bold dark:text-gray-100">Complete GGML Block Structures</h2> */}
       </div>
       {/* <div className="p-6 space-y-8"> */}
         {/* Q8_0 Block Structure */}
