@@ -330,15 +330,15 @@ const YOLOv5MultiScaleFusion = () => {
 
   return (
     <div className="w-full max-w-4xl bg-white dark:bg-gray-900 rounded-lg shadow-lg">
-      <div className="p-6 border-b border-gray-200 dark:border-gray-800">
-        <div className="flex items-center gap-2 text-xl font-bold dark:text-gray-200">
-          <Box className="w-6 h-6" />
-          YOLOv5 Multi-scale Prediction Fusion (P4 + P5)
+      <div className="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-800">
+        <div className="flex items-center gap-2 text-lg sm:text-xl font-bold dark:text-gray-200">
+          <Box className="w-5 h-5 sm:w-6 sm:h-6" />
+          <span className="text-sm sm:text-base md:text-xl">YOLOv5 Multi-scale Prediction Fusion (P4 + P5)</span>
         </div>
       </div>
-      <div className="p-6">
-        <div className="flex flex-col gap-6">
-          <div className="flex gap-4 items-center">
+      <div className="p-4 sm:p-6">
+        <div className="flex flex-col gap-4 sm:gap-6">
+          <div className="flex flex-wrap gap-2 sm:gap-4">
             {[
               'Base Anchors',
               'Position Adjust',
@@ -347,7 +347,7 @@ const YOLOv5MultiScaleFusion = () => {
             ].map((step, idx) => (
               <React.Fragment key={step}>
                 <button
-                  className={`px-4 py-2 rounded-lg transition-colors ${
+                  className={`px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm rounded-lg transition-colors ${
                     transformStep === idx 
                       ? 'bg-green-500 dark:bg-green-600 text-white' 
                       : 'bg-gray-100 dark:bg-gray-800 dark:text-gray-300'
@@ -356,13 +356,13 @@ const YOLOv5MultiScaleFusion = () => {
                 >
                   {step}
                 </button>
-                {idx < 3 && <ArrowRight className="w-4 h-4 dark:text-gray-400" />}
+                {idx < 3 && <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 dark:text-gray-400" />}
               </React.Fragment>
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="relative aspect-square border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="relative aspect-square border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 w-full max-w-[400px] mx-auto">
               <div className="absolute inset-0" style={{ opacity: transformStep < 3 ? 1 : 0.2 }}>
                 {renderGrid('P5')}
               </div>
@@ -372,53 +372,38 @@ const YOLOv5MultiScaleFusion = () => {
               {renderPredictions()}
             </div>
 
-            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4 dark:text-gray-200">Multi-scale Fusion Process</h3>
-              <div className="space-y-4">
+            <div className="p-3 sm:p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 dark:text-gray-200">Multi-scale Fusion Process</h3>
+              <div className="space-y-3 sm:space-y-4 text-sm sm:text-base">
                 {transformStep === 0 && (
                   <div className="space-y-3">
-                    <div className="p-3 bg-white dark:bg-gray-900 rounded shadow border-l-4" style={{ borderColor: scales.P5.color }}>
-                      <p className="font-medium dark:text-gray-200">P5 Scale (8×8 grid)</p>
-                      <p className="mb-2 dark:text-gray-300">Base Anchors:</p>
-                      <div className="ml-2 space-y-2">
-                        <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                          <p className="font-medium dark:text-gray-200">Square Anchor:</p>
-                          <p className="dark:text-gray-300">Width: 1.2, Height: 1.2</p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">For roughly square objects</p>
-                        </div>
-                        <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                          <p className="font-medium dark:text-gray-200">Tall Anchor:</p>
-                          <p className="dark:text-gray-300">Width: 1.0, Height: 2.0</p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">For tall/vertical objects</p>
-                        </div>
-                        <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                          <p className="font-medium dark:text-gray-200">Wide Anchor:</p>
-                          <p className="dark:text-gray-300">Width: 2.0, Height: 1.0</p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">For wide/horizontal objects</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="p-3 bg-white dark:bg-gray-900 rounded shadow border-l-4" style={{ borderColor: scales.P4.color }}>
-                      <p className="font-medium dark:text-gray-200">P4 Scale (16×16 grid)</p>
-                      <p className="mb-2 dark:text-gray-300">Base Anchors:</p>
-                      <div className="ml-2 space-y-2">
-                        <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                          <p className="font-medium dark:text-gray-200">Square Anchor:</p>
-                          <p className="dark:text-gray-300">Width: 1.0, Height: 1.0</p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">For square objects</p>
-                        </div>
-                        <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                          <p className="font-medium dark:text-gray-200">Tall Anchor:</p>
-                          <p className="dark:text-gray-300">Width: 0.8, Height: 1.6</p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">For tall/vertical objects</p>
-                        </div>
-                        <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                          <p className="font-medium dark:text-gray-200">Wide Anchor:</p>
-                          <p className="dark:text-gray-300">Width: 1.6, Height: 0.8</p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">For wide/horizontal objects</p>
+                    {Object.entries(scales).map(([scale, scaleData]) => (
+                      <div 
+                        key={scale}
+                        className="p-2 sm:p-3 bg-white dark:bg-gray-900 rounded shadow border-l-4"
+                        style={{ borderColor: scaleData.color }}
+                      >
+                        <p className="font-medium dark:text-gray-200">
+                          {scale} Scale ({scaleData.gridSize}×{scaleData.gridSize} grid)
+                        </p>
+                        <p className="mb-2 dark:text-gray-300">Base Anchors:</p>
+                        <div className="ml-2 space-y-2">
+                          {baseAnchors[scale].map((anchor, idx) => (
+                            <div key={idx} className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
+                              <p className="font-medium dark:text-gray-200">
+                                {idx === 0 ? 'Square' : idx === 1 ? 'Tall' : 'Wide'} Anchor:
+                              </p>
+                              <p className="dark:text-gray-300">
+                                Width: {anchor.width}, Height: {anchor.height}
+                              </p>
+                              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                                For {idx === 0 ? 'square' : idx === 1 ? 'tall/vertical' : 'wide/horizontal'} objects
+                              </p>
+                            </div>
+                          ))}
                         </div>
                       </div>
-                    </div>
+                    ))}
                   </div>
                 )}
 

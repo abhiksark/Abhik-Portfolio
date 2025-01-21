@@ -16,24 +16,27 @@ const FPNDetailedVisualization = () => {
     onClick 
   }) => (
     <div 
-      className={`relative rounded-lg transition-all duration-300 p-2
-                  ${highlighted ? 'border-2 border-blue-500 dark:border-blue-400 shadow-lg' : 'border border-gray-300 dark:border-gray-700'}
-                  ${merging ? 'bg-green-50 dark:bg-green-900/30' : 'bg-gray-50 dark:bg-gray-800/50'}
-                  ${hasDetail ? 'cursor-pointer hover:shadow-md' : ''}`}
+      className={`relative cursor-pointer transition-all ${onClick ? 'hover:scale-105' : ''}`}
       onClick={onClick}
     >
-      <div className="h-28">
-        <div className="font-bold dark:text-gray-200">{level}</div>
-        <div className="text-sm mt-1 text-gray-600 dark:text-gray-400">
-          Size: {size}×{size}×{channels}
+      <div className={`
+        relative rounded-lg border-2 p-2 sm:p-3
+        ${highlighted ? 'border-blue-500 dark:border-blue-400' : 'border-gray-300 dark:border-gray-600'}
+        ${merging ? 'animate-pulse' : ''}
+        bg-white dark:bg-gray-800
+      `}>
+        <div className="text-xs sm:text-sm mb-2 flex justify-between items-center">
+          <span className="font-medium dark:text-gray-200">{level}</span>
+          <span className="text-gray-500 dark:text-gray-400">{channels}ch</span>
         </div>
-        {/* Grid representation */}
-        <div className="absolute inset-4 grid"
-             style={{
-               gridTemplateColumns: `repeat(${size}, 1fr)`,
-               gridTemplateRows: `repeat(${size}, 1fr)`,
-               opacity: 0.2
-             }}>
+        <div 
+          className="relative aspect-square"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: `repeat(${size}, 1fr)`,
+            gridTemplateRows: `repeat(${size}, 1fr)`,
+            opacity: 0.2
+          }}>
           {Array(size * size).fill(null).map((_, i) => (
             <div key={i} className="border border-gray-400 dark:border-gray-600" />
           ))}
@@ -47,18 +50,18 @@ const FPNDetailedVisualization = () => {
 
   // Detailed merge view component
   const DetailedMergeView = ({ type, level }) => (
-    <div className="fixed inset-0 bg-black/50 dark:bg-black/70 flex items-center justify-center z-50">
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-4xl w-full mx-4">
-        <h3 className="text-xl font-bold mb-4 dark:text-gray-200">
+    <div className="fixed inset-0 bg-black/50 dark:bg-black/70 flex items-center justify-center z-50 p-4">
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+        <h3 className="text-lg sm:text-xl font-bold mb-4 dark:text-gray-200">
           {type === 'fpn' ? 'FPN (Top-down) ' : 'PAN (Bottom-up) '}
           Merge Detail for {level}
         </h3>
         
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {/* Input Feature Maps */}
           <div className="space-y-4">
             <div className="font-bold text-center dark:text-gray-200">Input Features</div>
-            <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
+            <div className="bg-blue-50 dark:bg-blue-900/30 p-3 sm:p-4 rounded-lg border border-blue-200 dark:border-blue-800">
               <div className="text-sm text-gray-700 dark:text-gray-300">
                 <div className="font-semibold">Higher Level Features:</div>
                 - Semantic information
@@ -66,8 +69,9 @@ const FPNDetailedVisualization = () => {
                 - Deeper features
               </div>
             </div>
-            <ArrowDown className="mx-auto text-blue-500 dark:text-blue-400" />
-            <div className="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg border border-green-200 dark:border-green-800">
+            <ArrowDown className="mx-auto text-blue-500 dark:text-blue-400 hidden md:block" />
+            <ArrowRight className="mx-auto text-blue-500 dark:text-blue-400 md:hidden" />
+            <div className="bg-green-50 dark:bg-green-900/30 p-3 sm:p-4 rounded-lg border border-green-200 dark:border-green-800">
               <div className="text-sm text-gray-700 dark:text-gray-300">
                 <div className="font-semibold">Current Level Features:</div>
                 - Spatial details
@@ -79,9 +83,9 @@ const FPNDetailedVisualization = () => {
 
           {/* Merge Process */}
           <div className="space-y-4">
-            <div className="font-bold text-center">Merge Operations</div>
-            <div className="bg-purple-50 p-4 rounded-lg h-full">
-              <div className="text-sm space-y-2">
+            <div className="font-bold text-center dark:text-gray-200">Merge Operations</div>
+            <div className="bg-purple-50 dark:bg-purple-900/30 p-3 sm:p-4 rounded-lg h-full border border-purple-200 dark:border-purple-800">
+              <div className="text-sm space-y-2 text-gray-700 dark:text-gray-300">
                 <div className="font-semibold">1. Resolution Matching:</div>
                 - Upsample higher level (FPN)
                 - Or downsample lower level (PAN)
@@ -99,9 +103,9 @@ const FPNDetailedVisualization = () => {
 
           {/* Output Features */}
           <div className="space-y-4">
-            <div className="font-bold text-center">Output Features</div>
-            <div className="bg-yellow-50 p-4 rounded-lg h-full">
-              <div className="text-sm space-y-2">
+            <div className="font-bold text-center dark:text-gray-200">Output Features</div>
+            <div className="bg-yellow-50 dark:bg-yellow-900/30 p-3 sm:p-4 rounded-lg h-full border border-yellow-200 dark:border-yellow-800">
+              <div className="text-sm space-y-2 text-gray-700 dark:text-gray-300">
                 <div className="font-semibold">Enhanced Features:</div>
                 - Rich semantic information
                 - Preserved spatial details
@@ -117,7 +121,7 @@ const FPNDetailedVisualization = () => {
         </div>
 
         <button 
-          className="mt-6 px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-700"
+          className="mt-6 px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-700 w-full sm:w-auto"
           onClick={() => setShowDetail(null)}
         >
           Close Detail View
@@ -127,12 +131,12 @@ const FPNDetailedVisualization = () => {
   );
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 md:px-6 space-y-6 md:space-y-8">
+    <div className="w-full max-w-6xl mx-auto p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 md:space-y-8">
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold">YOLOv5 Feature Pyramid Network - Detailed Merge Process</h2>
+        <h2 className="text-xl sm:text-2xl font-bold dark:text-gray-200">YOLOv5 Feature Pyramid Network - Detailed Merge Process</h2>
         
         {/* Controls */}
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-2 sm:gap-4">
           <button
             onClick={() => setActiveStep(1)}
             className={`px-4 py-2 rounded ${activeStep >= 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
@@ -154,7 +158,7 @@ const FPNDetailedVisualization = () => {
         </div>
 
         {/* Main visualization */}
-        <div className="grid grid-cols-7 gap-4 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-5 lg:grid-cols-7 gap-4 items-start">
           {/* Backbone Features */}
           <div className="space-y-4 col-span-2">
             <div className="text-center font-bold">Backbone Features</div>
@@ -279,7 +283,7 @@ const FPNDetailedVisualization = () => {
         </div>
 
         {/* Technical Details */}
-        <div className="bg-gray-50 p-4 rounded-lg mt-8">
+        <div className="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-lg mt-6 sm:mt-8">
           <div className="font-bold mb-2">Feature Pyramid Network Details:</div>
           <div className="space-y-2 text-sm">
             {activeStep >= 1 && (

@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Info, ChevronDown, ChevronRight, Layers, Box, Activity, Settings } from 'lucide-react';
 
 const SizeBox = ({ title, data }) => (
-  <div className="bg-white/90 dark:bg-gray-800/90 rounded-lg p-3 border border-gray-200 dark:border-gray-700 shadow-sm">
-    <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">{title}</h4>
-    <div className="space-y-1 text-sm">
+  <div className="bg-white/90 dark:bg-gray-800/90 rounded-lg p-2 sm:p-3 border border-gray-200 dark:border-gray-700 shadow-sm">
+    <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1 sm:mb-2 text-sm sm:text-base">{title}</h4>
+    <div className="space-y-1 text-xs sm:text-sm">
       {data.map(({ label, value }) => (
         <div key={label} className="flex justify-between">
           <span className="text-gray-600 dark:text-gray-400">{label}</span>
-          <span className="font-medium font-mono dark:text-gray-300">{value}</span>
+          <span className="font-medium font-mono dark:text-gray-300 ml-2">{value}</span>
         </div>
       ))}
     </div>
@@ -27,19 +27,18 @@ const ArchitectureBlock = ({ title, type, dimensions, specs, children }) => {
   };
 
   return (
-    <div className={`${bgColors[type]} rounded-lg p-4 border-2 border-gray-200 dark:border-gray-700`}>
-      <div className="flex justify-between items-start mb-4">
-        <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">{title}</h3>
+    <div className={`${bgColors[type]} rounded-lg p-3 sm:p-4 border-2 border-gray-200 dark:border-gray-700`}>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 sm:mb-4 space-y-2 sm:space-y-0">
+        <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200">{title}</h3>
         {specs && (
           <div className="relative">
             <Settings
               className="w-5 h-5 text-gray-600 dark:text-gray-400 cursor-pointer hover:text-gray-800 dark:hover:text-gray-200"
-              onMouseEnter={() => setShowSpecs(true)}
-              onMouseLeave={() => setShowSpecs(false)}
+              onClick={() => setShowSpecs(!showSpecs)}
             />
             {showSpecs && (
               <div className="absolute right-0 z-10 w-64 mt-2 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <div className="text-sm space-y-1">
+                <div className="text-xs sm:text-sm space-y-1">
                   {Object.entries(specs).map(([key, value]) => (
                     <div key={key} className="flex justify-between">
                       <span className="text-gray-600 dark:text-gray-400">{key}:</span>
@@ -53,15 +52,15 @@ const ArchitectureBlock = ({ title, type, dimensions, specs, children }) => {
         )}
       </div>
       {dimensions && (
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-3 mb-4 border border-gray-200 dark:border-gray-700">
-          <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-2 sm:p-3 mb-3 sm:mb-4 border border-gray-200 dark:border-gray-700">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
             <div>
               <span className="font-medium text-blue-600 dark:text-blue-400">Input:</span>
-              <div className="text-gray-700 dark:text-gray-300 mt-1 font-mono">{dimensions.input}</div>
+              <div className="text-gray-700 dark:text-gray-300 mt-1 font-mono break-all">{dimensions.input}</div>
             </div>
             <div>
               <span className="font-medium text-green-600 dark:text-green-400">Output:</span>
-              <div className="text-gray-700 dark:text-gray-300 mt-1 font-mono whitespace-pre-line">{dimensions.output}</div>
+              <div className="text-gray-700 dark:text-gray-300 mt-1 font-mono whitespace-pre-line break-all">{dimensions.output}</div>
             </div>
           </div>
         </div>
@@ -148,13 +147,13 @@ const YOLOv5m = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-gray-100 dark:bg-gray-900">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">YOLOv5m Architecture</h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">Medium-scale Model with Enhanced Feature Capacity</p>
+    <div className="w-full max-w-6xl mx-auto p-3 sm:p-4 md:p-6 bg-gray-100 dark:bg-gray-900">
+      <div className="text-center mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">YOLOv5m Architecture</h1>
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-2">Medium-scale Model with Enhanced Feature Capacity</p>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {/* Input Processing */}
         <ArchitectureBlock
           title="Input Processing"
@@ -170,7 +169,7 @@ const YOLOv5m = () => {
             "Type": "float32"
           }}
         >
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <SizeBox title="Input Specifications" data={sizeBoxData.inputSpecs} />
             <SizeBox title="Preprocessing" data={sizeBoxData.preprocessing} />
           </div>
@@ -191,7 +190,7 @@ const YOLOv5m = () => {
             "Memory": "62MB"
           }}
         >
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             <SizeBox title="P3 Features" data={sizeBoxData.p3Features} />
             <SizeBox title="P4 Features" data={sizeBoxData.p4Features} />
             <SizeBox title="P5 Features" data={sizeBoxData.p5Features} />
@@ -264,30 +263,30 @@ const YOLOv5m = () => {
       </div>
 
       {/* Model Summary */}
-      <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg p-6 border-2 border-gray-200 dark:border-gray-700">
-        <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">Model Summary</h3>
-        <div className="grid grid-cols-3 gap-6">
-          <div>
+      <div className="mt-6 sm:mt-8 bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 border-2 border-gray-200 dark:border-gray-700">
+        <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">Model Summary</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+          <div className="space-y-3">
             <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Performance</h4>
-            <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+            <ul className="space-y-1 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               <li>• mAP@0.5: 0.451 (COCO)</li>
               <li>• Inference: ~8.2ms (V100)</li>
               <li>• FPS: ~122 (batch=1)</li>
               <li>• Size: 42.5MB</li>
             </ul>
           </div>
-          <div>
+          <div className="space-y-3">
             <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Architecture</h4>
-            <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+            <ul className="space-y-1 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               <li>• Parameters: 21.2M</li>
               <li>• GFLOPs: 49.0</li>
               <li>• Memory: ~240MB</li>
               <li>• Layers: 294</li>
             </ul>
           </div>
-          <div>
+          <div className="space-y-3">
             <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Features</h4>
-            <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+            <ul className="space-y-1 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               <li>• CSP Bottlenecks</li>
               <li>• PANet Feature Fusion</li>
               <li>• Multi-scale Detection</li>
