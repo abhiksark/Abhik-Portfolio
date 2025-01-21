@@ -1,0 +1,64 @@
+import { PaperLayout } from '@/components/PaperLayout'
+
+export const meta = {
+  author: 'Abhik Sarkar',
+  date: '2024-01-21',
+  title: 'An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale',
+  year: '2021',
+  authors: ['Alexey Dosovitskiy', 'Lucas Beyer', 'Alexander Kolesnikov', 'Dirk Weissenborn', 'Xiaohua Zhai', 
+            'Thomas Unterthiner', 'Mostafa Dehghani', 'Matthias Minderer', 'Georg Heigold', 'Sylvain Gelly', 
+            'Jakob Uszkoreit', 'Neil Houlsby'],
+  tags: ['Transformers', 'Computer Vision', 'Image Recognition', 'Deep Learning'],
+  description: 'Introducing Vision Transformer (ViT), a pure transformer architecture for image recognition that achieves state-of-the-art results.',
+  paper_url: 'https://arxiv.org/abs/2010.11929',
+  year_published: 2021
+}
+
+export default (props) => <PaperLayout meta={meta} {...props} />
+
+
+### Paper Overview
+
+This paper introduces the **Vision Transformer (ViT)**, a groundbreaking architecture that applies the Transformer model, renowned for its success in natural language processing, to the domain of image recognition.  Instead of relying on the conventional convolutional neural networks (CNNs), ViT treats an image as a sequence of patches, analogous to words in a sentence. It leverages the self-attention mechanism of Transformers to capture global relationships between these patches, enabling the model to learn complex visual representations. This approach challenges the long-held dominance of CNNs in computer vision and achieves remarkable results on image classification benchmarks.
+
+### Key Contributions
+
+1. **Vision Transformer (ViT) Architecture:**
+   - The paper proposes a pure Transformer architecture for image recognition, marking a significant departure from CNN-based approaches.
+   - **Image Patchification:** Images are divided into fixed-size patches (e.g., 16x16 pixels). Each patch is treated as a single "word" in the input sequence.
+   - **Linear Embedding:**  Each image patch is flattened and then linearly embedded into a vector representation. This process converts the raw pixel data into a format suitable for the Transformer encoder.
+   - **Positional Embeddings:** Positional embeddings are added to the patch embeddings to preserve spatial information. This is crucial because the Transformer encoder itself does not inherently capture the spatial arrangement of the patches.
+   - **Transformer Encoder:** The sequence of patch embeddings, along with a special classification token, is fed into a standard Transformer encoder. This encoder consists of multiple layers of self-attention and feed-forward networks, enabling the model to learn complex relationships between the patches.
+   - **Classification:** The final representation of the classification token is used for image classification.
+
+   ```python
+   import torch
+   from torch import nn
+
+   class PatchEmbedding(nn.Module):
+       def __init__(self, img_size=224, patch_size=16, in_chans=3, embed_dim=768):
+           super().__init__()
+           self.img_size = img_size
+           self.patch_size = patch_size
+           self.num_patches = (img_size // patch_size) ** 2 
+           self.proj = nn.Conv2d(in_chans, embed_dim, kernel_size=patch_size, stride=patch_size)
+
+       def forward(self, x):
+           x = self.proj(x)  # (B, embed_dim, H/16, W/16)
+           x = x.flatten(2).transpose(1, 2)  # (B, num_patches, embed_dim)
+           return x
+   ```
+
+2. **Scaling Up ViT:**
+   - The paper demonstrates the crucial role of scaling in achieving competitive performance with ViT.
+        Large Datasets and Compute: Training ViT on massive datasets (like JFT-300M, with 300 million images) and with extensive computational resources allows it to surpass or match the accuracy of state-of-the-art CNNs.
+        Scaling Benefits: This finding highlights the scalability of Transformers in computer vision. As the model size and dataset size increase, ViT's performance continues to improve, suggesting its potential to excel in complex visual tasks.
+
+3. **Comparison with CNNs:**
+   - The paper provides a detailed comparison between ViT and traditional CNNs, analyzing their respective strengths and weaknesses.
+        Inductive Biases: CNNs possess strong inductive biases for image processing, such as locality (processing neighboring pixels together) and translation equivariance (recognizing objects regardless of their position). ViT, on the other hand, has a more flexible global receptive field due to self-attention, allowing it to capture long-range dependencies in images.
+        Data Efficiency: CNNs are generally more data-efficient, requiring less training data to achieve good performance. However, ViT demonstrates superior performance when trained on sufficiently large datasets, indicating that its global representation capacity is beneficial for complex image recognition tasks.
+
+### Conclusion
+
+This paper represents a pivotal advancement in the application of Transformers to computer vision. The Vision Transformer (ViT) architecture challenges the long-standing dominance of CNNs in image recognition, achieving state-of-the-art results when scaled appropriately. This work opens up exciting new avenues for research in computer vision, demonstrating the potential of Transformers to learn powerful and versatile image representations and solve a wide range of visual tasks.
