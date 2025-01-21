@@ -1,0 +1,45 @@
+import { PaperLayout } from '@/components/PaperLayout'
+
+export const meta = {
+  author: 'Abhik Sarkar',
+  date: '2024-01-21', 
+  title: 'Making Deep Learning Go Brrrr From First Principles',
+  year: '2022',
+  authors: ['Horace He'],
+  tags: ['Deep Learning', 'Optimization', 'Performance', 'Compute', 'Memory', 'Overhead', 'Fusion'],
+  description: 'An in-depth exploration of deep learning system performance optimization, focusing on identifying and addressing bottlenecks.',
+  paper_url: 'https://horace.io/brrr_intro.html',
+  year_published: 2022
+}
+
+export default (props) => <PaperLayout meta={meta} {...props} />
+
+### Paper Overview
+
+This article delves into the critical aspects of deep learning system performance optimization, providing a comprehensive understanding of the factors that contribute to slow runtimes and offering practical solutions to address them. Through a clear and engaging analogy of a factory, the author elucidates the different components of a deep learning system and their interplay, making complex concepts accessible to a wider audience. The article emphasizes the importance of identifying bottlenecks by categorizing them as compute-bound, memory-bound, or overhead-bound, and highlights the effectiveness of "fusion" techniques in optimizing memory bandwidth usage.
+
+### Key Contributions
+
+1. **The Factory Analogy:**
+   - The article introduces a compelling analogy of a factory to represent a deep learning system, where:
+     - **Workers:** Represent the computational units (e.g., CPUs, GPUs) performing calculations.
+     - **Warehouse:**  Represents the memory system storing data and intermediate results.
+     - **Transportation:** Represents the data movement between memory and compute units.
+   - This analogy effectively illustrates the interdependence of different components and how bottlenecks in one area can affect the overall system performance.
+
+2. **Identifying Bottlenecks:**
+   - The article emphasizes the importance of accurately identifying the root cause of slow runtimes.
+   - It categorizes potential bottlenecks into three main types:
+     - **Compute-Bound:**  The system is limited by the speed of computations.
+     - **Memory-Bound:** The system is limited by the speed of data transfer between memory and compute units.
+     - **Overhead-Bound:** The system is limited by other factors like kernel launches, data loading, etc.
+   - By correctly identifying the bottleneck, one can apply targeted optimization strategies to address the specific issue.
+
+3. **Fusion for Memory Optimization:**
+   - The article highlights the significance of **fusion** as a powerful technique for optimizing memory bandwidth usage.
+   - Fusion involves combining multiple operations into a single kernel, reducing the need for intermediate data transfers between memory and compute units.
+   - This minimizes memory bandwidth pressure and improves overall system performance.
+
+### Conclusion
+
+This article provides a valuable resource for understanding and addressing performance bottlenecks in deep learning systems. By utilizing the factory analogy, the author effectively explains complex concepts and emphasizes the importance of identifying the root cause of slow runtimes. The article highlights the effectiveness of fusion as a key optimization technique for memory bandwidth usage. Overall, this work offers practical insights and guidance for improving the efficiency of deep learning systems, enabling faster training and inference times.
