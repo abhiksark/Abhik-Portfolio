@@ -7,26 +7,32 @@ import siteMeta from '@/data/siteMeta'
 function Paper({ paper }) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
-      <Card className="md:col-span-3">
-        <Card.Title href={`/papers/${paper.slug}`}>
-          {paper.title}
-        </Card.Title>
-        <Card.Eyebrow decorate>
-          {paper.conference} ({paper.year})
-        </Card.Eyebrow>
-        <div className="mt-2 flex flex-wrap gap-2">
+      <div className="relative z-10 md:col-span-3">
+        <div className="mt-2 flex flex-wrap gap-2 mb-4">
           {paper.tags?.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-100"
+              className="relative inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+                !bg-zinc-100 !text-zinc-800 
+                dark:!bg-zinc-800 dark:!text-zinc-100
+                hover:!bg-zinc-100 dark:hover:!bg-zinc-800
+                z-20"
             >
               {tag}
             </span>
           ))}
         </div>
-        <Card.Description>{paper.description}</Card.Description>
-        <Card.Cta>Read review</Card.Cta>
-      </Card>
+        <Card className="md:col-span-3">
+          <Card.Title href={`/papers/${paper.slug}`}>
+            {paper.title}
+          </Card.Title>
+          <Card.Eyebrow decorate>
+            {paper.conference} ({paper.year})
+          </Card.Eyebrow>
+          <Card.Description>{paper.description}</Card.Description>
+          <Card.Cta>Read review</Card.Cta>
+        </Card>
+      </div>
     </article>
   )
 }
