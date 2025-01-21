@@ -1,0 +1,44 @@
+import { PaperLayout } from '@/components/PaperLayout'
+
+export const meta = {
+  author: 'Abhik Sarkar',
+  date: '2024-01-22',
+  title: 'You Only Look Once: Unified, Real-Time Object Detection',
+  year: '2016',
+  authors: ['Joseph Redmon', 'Santosh Divvala', 'Ross Girshick', 'Ali Farhadi'],
+  tags: ['Object Detection', 'Computer Vision', 'Deep Learning', 'Real-time', 'YOLO'],
+  description: 'Introducing YOLO, a unified, real-time object detection system that frames object detection as a single regression problem.',
+  paper_url: 'https://arxiv.org/abs/1506.02640',
+  year_published: 2016
+}
+
+export default (props) => <PaperLayout meta={meta} {...props} />
+
+### Paper Overview
+
+This paper introduces **YOLO (You Only Look Once)**, a groundbreaking object detection system that revolutionized the field with its unified and real-time capabilities.  Before YOLO, many object detection systems used a complex, multi-stage pipeline, often involving a separate step for region proposal generation and another for object classification within those regions. YOLO, however, takes a completely different approach, framing object detection as a single regression problem. This means it directly predicts bounding boxes and class probabilities from an image in one evaluation, leading to a significantly faster and more streamlined process.
+
+
+### Key Contributions
+
+1. **Unified Detection:**
+   - **Single Network:** YOLO unifies the separate components of traditional object detection pipelines (region proposal, feature extraction, classification) into a single neural network.
+   - **Grid-based Prediction:** The network divides the input image into a grid (e.g., 7x7). Each grid cell is responsible for predicting bounding boxes and class probabilities for objects that fall within that cell.
+   - **Direct Regression:**  Instead of proposing regions and then classifying them, YOLO directly regresses the bounding box coordinates and class probabilities, simplifying the detection process.
+
+2. **Real-time Performance:**
+   - **High Frame Rate:** YOLO achieves real-time performance, processing images at 45 frames per second with impressive accuracy.
+   - **Fast YOLO:** The paper also introduces a faster version called Fast YOLO, which can process images at a remarkable 155 frames per second, making it suitable for applications requiring extremely low latency.
+   - **Real-time Applications:** This speed makes YOLO suitable for applications demanding immediate object detection, such as autonomous driving, robotics, and video surveillance.
+
+3. **End-to-End Training:**
+   - **Unified Loss Function:** YOLO is trained end-to-end using a single loss function that combines bounding box regression loss and classification loss.
+   - **Simplified Training:** This end-to-end training simplifies the learning process and allows the network to optimize all components simultaneously, leading to a more cohesive and effective detection system.
+
+4. **Generalization:**
+   - **Robustness to New Data:** YOLO demonstrates good generalization capabilities, performing well on unseen images and different object categories.
+   - **Transfer Learning:**  The features learned by YOLO can also be transferred to other object detection tasks, showcasing its versatility and ability to adapt to new scenarios.
+
+### Conclusion
+
+This paper presents YOLO, a unified, real-time object detection system that marked a significant advancement in the field. By framing object detection as a single regression problem, YOLO achieves remarkable speed and efficiency while maintaining competitive accuracy. This work has had a profound impact on computer vision, enabling real-time object detection in various applications and inspiring further research in efficient and accurate object detection methods. YOLO's influence can be seen in subsequent object detectors that build upon its core principles to further improve speed and accuracy.
