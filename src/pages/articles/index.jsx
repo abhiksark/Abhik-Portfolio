@@ -94,50 +94,45 @@ function Article({ article, articles, papers }) {
 }
 
 export default function ArticlesIndex({ articles, papers }) {
-  const headline = "I write about things I'm learning and things I'm building."
-  const intro = "All of my long-form thoughts on programming, leadership, infrastructure, and more, collected in chronological order."
+  const title = "Articles & Technical Blog Posts"
+  const description = "Deep dives into machine learning, computer vision, and software engineering. I write about technical concepts, implementation details, and practical insights from my work."
+
+  // Get all unique keywords from articles
+  const allKeywords = [...new Set(articles.flatMap(article => article.keywords || []))]
   
-  // Get all unique tags/keywords from articles
-  const allTags = articles.reduce((tags, article) => {
-    if (article.keywords) {
-      return [...new Set([...tags, ...article.keywords])]
-    }
-    if (article.tags) {
-      return [...new Set([...tags, ...article.tags])]
-    }
-    return tags
-  }, [])
+  // Get all unique topics
+  const topics = allKeywords.slice(0, 5).join(', ')
 
   return (
     <>
       <NextSeo
-        title="Technical Articles by Abhik - Programming, AI, and Software Engineering"
-        description={`${intro} Topics include ${allTags.slice(0,5).join(', ')} and more.`}
+        title="Technical Articles by Abhik - ML & Software Engineering Blog"
+        description={`${description} Covering ${topics} and more.`}
         canonical={`${siteMeta.siteUrl}/articles`}
         openGraph={{
           type: 'website',
           url: `${siteMeta.siteUrl}/articles`,
           title: 'Technical Articles by Abhik',
-          description: intro,
+          description: description,
           images: [
             {
-              url: `https://og.abhik.xyz/api/og?title=Articles&desc=${headline}`,
+              url: `https://og.abhik.xyz/api/og?title=Articles&desc=${encodeURIComponent(description)}`,
               width: 1200,
               height: 600,
               alt: 'Technical Articles by Abhik',
               type: 'image/jpeg',
             }
           ],
-          siteName: 'abhik.xyz',
+          siteName: siteMeta.SITE_NAME,
         }}
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: allTags.join(', ')
+            content: allKeywords.join(', ')
           },
           {
             name: 'author',
-            content: 'Abhik Sarkar'
+            content: siteMeta.author.name
           }
         ]}
       />
@@ -159,18 +154,19 @@ export default function ArticlesIndex({ articles, papers }) {
               }))
             },
             "name": "Technical Articles by Abhik",
-            "description": intro,
+            "description": description,
             "author": {
               "@type": "Person",
-              "name": "Abhik Sarkar"
+              "name": siteMeta.author.name
             }
           })
         }}
       />
       <SimpleLayout
-        title={headline}
-        intro={intro}
+        title={title}
+        intro={description}
       >
+        <h1 className="sr-only">Technical Articles by Abhik - ML & Software Engineering Blog</h1>
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <div className="flex max-w-3xl flex-col space-y-16">
             {articles.map((article) => (
