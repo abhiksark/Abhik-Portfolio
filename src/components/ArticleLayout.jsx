@@ -103,7 +103,7 @@ export function ArticleLayout({
       />
       <Container className="mt-16 lg:mt-32">
         <div className="xl:relative">
-          <div className="mx-auto max-w-2xl">
+          <div className="mx-auto max-w-4xl">
             {previousPathname && (
               <button
                 type="button"
@@ -114,23 +114,49 @@ export function ArticleLayout({
                 <ArrowLeftIcon className="h-4 w-4 stroke-zinc-500 transition group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400" />
               </button>
             )}
-            <article>
-              <header className="flex flex-col">
-                <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+            <article className="relative">
+              <header className="flex flex-col space-y-6 text-center mb-12">
+                <div className="flex items-center justify-center space-x-4">
+                  <time
+                    dateTime={meta.date}
+                    className="flex items-center text-base text-zinc-400 dark:text-zinc-500"
+                  >
+                    <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
+                    <span className="ml-3">{formatDate(meta.date)}</span>
+                  </time>
+                  {meta.readingTime && (
+                    <span className="text-zinc-400 dark:text-zinc-500">
+                      · {meta.readingTime} min read
+                    </span>
+                  )}
+                </div>
+                <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl md:text-6xl">
                   {meta.title}
                 </h1>
-                <time
-                  dateTime={meta.date}
-                  className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
-                >
-                  <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
-                  <span className="ml-3">{formatDate(meta.date)}</span>
-                </time>
+                {meta.description && (
+                  <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
+                    {meta.description}
+                  </p>
+                )}
               </header>
-              <div className="mt-4 text-sm text-zinc-600 dark:text-zinc-400 italic">
+              <div className="mt-4 text-sm text-zinc-600 dark:text-zinc-400 italic text-center mb-8">
                 Note: This article is best viewed on web for optimal reading experience.
               </div>
-              <Prose className="mt-8">{children}</Prose>
+              <Prose className="mt-8 mx-auto prose-lg">
+                {children}
+              </Prose>
+              {meta.keywords && (
+                <div className="mt-16 flex flex-wrap gap-2 border-t border-zinc-100 pt-8 dark:border-zinc-700/40">
+                  {meta.keywords.map((keyword) => (
+                    <span 
+                      key={keyword}
+                      className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
+                    >
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              )}
             </article>
           </div>
         </div>

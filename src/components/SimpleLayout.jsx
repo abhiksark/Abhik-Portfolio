@@ -6,15 +6,23 @@ import Image from 'next/image';
 export function SimpleLayout({ title, intro, children }) {
   return (
     <Container className="mt-16 sm:mt-32">
-      <header className="max-w-2xl">
-        <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-          {title}
-        </h1>
-        <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400">
-          {intro}
-        </p>
-      </header>
-      <div className="mt-16 sm:mt-20">{children}</div>
+      <div className="mx-auto max-w-4xl">
+        <header className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
+          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl md:text-6xl">
+            {title}
+          </h1>
+          <p className="mt-6 text-xl text-zinc-600 dark:text-zinc-400 mx-auto leading-relaxed">
+            {intro}
+          </p>
+        </header>
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-zinc-50 dark:from-zinc-900/30 to-transparent h-32 pointer-events-none" 
+               aria-hidden="true" />
+          <div className="relative">
+            {children}
+          </div>
+        </div>
+      </div>
     </Container>
   )
 }
@@ -22,9 +30,11 @@ export function SimpleLayout({ title, intro, children }) {
 export function NewLayout({ title, children }) {
   return (
     <Container className="flex-row mt-16 sm:mt-16">
-      <h2 className="h3 text-gray-100 font-extrabold mb-0">{title}</h2>
-      <div className="grid gap-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-        {children}
+      <div className="mx-auto max-w-4xl">
+        <h2 className="h3 text-gray-100 font-extrabold mb-6">{title}</h2>
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {children}
+        </div>
       </div>
     </Container>
   );
@@ -33,19 +43,18 @@ export function NewLayout({ title, children }) {
 export function SimpleLayoutNew({ title, children }) {
   return (
     <Container className="mt-16 sm:mt-16">
-      <div className="flex flex-col gap-6 bg-zinc-100  dark:bg-gray-800 p-8 rounded-2xl shadow-md">
-        <header className="max-w-2xl">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            {title}
-          </h2>
-
-        </header>
-        {/* <div className="mt-16 sm:mt-20"> */}
-        <div className="flex flex-col gap-16">
-          {children}
+      <div className="mx-auto max-w-4xl">
+        <div className="flex flex-col gap-6 bg-zinc-100/80 backdrop-blur-sm dark:bg-gray-800/80 p-8 rounded-2xl shadow-lg">
+          <header className="w-full">
+            <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl lg:text-5xl">
+              {title}
+            </h2>
+          </header>
+          <div className="flex flex-col gap-16">
+            {children}
+          </div>
         </div>
       </div>
-      {/* </div> */}
     </Container>
   )
 }
