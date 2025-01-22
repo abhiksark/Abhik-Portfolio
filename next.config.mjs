@@ -3,9 +3,10 @@ import remarkGfm from 'remark-gfm'
 import rehypePrismPlus from 'rehype-prism-plus'
 import remarkCodeTitles from './src/lib/remark-code-title.mjs'
 import rehypePresetMinify from 'rehype-preset-minify'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ['jsx', 'mdx'],
+  pageExtensions: ['js', 'jsx', 'mdx'],
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
@@ -20,6 +21,21 @@ const nextConfig = {
     return 'build-' + Date.now()
   },
   trailingSlash: true,
+  // Ensure proper static generation
+  env: {
+    NEXT_PUBLIC_SITE_URL: 'https://www.abhik.xyz',
+  },
+  poweredByHeader: false,
+  // Add static generation configuration
+  staticPageGenerationTimeout: 180,
+  compiler: {
+    removeConsole: false,
+  },
+  // Configure static generation for SEO
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+  },
 }
 
 const withMDX = nextMDX({
@@ -31,4 +47,7 @@ const withMDX = nextMDX({
   },
 })
 
-export default withMDX(nextConfig)
+export default withMDX({
+  ...nextConfig,
+  pageExtensions: ['js', 'jsx', 'mdx'],
+})

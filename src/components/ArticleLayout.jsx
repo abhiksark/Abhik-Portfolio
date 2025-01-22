@@ -28,104 +28,91 @@ export function ArticleLayout({
 }) {
   let router = useRouter()
   
-  // Wait for router to be ready
-  if (!router.isReady) {
-    return null
+  if (isRssFeed) {
+    return children
   }
 
   // Get the path and ensure it's valid
   const path = router.asPath || ''
   const canonicalUrl = path ? `${siteMeta.siteUrl}${path}` : `${siteMeta.siteUrl}/articles`
-  const ogImageUrl = `https://og.abhik.xyz/api/og?title=${encodeURIComponent(meta.title)}&desc=${encodeURIComponent(meta.description)}`
-
-  if (isRssFeed) {
-    return children
+  
+  // Generate a more detailed OG image URL with additional parameters
+  const ogImageUrl = new URL('https://og.abhik.xyz/api/og')
+  ogImageUrl.searchParams.set('title', encodeURIComponent(meta.title))
+  ogImageUrl.searchParams.set('desc', encodeURIComponent(meta.description))
+  ogImageUrl.searchParams.set('date', encodeURIComponent(new Date(meta.date).toLocaleDateString('en-US', { 
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })))
+  if (meta.keywords?.length > 0) {
+    ogImageUrl.searchParams.set('tags', encodeURIComponent(meta.keywords.slice(0, 3).join(',')))
   }
-
-  // Prepare meta tags with proper escaping
-  const metaTags = {
-    title: `${meta.title} - Abhik`,
-    description: meta.description,
-    ogTitle: meta.title,
-    ogDescription: meta.description,
-    ogUrl: canonicalUrl,
-    ogImage: ogImageUrl,
-    twitterTitle: meta.title,
-    twitterDescription: meta.description,
-    twitterImage: ogImageUrl,
-    keywords: (meta.keywords || []).join(', '),
-    author: meta.author,
-    publishedTime: meta.date
-  }
+  ogImageUrl.searchParams.set('author', encodeURIComponent(meta.author))
+  ogImageUrl.searchParams.set('theme', 'dark')
 
   return (
     <>
       <Head>
-        {/* Basic Meta Tags */}
-        <title>{metaTags.title}</title>
-        <meta name="description" content={metaTags.description} />
-        <meta name="keywords" content={metaTags.keywords} />
-        <meta name="author" content={metaTags.author} />
-        <link rel="canonical" href={metaTags.ogUrl} />
-
+        <title>{`${meta.title} - Abhik`}</title>
+        <meta name="description" content={meta.description} />
+        <meta name="keywords" content={(meta.keywords || []).join(', ')} />
+        <meta name="author" content={meta.author} />
+        <link rel="canonical" href={canonicalUrl} />
+        
         {/* OpenGraph Meta Tags */}
-        <meta property="og:title" content={metaTags.ogTitle} />
-        <meta property="og:description" content={metaTags.ogDescription} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={metaTags.ogUrl} />
-        <meta property="og:image" content={metaTags.ogImage} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={ogImageUrl.toString()} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="600" />
         <meta property="og:site_name" content="abhik.xyz" />
-        <meta property="article:published_time" content={metaTags.publishedTime} />
-        <meta property="article:author" content={metaTags.author} />
-        <meta property="article:tag" content={metaTags.keywords} />
-
+        <meta property="article:published_time" content={new Date(meta.date).toISOString()} />
+        <meta property="article:author" content={meta.author} />
+        <meta property="article:tag" content={(meta.keywords || []).join(', ')} />
+        
         {/* Twitter Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@abhiksark" />
         <meta name="twitter:creator" content="@abhiksark" />
-        <meta name="twitter:title" content={metaTags.twitterTitle} />
-        <meta name="twitter:description" content={metaTags.twitterDescription} />
-        <meta name="twitter:image" content={metaTags.twitterImage} />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content={ogImageUrl.toString()} />
       </Head>
 
       {/* Keep NextSeo for client-side SEO */}
       <NextSeo
-        title={metaTags.title}
-        description={metaTags.description}
-        canonical={metaTags.ogUrl}
+        title={`${meta.title} - Abhik`}
+        description={meta.description}
+        canonical={canonicalUrl}
         openGraph={{
           type: 'article',
-          url: metaTags.ogUrl,
-          title: metaTags.ogTitle,
-          description: metaTags.ogDescription,
-          article: {
-            publishedTime: metaTags.publishedTime,
-            authors: [metaTags.author],
-            tags: meta.keywords || [],
-          },
+          url: canonicalUrl,
+          title: meta.title,
+          description: meta.description,
           images: [
             {
-              url: metaTags.ogImage,
+              url: ogImageUrl.toString(),
               width: 1200,
               height: 600,
-              alt: metaTags.ogTitle,
+              alt: meta.title,
               type: 'image/jpeg',
             }
           ],
+          article: {
+            publishedTime: new Date(meta.date).toISOString(),
+            authors: [meta.author],
+            tags: meta.keywords || [],
+          },
           siteName: 'abhik.xyz',
         }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: metaTags.keywords
-          },
-          {
-            name: 'author',
-            content: metaTags.author
-          }
-        ]}
+        twitter={{
+          handle: '@abhiksark',
+          site: '@abhiksark',
+          cardType: 'summary_large_image',
+        }}
       />
       <script
         type="application/ld+json"
@@ -135,18 +122,26 @@ export function ArticleLayout({
             "@type": "BlogPosting",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": metaTags.ogUrl
+              "@id": canonicalUrl
             },
-            "headline": metaTags.ogTitle,
-            "description": metaTags.ogDescription,
+            "headline": meta.title,
+            "description": meta.description,
             "author": {
               "@type": "Person",
-              "name": metaTags.author
+              "name": meta.author
             },
-            "datePublished": metaTags.publishedTime,
-            "dateModified": metaTags.publishedTime,
+            "datePublished": new Date(meta.date).toISOString(),
+            "dateModified": new Date(meta.date).toISOString(),
+            "image": ogImageUrl.toString(),
             "keywords": meta.keywords || [],
-            "image": metaTags.ogImage
+            "publisher": {
+              "@type": "Organization",
+              "name": "abhik.xyz",
+              "logo": {
+                "@type": "ImageObject",
+                "url": `${siteMeta.siteUrl}/logo.png`
+              }
+            }
           })
         }}
       />
