@@ -16,6 +16,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  generateBuildId: async () => {
+    return 'build-' + Date.now()
+  },
+  trailingSlash: true,
 }
 
 const withMDX = nextMDX({

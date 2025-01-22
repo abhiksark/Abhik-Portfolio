@@ -45,6 +45,8 @@ export function ArticleLayout({
   return (
     <>
       <Head>
+        <title>{`${meta.title} - Abhik`}</title>
+        <meta name="description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:type" content="article" />
@@ -55,15 +57,14 @@ export function ArticleLayout({
         <meta property="og:site_name" content="abhik.xyz" />
         <meta property="article:published_time" content={meta.date} />
         <meta property="article:author" content={meta.author} />
-        {meta.keywords && (
-          <meta property="article:tag" content={meta.keywords.join(', ')} />
-        )}
+        <meta property="article:tag" content={(meta.keywords || []).join(', ')} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@abhiksark" />
         <meta name="twitter:creator" content="@abhiksark" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={ogImageUrl} />
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
       <NextSeo
         title={`${meta.title} - Abhik`}
@@ -77,7 +78,7 @@ export function ArticleLayout({
           article: {
             publishedTime: meta.date,
             authors: [meta.author],
-            tags: meta.keywords || meta.tags || [],
+            tags: meta.keywords || [],
           },
           images: [
             {
@@ -93,7 +94,7 @@ export function ArticleLayout({
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: (meta.keywords || meta.tags || []).join(', ')
+            content: (meta.keywords || []).join(', ')
           },
           {
             name: 'author',
