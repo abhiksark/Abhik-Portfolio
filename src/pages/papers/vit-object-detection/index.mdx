@@ -1,4 +1,5 @@
 import { PaperLayout } from '@/components/PaperLayout'
+import ViTVisualization from '@/components/visualizations/vit-det/ViTVisualization'
 
 export const meta = {
   author: 'Abhik Sarkar',
@@ -15,9 +16,19 @@ export const meta = {
 export default (props) => <PaperLayout meta={meta} {...props} />
 
 
+
 ### Paper Overview
 
 This paper delves into the effectiveness of **plain Vision Transformers (ViT)** as backbones for object detection tasks. While ViT has shown promising results in image classification, its direct application to object detection presents challenges due to the need for fine-grained spatial information and multi-scale feature representation. The authors systematically investigate these challenges and propose modifications to the plain ViT architecture to enhance its performance in object detection.
+
+
+### Interactive Visualization
+
+Below is an interactive visualization that demonstrates how Vision Transformers process images for object detection:
+
+<ViTVisualization />
+
+
 
 ### Key Contributions
 
