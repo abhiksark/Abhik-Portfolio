@@ -127,6 +127,9 @@ export function ArticleLayout({
                   <span className="ml-3">{formatDate(meta.date)}</span>
                 </time>
               </header>
+              <div className="mt-4 text-sm text-zinc-600 dark:text-zinc-400 italic">
+                Note: This article is best viewed on web for optimal reading experience.
+              </div>
               <Prose className="mt-8">{children}</Prose>
             </article>
           </div>

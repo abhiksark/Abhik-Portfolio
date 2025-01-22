@@ -2,63 +2,10 @@ import { NextSeo } from 'next-seo';
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { getAllPapers } from '@/lib/getAllPapers'
-import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
 import siteMeta from '@/data/siteMeta'
 
-function RelatedContent({ currentSlug, tags, articles, papers }) {
-  // Filter related content based on matching tags
-  const relatedPapers = papers
-    .filter(paper => paper.slug !== currentSlug && 
-      paper.tags?.some(t => tags.includes(t)))
-    .slice(0, 3)
-  
-  const relatedArticles = articles
-    .filter(article => article.keywords?.some(k => tags.includes(k)))
-    .slice(0, 3)
-
-  if (relatedPapers.length === 0 && relatedArticles.length === 0) return null
-
-  return (
-    <div className="mt-8">
-      {relatedPapers.length > 0 && (
-        <div className="mb-6">
-          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-            Related Papers
-          </h3>
-          <ul className="mt-3 grid grid-cols-1 gap-4">
-            {relatedPapers.map((paper) => (
-              <li key={paper.slug}>
-                <Card.Title href={`/papers/${paper.slug}`} className="text-base">
-                  {paper.title}
-                </Card.Title>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {relatedArticles.length > 0 && (
-        <div>
-          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-            Related Articles
-          </h3>
-          <ul className="mt-3 grid grid-cols-1 gap-4">
-            {relatedArticles.map((article) => (
-              <li key={article.slug}>
-                <Card.Title href={`/articles/${article.slug}`} className="text-base">
-                  {article.title}
-                </Card.Title>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  )
-}
-
-function Paper({ paper, papers, articles }) {
+function Paper({ paper }) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
@@ -75,12 +22,6 @@ function Paper({ paper, papers, articles }) {
         </Card.Eyebrow>
         <Card.Description>{paper.description}</Card.Description>
         <Card.Cta>Read review</Card.Cta>
-        <RelatedContent 
-          currentSlug={paper.slug}
-          tags={paper.tags || []}
-          papers={papers}
-          articles={articles}
-        />
       </Card>
       <Card.Eyebrow
         as="time"
@@ -93,7 +34,7 @@ function Paper({ paper, papers, articles }) {
   )
 }
 
-export default function Papers({ papers, articles }) {
+export default function Papers({ papers }) {
   const title = "Paper Reviews and Analysis"
   const description = "In-depth reviews of influential papers in machine learning, computer vision, and deep learning. I break down complex research into digestible insights and share my perspective on their practical applications."
   
@@ -189,7 +130,7 @@ export default function Papers({ papers, articles }) {
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <div className="flex max-w-3xl flex-col space-y-16">
             {papers.map((paper) => (
-              <Paper key={paper.slug} paper={paper} papers={papers} articles={articles} />
+              <Paper key={paper.slug} paper={paper} />
             ))}
           </div>
         </div>
@@ -200,12 +141,10 @@ export default function Papers({ papers, articles }) {
 
 export async function getStaticProps() {
   const papers = await getAllPapers()
-  const articles = await getAllArticles()
 
   return {
     props: {
       papers,
-      articles,
     },
   }
 }
