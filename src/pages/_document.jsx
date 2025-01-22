@@ -51,6 +51,12 @@ export default function Document() {
           href={`${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.json`}
         />
         <link rel="me" href="https://www.abhik.xyz" />
+        {/* Default OpenGraph tags that will be overridden by page-specific ones */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="abhik.xyz" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@abhiksark" />
+        <meta name="twitter:creator" content="@abhiksark" />
       </Head>
       <body className="flex h-full flex-col bg-zinc-50 dark:bg-black">
         <Main />

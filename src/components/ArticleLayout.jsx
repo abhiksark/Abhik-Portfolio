@@ -42,50 +42,75 @@ export function ArticleLayout({
     return children
   }
 
+  // Prepare meta tags with proper escaping
+  const metaTags = {
+    title: `${meta.title} - Abhik`,
+    description: meta.description,
+    ogTitle: meta.title,
+    ogDescription: meta.description,
+    ogUrl: canonicalUrl,
+    ogImage: ogImageUrl,
+    twitterTitle: meta.title,
+    twitterDescription: meta.description,
+    twitterImage: ogImageUrl,
+    keywords: (meta.keywords || []).join(', '),
+    author: meta.author,
+    publishedTime: meta.date
+  }
+
   return (
     <>
       <Head>
-        <title>{`${meta.title} - Abhik`}</title>
-        <meta name="description" content={meta.description} />
-        <meta property="og:title" content={meta.title} />
-        <meta property="og:description" content={meta.description} />
+        {/* Basic Meta Tags */}
+        <title>{metaTags.title}</title>
+        <meta name="description" content={metaTags.description} />
+        <meta name="keywords" content={metaTags.keywords} />
+        <meta name="author" content={metaTags.author} />
+        <link rel="canonical" href={metaTags.ogUrl} />
+
+        {/* OpenGraph Meta Tags */}
+        <meta property="og:title" content={metaTags.ogTitle} />
+        <meta property="og:description" content={metaTags.ogDescription} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:url" content={metaTags.ogUrl} />
+        <meta property="og:image" content={metaTags.ogImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="600" />
         <meta property="og:site_name" content="abhik.xyz" />
-        <meta property="article:published_time" content={meta.date} />
-        <meta property="article:author" content={meta.author} />
-        <meta property="article:tag" content={(meta.keywords || []).join(', ')} />
+        <meta property="article:published_time" content={metaTags.publishedTime} />
+        <meta property="article:author" content={metaTags.author} />
+        <meta property="article:tag" content={metaTags.keywords} />
+
+        {/* Twitter Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@abhiksark" />
         <meta name="twitter:creator" content="@abhiksark" />
-        <meta name="twitter:title" content={meta.title} />
-        <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={ogImageUrl} />
-        <link rel="canonical" href={canonicalUrl} />
+        <meta name="twitter:title" content={metaTags.twitterTitle} />
+        <meta name="twitter:description" content={metaTags.twitterDescription} />
+        <meta name="twitter:image" content={metaTags.twitterImage} />
       </Head>
+
+      {/* Keep NextSeo for client-side SEO */}
       <NextSeo
-        title={`${meta.title} - Abhik`}
-        description={meta.description}
-        canonical={canonicalUrl}
+        title={metaTags.title}
+        description={metaTags.description}
+        canonical={metaTags.ogUrl}
         openGraph={{
           type: 'article',
-          url: canonicalUrl,
-          title: meta.title,
-          description: meta.description,
+          url: metaTags.ogUrl,
+          title: metaTags.ogTitle,
+          description: metaTags.ogDescription,
           article: {
-            publishedTime: meta.date,
-            authors: [meta.author],
+            publishedTime: metaTags.publishedTime,
+            authors: [metaTags.author],
             tags: meta.keywords || [],
           },
           images: [
             {
-              url: ogImageUrl,
+              url: metaTags.ogImage,
               width: 1200,
               height: 600,
-              alt: meta.title,
+              alt: metaTags.ogTitle,
               type: 'image/jpeg',
             }
           ],
@@ -94,11 +119,11 @@ export function ArticleLayout({
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: (meta.keywords || []).join(', ')
+            content: metaTags.keywords
           },
           {
             name: 'author',
-            content: meta.author
+            content: metaTags.author
           }
         ]}
       />
@@ -110,18 +135,18 @@ export function ArticleLayout({
             "@type": "BlogPosting",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": canonicalUrl
+              "@id": metaTags.ogUrl
             },
-            "headline": meta.title,
-            "description": meta.description,
+            "headline": metaTags.ogTitle,
+            "description": metaTags.ogDescription,
             "author": {
               "@type": "Person",
-              "name": meta.author
+              "name": metaTags.author
             },
-            "datePublished": meta.date,
-            "dateModified": meta.date,
-            "keywords": meta.keywords || meta.tags || [],
-            "image": ogImageUrl
+            "datePublished": metaTags.publishedTime,
+            "dateModified": metaTags.publishedTime,
+            "keywords": meta.keywords || [],
+            "image": metaTags.ogImage
           })
         }}
       />
