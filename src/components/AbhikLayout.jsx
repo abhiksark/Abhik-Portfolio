@@ -48,7 +48,7 @@ export function AbhikLayout({
             type: 'image/jpeg',
           }
         ],
-        siteName: 'abhik.xyz',
+        siteName: 'www.abhik.xyz',
       }}
     />
       <Container className="mt-16 lg:mt-32">

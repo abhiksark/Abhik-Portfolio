@@ -58,7 +58,7 @@ export default function Document() {
         
         {/* Default OpenGraph tags */}
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="abhik.xyz" />
+        <meta property="og:site_name" content="www.abhik.xyz" />
         <meta property="og:locale" content="en_US" />
         
         {/* Default Twitter tags */}

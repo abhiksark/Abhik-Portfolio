@@ -78,7 +78,7 @@ export function PaperLayout({ children, meta, previousPathname }) {
               type: 'image/jpeg',
             }
           ],
-          siteName: 'abhik.xyz',
+          siteName: 'www.abhik.xyz',
         }}
         additionalMetaTags={[
           {

@@ -61,7 +61,7 @@ export default function Uses() {
             type: 'image/jpeg',
           }
         ],
-        siteName: 'abhik.xyz',
+        siteName: 'www.abhik.xyz',
       }}
     />
     

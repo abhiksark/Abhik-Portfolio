@@ -68,7 +68,7 @@ export function ArticleLayout({
         <meta property="og:image" content={ogImageUrl.toString()} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="600" />
-        <meta property="og:site_name" content="abhik.xyz" />
+        <meta property="og:site_name" content="www.abhik.xyz" />
         <meta property="article:published_time" content={new Date(meta.date).toISOString()} />
         <meta property="article:author" content={meta.author} />
         <meta property="article:tag" content={(meta.keywords || []).join(', ')} />
@@ -106,7 +106,7 @@ export function ArticleLayout({
             authors: [meta.author],
             tags: meta.keywords || [],
           },
-          siteName: 'abhik.xyz',
+          siteName: 'www.abhik.xyz',
         }}
         twitter={{
           handle: '@abhiksark',
