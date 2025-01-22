@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import siteMeta from '@/data/siteMeta'
 
-
 function ArrowLeftIcon(props) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
@@ -136,7 +135,7 @@ export function PaperLayout({ children, meta, previousPathname }) {
 
                   {/* Tags */}
                   {meta.tags && meta.tags.length > 0 && (
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 relative z-20">
                       <span className="text-sm text-zinc-500 dark:text-zinc-400 font-medium flex items-center">
                         <span className="w-3.5 h-3.5 mr-2">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5">
@@ -151,10 +150,8 @@ export function PaperLayout({ children, meta, previousPathname }) {
                           <span
                             key={tag}
                             className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium 
-                              bg-zinc-100 text-zinc-800 
-                              dark:bg-zinc-800/80 dark:text-zinc-200
-                              hover:bg-zinc-200 dark:hover:bg-zinc-700/80
-                              transition-colors duration-150"
+                              bg-zinc-200/80 text-zinc-900
+                              dark:bg-zinc-700/80 dark:text-zinc-100"
                           >
                             {tag}
                           </span>
@@ -228,6 +225,9 @@ export function PaperLayout({ children, meta, previousPathname }) {
               </header>
 
               <div className="mt-12 prose prose-zinc dark:prose-invert prose-lg prose-headings:font-semibold prose-a:text-teal-500 hover:prose-a:text-teal-600">
+                <p className="text-sm italic text-zinc-600 dark:text-zinc-400 !mt-0 !mb-8">
+                  Note: These paper reviews are best viewed on web for optimal reading experience.
+                </p>
                 {children}
               </div>
             </article>

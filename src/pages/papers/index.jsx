@@ -12,14 +12,20 @@ function Paper({ paper }) {
         <Card.Title href={`/papers/${paper.slug}`}>
           {paper.title}
         </Card.Title>
-        <Card.Eyebrow
-          as="time"
-          dateTime={paper.date}
-          className="md:hidden"
-          decorate
-        >
-          {formatDate(paper.date)}
-        </Card.Eyebrow>
+        {paper.tags && paper.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-2 mb-3 relative z-20">
+            {paper.tags.map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium 
+                  bg-zinc-200/80 text-zinc-900
+                  dark:bg-zinc-700/80 dark:text-zinc-100"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
         <Card.Description>{paper.description}</Card.Description>
         <Card.Cta>Read review</Card.Cta>
       </Card>
@@ -129,6 +135,9 @@ export default function Papers({ papers }) {
       >
         <h1 className="sr-only">ML Paper Reviews by Abhik - Deep Learning Research Analysis</h1>
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+          <p className="text-sm italic text-zinc-600 dark:text-zinc-400 mb-8">
+            Note: These paper reviews are best viewed on web for optimal reading experience.
+          </p>
           <div className="flex max-w-3xl flex-col space-y-16">
             {papers.map((paper) => (
               <Paper key={paper.slug} paper={paper} />
