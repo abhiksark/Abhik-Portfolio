@@ -1,6 +1,7 @@
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router'
 import siteMeta from '@/data/siteMeta'
+import Head from 'next/head'
 
 import { Container } from '@/components/Container'
 import { formatDate } from '@/lib/formatDate'
@@ -35,6 +36,7 @@ export function ArticleLayout({
   // Get the path and ensure it's valid
   const path = router.asPath || ''
   const canonicalUrl = path ? `${siteMeta.siteUrl}${path}` : `${siteMeta.siteUrl}/articles`
+  const ogImageUrl = `https://og.abhik.xyz/api/og?title=${encodeURIComponent(meta.title)}&desc=${encodeURIComponent(meta.description)}`
 
   if (isRssFeed) {
     return children
@@ -42,6 +44,27 @@ export function ArticleLayout({
 
   return (
     <>
+      <Head>
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="600" />
+        <meta property="og:site_name" content="abhik.xyz" />
+        <meta property="article:published_time" content={meta.date} />
+        <meta property="article:author" content={meta.author} />
+        {meta.keywords && (
+          <meta property="article:tag" content={meta.keywords.join(', ')} />
+        )}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@abhiksark" />
+        <meta name="twitter:creator" content="@abhiksark" />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content={ogImageUrl} />
+      </Head>
       <NextSeo
         title={`${meta.title} - Abhik`}
         description={meta.description}
@@ -58,7 +81,7 @@ export function ArticleLayout({
           },
           images: [
             {
-              url: `https://og.abhik.xyz/api/og?title=${encodeURIComponent(meta.title)}&desc=${encodeURIComponent(meta.description)}`,
+              url: ogImageUrl,
               width: 1200,
               height: 600,
               alt: meta.title,
@@ -97,7 +120,7 @@ export function ArticleLayout({
             "datePublished": meta.date,
             "dateModified": meta.date,
             "keywords": meta.keywords || meta.tags || [],
-            "image": `https://og.abhik.xyz/api/og?title=${encodeURIComponent(meta.title)}&desc=${encodeURIComponent(meta.description)}`
+            "image": ogImageUrl
           })
         }}
       />
