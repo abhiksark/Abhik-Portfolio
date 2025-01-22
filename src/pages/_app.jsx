@@ -36,7 +36,31 @@ export default function App({ Component, pageProps, router }) {
 
   return (
    <>
-   <DefaultSeo {...SEO} />
+   <DefaultSeo
+     {...SEO}
+     additionalMetaTags={[
+       {
+         name: 'viewport',
+         content: 'width=device-width, initial-scale=1'
+       },
+       {
+         name: 'apple-mobile-web-app-title',
+         content: 'Abhik Sarkar'
+       },
+       {
+         name: 'application-name',
+         content: 'Abhik Sarkar'
+       },
+       {
+         name: 'msapplication-TileColor',
+         content: '#2b5797'
+       },
+       {
+         name: 'theme-color',
+         content: '#ffffff'
+       }
+     ]}
+   />
         <MDXProvider components={components}>
       <div className="fixed inset-0 flex justify-center sm:px-8">
         <div className="flex w-full max-w-7xl lg:px-8">

@@ -31,24 +31,65 @@ export function ArticleLayout({
   }
   return (
     <>
-    <NextSeo
-      title={meta.title}
-      description={meta.description}
-      canonical={`https://www.abhik.xyz${router.pathname}`}
-      openGraph={{
-        url: `https://www.abhik.xyz${router.pathname}`,
-        images: [
+      <NextSeo
+        title={`${meta.title} - Abhik`}
+        description={meta.description}
+        canonical={`https://www.abhik.xyz/articles/${meta.slug}`}
+        openGraph={{
+          type: 'article',
+          url: `https://www.abhik.xyz/articles/${meta.slug}`,
+          title: meta.title,
+          description: meta.description,
+          article: {
+            publishedTime: meta.date,
+            authors: [meta.author],
+            tags: meta.keywords || meta.tags || [],
+          },
+          images: [
+            {
+              url: `https://og.abhik.xyz/api/og?title=${encodeURIComponent(meta.title)}&desc=${encodeURIComponent(meta.description)}`,
+              width: 1200,
+              height: 600,
+              alt: meta.title,
+              type: 'image/jpeg',
+            }
+          ],
+          siteName: 'abhik.xyz',
+        }}
+        additionalMetaTags={[
           {
-            url: `https://og.abhik.xyz/api/og?title=${meta.title}&desc=${meta.description}`,
-            width: 1200,
-            height: 600,
-            alt: 'Og Image Alt',
-            type: 'image/jpeg',
+            name: 'keywords',
+            content: (meta.keywords || meta.tags || []).join(', ')
+          },
+          {
+            name: 'author',
+            content: meta.author
           }
-        ],
-        siteName: 'abhik.xyz',
-      }}
-    />
+        ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `https://www.abhik.xyz/articles/${meta.slug}`
+            },
+            "headline": meta.title,
+            "description": meta.description,
+            "author": {
+              "@type": "Person",
+              "name": meta.author
+            },
+            "datePublished": meta.date,
+            "dateModified": meta.date,
+            "keywords": meta.keywords || meta.tags || [],
+            "image": `https://og.abhik.xyz/api/og?title=${encodeURIComponent(meta.title)}&desc=${encodeURIComponent(meta.description)}`
+          })
+        }}
+      />
       <Container className="mt-16 lg:mt-32">
         <div className="xl:relative">
           <div className="mx-auto max-w-2xl">
@@ -69,9 +110,9 @@ export function ArticleLayout({
                 </h1>
                 <time
                   dateTime={meta.date}
-                  className="order-first flex items-center text-base text-zinc-500 dark:text-zinc-200"
+                  className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
                 >
-                  <span className="h-4 w-0.5 rounded-full bg-zinc-500 dark:bg-zinc-200" />
+                  <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
                   <span className="ml-3">{formatDate(meta.date)}</span>
                 </time>
               </header>

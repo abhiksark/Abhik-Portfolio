@@ -565,3 +565,56 @@ export const educationData = [
   }
 
 ]
+
+export const DEFAULT_TITLE_TEMPLATE = '%s - Abhik Sarkar'
+export const DEFAULT_DESCRIPTION = 'Machine Learning Engineer specializing in Computer Vision and Deep Learning. Leading ML teams and building innovative solutions for safety and security.'
+export const SITE_NAME = 'abhik.xyz'
+export const BASE_URL = 'https://www.abhik.xyz'
+
+export const generateSEOMetaTags = (props) => {
+  const {
+    title,
+    description = DEFAULT_DESCRIPTION,
+    path = '',
+    ogImage = {
+      title: title,
+      desc: description
+    }
+  } = props
+
+  return {
+    title: title,
+    description: description,
+    canonical: `${BASE_URL}${path}`,
+    openGraph: {
+      url: `${BASE_URL}${path}`,
+      title: title,
+      description: description,
+      images: [
+        {
+          url: `https://og.abhik.xyz/api/og?title=${ogImage.title}&desc=${ogImage.desc}`,
+          width: 1200,
+          height: 600,
+          alt: title,
+          type: 'image/jpeg',
+        }
+      ],
+      siteName: SITE_NAME,
+    },
+    twitter: {
+      handle: '@abhiksark',
+      site: '@abhiksark',
+      cardType: 'summary_large_image',
+    },
+    additionalMetaTags: [
+      {
+        name: 'keywords',
+        content: 'Machine Learning, Computer Vision, Deep Learning, AI, Artificial Intelligence, ML Engineer, Tech Lead'
+      },
+      {
+        name: 'author',
+        content: 'Abhik Sarkar'
+      }
+    ]
+  }
+}

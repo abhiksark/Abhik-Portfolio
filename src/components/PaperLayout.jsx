@@ -17,27 +17,79 @@ function ArrowLeftIcon(props) {
     </svg>
   )
 }
+
 export function PaperLayout({ children, meta, previousPathname }) {
   let router = useRouter()
 
   return (
     <>
       <NextSeo
-        title={meta.title}
+        title={`${meta.title} - Paper Review by Abhik`}
         description={meta.description}
-        canonical={`https://www.abhik.xyz${router.pathname}`}
+        canonical={`https://www.abhik.xyz/papers/${meta.slug}`}
         openGraph={{
-          url: `https://www.abhik.xyz${router.pathname}`,
+          type: 'article',
+          url: `https://www.abhik.xyz/papers/${meta.slug}`,
+          title: meta.title,
+          description: meta.description,
+          article: {
+            publishedTime: meta.date,
+            authors: [meta.author],
+            tags: meta.tags || [],
+          },
           images: [
             {
-              url: `https://og.abhik.xyz/api/og?title=${meta.title}&desc=${meta.description}`,
+              url: `https://og.abhik.xyz/api/og?title=${encodeURIComponent(meta.title)}&desc=${encodeURIComponent(meta.description)}`,
               width: 1200,
               height: 600,
-              alt: 'Paper Review',
+              alt: meta.title,
               type: 'image/jpeg',
             }
           ],
           siteName: 'abhik.xyz',
+        }}
+        additionalMetaTags={[
+          {
+            name: 'keywords',
+            content: (meta.tags || []).join(', ')
+          },
+          {
+            name: 'author',
+            content: meta.author
+          }
+        ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ScholarlyArticle",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `https://www.abhik.xyz/papers/${meta.slug}`
+            },
+            "headline": meta.title,
+            "description": meta.description,
+            "author": {
+              "@type": "Person",
+              "name": meta.author
+            },
+            "datePublished": meta.date,
+            "dateModified": meta.date,
+            "keywords": meta.tags || [],
+            "image": `https://og.abhik.xyz/api/og?title=${encodeURIComponent(meta.title)}&desc=${encodeURIComponent(meta.description)}`,
+            "isBasedOn": {
+              "@type": "ScholarlyArticle",
+              "name": meta.title,
+              "author": meta.authors?.map(author => ({
+                "@type": "Person",
+                "name": author
+              })),
+              "datePublished": meta.year_published?.toString(),
+              "url": meta.paper_url
+            }
+          })
         }}
       />
       <Container className="mt-16 lg:mt-32">
@@ -58,19 +110,38 @@ export function PaperLayout({ children, meta, previousPathname }) {
                 <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
                   {meta.title}
                 </h1>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {meta.tags?.map((tag) => (
-                    <span
-                      key={tag}
-                      className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-100"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {meta.tags?.map((tag) => (
+                      <span
+                        key={tag}
+                        className="relative inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+                          !bg-zinc-100 !text-zinc-800 
+                          dark:!bg-zinc-800 dark:!text-zinc-100
+                          hover:!bg-zinc-100 dark:hover:!bg-zinc-800"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="order-first flex items-center text-base text-zinc-500 dark:text-zinc-200">
-                  <span className="h-4 w-0.5 rounded-full bg-zinc-500 dark:bg-zinc-200" />
-                  <span className="ml-3">{meta.conference} ({meta.year})</span>
+                <div className="flex items-center space-x-4 text-sm text-zinc-500 dark:text-zinc-400">
+                  <time dateTime={meta.date}>{formatDate(meta.date)}</time>
+                  <span>•</span>
+                  <span>By {meta.authors?.join(', ')}</span>
+                  {meta.paper_url && (
+                    <>
+                      <span>•</span>
+                      <a 
+                        href={meta.paper_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-teal-500"
+                      >
+                        Original Paper
+                      </a>
+                    </>
+                  )}
                 </div>
               </header>
               <Prose className="mt-8">{children}</Prose>

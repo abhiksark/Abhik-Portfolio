@@ -3,7 +3,7 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
-import  siteMeta  from '@/data/siteMeta'
+import siteMeta from '@/data/siteMeta'
 
 function Article({ article }) {
   return (
@@ -35,29 +35,79 @@ function Article({ article }) {
 }
 
 export default function ArticlesIndex({ articles }) {
-  const headline = 'I write about things I’m learning and things I’m building.'
-  const intro="All of my long-form thoughts on programming, leadership, infrastructure, and more, collected in chronological order."
+  const headline = "I write about things I'm learning and things I'm building."
+  const intro = "All of my long-form thoughts on programming, leadership, infrastructure, and more, collected in chronological order."
+  
+  // Get all unique tags/keywords from articles
+  const allTags = articles.reduce((tags, article) => {
+    if (article.keywords) {
+      return [...new Set([...tags, ...article.keywords])]
+    }
+    if (article.tags) {
+      return [...new Set([...tags, ...article.tags])]
+    }
+    return tags
+  }, [])
 
   return (
     <>
-    <NextSeo
-      title="Articles - Abhik"
-      description={siteMeta.description}
-      canonical="https://www.abhik.xyz/articles"
-      openGraph={{
-        url: 'https://www.abhik.xyz/articles',
-        images: [
+      <NextSeo
+        title="Technical Articles by Abhik - Programming, AI, and Software Engineering"
+        description={`${intro} Topics include ${allTags.slice(0,5).join(', ')} and more.`}
+        canonical="https://www.abhik.xyz/articles"
+        openGraph={{
+          type: 'website',
+          url: 'https://www.abhik.xyz/articles',
+          title: 'Technical Articles by Abhik',
+          description: intro,
+          images: [
+            {
+              url: `https://og.abhik.xyz/api/og?title=Articles&desc=${headline}`,
+              width: 1200,
+              height: 600,
+              alt: 'Technical Articles by Abhik',
+              type: 'image/jpeg',
+            }
+          ],
+          siteName: 'abhik.xyz',
+        }}
+        additionalMetaTags={[
           {
-            url: `https://og.abhik.xyz/api/og?title=Articles&desc=${headline}`,
-            width: 1200,
-            height: 600,
-            alt: 'Og Image Alt',
-            type: 'image/jpeg',
+            name: 'keywords',
+            content: allTags.join(', ')
+          },
+          {
+            name: 'author',
+            content: 'Abhik Sarkar'
           }
-        ],
-        siteName: 'abhik.xyz',
-      }}
-    />
+        ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "mainEntity": {
+              "@type": "ItemList",
+              "itemListElement": articles.map((article, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "url": `https://www.abhik.xyz/articles/${article.slug}`,
+                "name": article.title,
+                "description": article.description,
+                "datePublished": article.date
+              }))
+            },
+            "name": "Technical Articles by Abhik",
+            "description": intro,
+            "author": {
+              "@type": "Person",
+              "name": "Abhik Sarkar"
+            }
+          })
+        }}
+      />
       <SimpleLayout
         title={headline}
         intro={intro}
