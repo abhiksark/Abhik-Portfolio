@@ -22,15 +22,24 @@ function ArrowLeftIcon(props) {
 export function PaperLayout({ children, meta, previousPathname }) {
   let router = useRouter()
 
+  // Wait for router to be ready
+  if (!router.isReady) {
+    return null
+  }
+
+  // Get the path and ensure it's valid
+  const path = router.asPath || ''
+  const canonicalUrl = path ? `${siteMeta.siteUrl}${path}` : `${siteMeta.siteUrl}/papers`
+
   return (
     <>
       <NextSeo
         title={`${meta.title} - Paper Review by Abhik`}
         description={meta.description}
-        canonical={`${siteMeta.siteUrl}${router.asPath}`}
+        canonical={canonicalUrl}
         openGraph={{
           type: 'article',
-          url: `${siteMeta.siteUrl}${router.asPath}`,
+          url: canonicalUrl,
           title: meta.title,
           description: meta.description,
           article: {
@@ -68,7 +77,7 @@ export function PaperLayout({ children, meta, previousPathname }) {
             "@type": "ScholarlyArticle",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": `${siteMeta.siteUrl}${router.asPath}`
+              "@id": canonicalUrl
             },
             "headline": meta.title,
             "description": meta.description,

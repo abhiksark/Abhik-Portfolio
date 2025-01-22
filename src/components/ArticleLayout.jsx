@@ -26,20 +26,29 @@ export function ArticleLayout({
   previousPathname,
 }) {
   let router = useRouter()
-  const slug = router.asPath.replace('/articles/', '')
+  
+  // Wait for router to be ready
+  if (!router.isReady) {
+    return null
+  }
+
+  // Get the path and ensure it's valid
+  const path = router.asPath || ''
+  const canonicalUrl = path ? `${siteMeta.siteUrl}${path}` : `${siteMeta.siteUrl}/articles`
 
   if (isRssFeed) {
     return children
   }
+
   return (
     <>
       <NextSeo
         title={`${meta.title} - Abhik`}
         description={meta.description}
-        canonical={`${siteMeta.siteUrl}${router.asPath}`}
+        canonical={canonicalUrl}
         openGraph={{
           type: 'article',
-          url: `${siteMeta.siteUrl}${router.asPath}`,
+          url: canonicalUrl,
           title: meta.title,
           description: meta.description,
           article: {
@@ -77,7 +86,7 @@ export function ArticleLayout({
             "@type": "BlogPosting",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": `${siteMeta.siteUrl}${router.asPath}`
+              "@id": canonicalUrl
             },
             "headline": meta.title,
             "description": meta.description,

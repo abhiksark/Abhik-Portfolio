@@ -1,43 +1,99 @@
+import { NextSeo } from 'next-seo';
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { getAllPapers } from '@/lib/getAllPapers'
-import { NextSeo } from 'next-seo'
+import { getAllArticles } from '@/lib/getAllArticles'
+import { formatDate } from '@/lib/formatDate'
 import siteMeta from '@/data/siteMeta'
 
-function Paper({ paper }) {
+function RelatedContent({ currentSlug, tags, articles, papers }) {
+  // Filter related content based on matching tags
+  const relatedPapers = papers
+    .filter(paper => paper.slug !== currentSlug && 
+      paper.tags?.some(t => tags.includes(t)))
+    .slice(0, 3)
+  
+  const relatedArticles = articles
+    .filter(article => article.keywords?.some(k => tags.includes(k)))
+    .slice(0, 3)
+
+  if (relatedPapers.length === 0 && relatedArticles.length === 0) return null
+
+  return (
+    <div className="mt-8">
+      {relatedPapers.length > 0 && (
+        <div className="mb-6">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+            Related Papers
+          </h3>
+          <ul className="mt-3 grid grid-cols-1 gap-4">
+            {relatedPapers.map((paper) => (
+              <li key={paper.slug}>
+                <Card.Title href={`/papers/${paper.slug}`} className="text-base">
+                  {paper.title}
+                </Card.Title>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {relatedArticles.length > 0 && (
+        <div>
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+            Related Articles
+          </h3>
+          <ul className="mt-3 grid grid-cols-1 gap-4">
+            {relatedArticles.map((article) => (
+              <li key={article.slug}>
+                <Card.Title href={`/articles/${article.slug}`} className="text-base">
+                  {article.title}
+                </Card.Title>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function Paper({ paper, papers, articles }) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
-      <div className="relative z-10 md:col-span-3">
-        <div className="mt-2 flex flex-wrap gap-2 mb-4">
-          {paper.tags?.map((tag) => (
-            <span
-              key={tag}
-              className="relative inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
-                !bg-zinc-100 !text-zinc-800 
-                dark:!bg-zinc-800 dark:!text-zinc-100
-                hover:!bg-zinc-100 dark:hover:!bg-zinc-800
-                z-20"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <Card className="md:col-span-3">
-          <Card.Title href={`/papers/${paper.slug}`}>
-            {paper.title}
-          </Card.Title>
-          <Card.Eyebrow decorate>
-            {paper.conference} ({paper.year})
-          </Card.Eyebrow>
-          <Card.Description>{paper.description}</Card.Description>
-          <Card.Cta>Read review</Card.Cta>
-        </Card>
-      </div>
+      <Card className="md:col-span-3">
+        <Card.Title href={`/papers/${paper.slug}`}>
+          {paper.title}
+        </Card.Title>
+        <Card.Eyebrow
+          as="time"
+          dateTime={paper.date}
+          className="md:hidden"
+          decorate
+        >
+          {formatDate(paper.date)}
+        </Card.Eyebrow>
+        <Card.Description>{paper.description}</Card.Description>
+        <Card.Cta>Read review</Card.Cta>
+        <RelatedContent 
+          currentSlug={paper.slug}
+          tags={paper.tags || []}
+          papers={papers}
+          articles={articles}
+        />
+      </Card>
+      <Card.Eyebrow
+        as="time"
+        dateTime={paper.date}
+        className="mt-1 hidden md:block"
+      >
+        {formatDate(paper.date)}
+      </Card.Eyebrow>
     </article>
   )
 }
 
-export default function Papers({ papers }) {
+export default function Papers({ papers, articles }) {
   const title = "Paper Reviews and Analysis"
   const description = "In-depth reviews of influential papers in machine learning, computer vision, and deep learning. I break down complex research into digestible insights and share my perspective on their practical applications."
   
@@ -52,10 +108,10 @@ export default function Papers({ papers }) {
       <NextSeo
         title="ML Paper Reviews by Abhik - Deep Learning Research Analysis"
         description={`${description} Covering ${researchAreas} and more.`}
-        canonical="https://www.abhik.xyz/papers"
+        canonical={`${siteMeta.siteUrl}/papers`}
         openGraph={{
           type: 'website',
-          url: 'https://www.abhik.xyz/papers',
+          url: `${siteMeta.siteUrl}/papers`,
           title: 'ML Paper Reviews by Abhik',
           description: description,
           images: [
@@ -67,7 +123,7 @@ export default function Papers({ papers }) {
               type: 'image/jpeg',
             }
           ],
-          siteName: 'abhik.xyz',
+          siteName: siteMeta.SITE_NAME,
         }}
         additionalMetaTags={[
           {
@@ -76,7 +132,7 @@ export default function Papers({ papers }) {
           },
           {
             name: 'author',
-            content: 'Abhik Sarkar'
+            content: siteMeta.author.name
           }
         ]}
       />
@@ -86,36 +142,42 @@ export default function Papers({ papers }) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `${siteMeta.siteUrl}/papers`
+            },
+            "name": "ML Paper Reviews by Abhik",
+            "description": description,
+            "author": {
+              "@type": "Person",
+              "name": siteMeta.author.name,
+              "url": siteMeta.siteUrl
+            },
             "mainEntity": {
               "@type": "ItemList",
               "itemListElement": papers.map((paper, index) => ({
                 "@type": "ScholarlyArticle",
                 "position": index + 1,
-                "url": `https://www.abhik.xyz/papers/${paper.slug}`,
+                "url": `${siteMeta.siteUrl}/papers/${paper.slug}`,
                 "name": paper.title,
                 "description": paper.description,
                 "datePublished": paper.date,
                 "author": {
                   "@type": "Person",
-                  "name": paper.author
+                  "name": paper.author || siteMeta.author.name
                 },
-                "about": paper.tags,
-                "isBasedOn": {
+                "keywords": paper.tags,
+                "isBasedOn": paper.paper_url ? {
                   "@type": "ScholarlyArticle",
                   "name": paper.title,
                   "author": paper.authors?.map(author => ({
                     "@type": "Person",
                     "name": author
                   })),
-                  "datePublished": paper.year_published?.toString()
-                }
+                  "datePublished": paper.year_published?.toString(),
+                  "url": paper.paper_url
+                } : undefined
               }))
-            },
-            "name": "ML Paper Reviews by Abhik",
-            "description": description,
-            "author": {
-              "@type": "Person",
-              "name": "Abhik Sarkar"
             }
           })
         }}
@@ -127,7 +189,7 @@ export default function Papers({ papers }) {
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <div className="flex max-w-3xl flex-col space-y-16">
             {papers.map((paper) => (
-              <Paper key={paper.slug} paper={paper} />
+              <Paper key={paper.slug} paper={paper} papers={papers} articles={articles} />
             ))}
           </div>
         </div>
@@ -137,9 +199,13 @@ export default function Papers({ papers }) {
 }
 
 export async function getStaticProps() {
+  const papers = await getAllPapers()
+  const articles = await getAllArticles()
+
   return {
     props: {
-      papers: await getAllPapers(),
+      papers,
+      articles,
     },
   }
 }
