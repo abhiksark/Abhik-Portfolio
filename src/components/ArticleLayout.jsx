@@ -1,5 +1,6 @@
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router'
+import siteMeta from '@/data/siteMeta'
 
 import { Container } from '@/components/Container'
 import { formatDate } from '@/lib/formatDate'
@@ -25,6 +26,7 @@ export function ArticleLayout({
   previousPathname,
 }) {
   let router = useRouter()
+  const slug = router.asPath.replace('/articles/', '')
 
   if (isRssFeed) {
     return children
@@ -34,10 +36,10 @@ export function ArticleLayout({
       <NextSeo
         title={`${meta.title} - Abhik`}
         description={meta.description}
-        canonical={`https://www.abhik.xyz/articles/${meta.slug}`}
+        canonical={`${siteMeta.siteUrl}${router.asPath}`}
         openGraph={{
           type: 'article',
-          url: `https://www.abhik.xyz/articles/${meta.slug}`,
+          url: `${siteMeta.siteUrl}${router.asPath}`,
           title: meta.title,
           description: meta.description,
           article: {
@@ -75,7 +77,7 @@ export function ArticleLayout({
             "@type": "BlogPosting",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": `https://www.abhik.xyz/articles/${meta.slug}`
+              "@id": `${siteMeta.siteUrl}${router.asPath}`
             },
             "headline": meta.title,
             "description": meta.description,

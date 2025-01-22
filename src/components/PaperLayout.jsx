@@ -3,6 +3,7 @@ import { Prose } from '@/components/Prose'
 import { formatDate } from '@/lib/formatDate'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
+import siteMeta from '@/data/siteMeta'
 
 
 function ArrowLeftIcon(props) {
@@ -26,10 +27,10 @@ export function PaperLayout({ children, meta, previousPathname }) {
       <NextSeo
         title={`${meta.title} - Paper Review by Abhik`}
         description={meta.description}
-        canonical={`https://www.abhik.xyz/papers/${meta.slug}`}
+        canonical={`${siteMeta.siteUrl}${router.asPath}`}
         openGraph={{
           type: 'article',
-          url: `https://www.abhik.xyz/papers/${meta.slug}`,
+          url: `${siteMeta.siteUrl}${router.asPath}`,
           title: meta.title,
           description: meta.description,
           article: {
@@ -67,7 +68,7 @@ export function PaperLayout({ children, meta, previousPathname }) {
             "@type": "ScholarlyArticle",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": `https://www.abhik.xyz/papers/${meta.slug}`
+              "@id": `${siteMeta.siteUrl}${router.asPath}`
             },
             "headline": meta.title,
             "description": meta.description,

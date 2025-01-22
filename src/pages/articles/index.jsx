@@ -54,10 +54,10 @@ export default function ArticlesIndex({ articles }) {
       <NextSeo
         title="Technical Articles by Abhik - Programming, AI, and Software Engineering"
         description={`${intro} Topics include ${allTags.slice(0,5).join(', ')} and more.`}
-        canonical="https://www.abhik.xyz/articles"
+        canonical={`${siteMeta.siteUrl}/articles`}
         openGraph={{
           type: 'website',
-          url: 'https://www.abhik.xyz/articles',
+          url: `${siteMeta.siteUrl}/articles`,
           title: 'Technical Articles by Abhik',
           description: intro,
           images: [
@@ -93,7 +93,7 @@ export default function ArticlesIndex({ articles }) {
               "itemListElement": articles.map((article, index) => ({
                 "@type": "ListItem",
                 "position": index + 1,
-                "url": `https://www.abhik.xyz/articles/${article.slug}`,
+                "url": `${siteMeta.siteUrl}/articles/${article.slug}`,
                 "name": article.title,
                 "description": article.description,
                 "datePublished": article.date
