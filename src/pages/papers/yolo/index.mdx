@@ -1,4 +1,5 @@
 import { PaperLayout } from '@/components/PaperLayout'
+import YOLOViz from '@/components/visualizations/yolo/YOLOViz' 
 
 export const meta = {
   author: 'Abhik Sarkar',
@@ -18,6 +19,9 @@ export default (props) => <PaperLayout meta={meta} {...props} />
 
 This paper introduces **YOLO (You Only Look Once)**, a groundbreaking object detection system that revolutionized the field with its unified and real-time capabilities.  Before YOLO, many object detection systems used a complex, multi-stage pipeline, often involving a separate step for region proposal generation and another for object classification within those regions. YOLO, however, takes a completely different approach, framing object detection as a single regression problem. This means it directly predicts bounding boxes and class probabilities from an image in one evaluation, leading to a significantly faster and more streamlined process.
 
+### Architecture Visualization
+
+<YOLOViz />
 
 ### Key Contributions
 
