@@ -35,7 +35,7 @@ export function PaperLayout({ children, meta, previousPathname }) {
   return (
     <>
       <Head>
-        <meta property="og:title" content={`${meta.title} - Paper Review by Abhik`} />
+        <meta property="og:title" content={`${meta.title} - ML Paper Review by Abhik`} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={canonicalUrl} />
@@ -51,18 +51,18 @@ export function PaperLayout({ children, meta, previousPathname }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@abhiksark" />
         <meta name="twitter:creator" content="@abhiksark" />
-        <meta name="twitter:title" content={`${meta.title} - Paper Review by Abhik`} />
+        <meta name="twitter:title" content={`${meta.title} - ML Paper Review by Abhik`} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={ogImageUrl} />
       </Head>
       <NextSeo
-        title={`${meta.title} - Paper Review by Abhik`}
+        title={`${meta.title} - ML Paper Review by Abhik`}
         description={meta.description}
         canonical={canonicalUrl}
         openGraph={{
           type: 'article',
           url: canonicalUrl,
-          title: meta.title,
+          title: `${meta.title} - ML Paper Review by Abhik`,
           description: meta.description,
           article: {
             publishedTime: meta.date,
