@@ -53,7 +53,6 @@ export default function Document() {
         <link rel="me" href="https://www.abhik.xyz" />
         
         {/* Default meta tags that will be overridden by page-specific ones */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
         
         {/* Default OpenGraph tags */}
