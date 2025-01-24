@@ -1,5 +1,5 @@
 import { PaperLayout } from '@/components/PaperLayout'
-
+import EfficientNetVisualization from '@/components/visualizations/efficient-net/EfficientNetVisualization'
 export const meta = {
   author: 'Abhik Sarkar',
   date: '2024-01-22',
@@ -18,7 +18,11 @@ export default (props) => <PaperLayout meta={meta} {...props} />
 
 This paper introduces **EfficientNet**, a family of convolutional neural networks (CNNs) that achieve state-of-the-art accuracy on image classification tasks while being significantly more efficient than previous CNN architectures. [1] The key innovation behind EfficientNet is a novel **compound scaling method** that uniformly scales the network's depth, width, and resolution in a principled way. [1] This approach allows for efficient scaling of CNNs, resulting in models that are smaller, faster, and more accurate. [1]
 
-### Key Contributions
+### Visualization
+
+<EfficientNetVisualization />
+
+### Key Contributions   
 
 1. **Compound Scaling:**
    - **Traditional Scaling:** Previous approaches to scaling CNNs typically focused on scaling one dimension at a time, such as increasing depth (number of layers), width (number of channels), or resolution (input image size). [1, 2]
