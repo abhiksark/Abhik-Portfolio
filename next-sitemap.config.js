@@ -3,7 +3,7 @@ module.exports = {
   generateRobotsTxt: true,
   exclude: ['/thank-you', '/api/*', '/_next/*', '/static/*'],
   priority: 0.7,
-  sitemapSize: 1000, // Increased to handle all URLs in one file
+  sitemapSize: 7000, // Increased to handle all URLs in one file
   changefreq: 'daily',
   sitemapBaseFileName: 'sitemap', // The base name for the sitemap
   outDir: 'public', // Output directory

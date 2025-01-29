@@ -74,8 +74,6 @@ export function CategoryList({ category }) {
                   <Image
                     src={item.imageUrl}
                     alt={item.name}
-                    layout="fill"
-                    objectFit="cover"
                     width={96}
                     height={96}
                     unoptimized
