@@ -3,8 +3,11 @@ module.exports = {
   generateRobotsTxt: true,
   exclude: ['/thank-you', '/api/*', '/_next/*', '/static/*'],
   priority: 0.7,
-  sitemapSize: 5000,
+  sitemapSize: 1000, // Increased to handle all URLs in one file
   changefreq: 'daily',
+  sitemapBaseFileName: 'sitemap', // The base name for the sitemap
+  outDir: 'public', // Output directory
+  generateIndexSitemap: false, // Disable index sitemap generation
   transform: async (config, path) => {
     // Remove trailing slashes for canonical consistency
     const canonicalPath = path.endsWith('/') ? path.slice(0, -1) : path;
@@ -35,6 +38,7 @@ module.exports = {
         allow: '/',
         disallow: ['/api/', '/thank-you', '/_next/', '/static/']
       }
-    ]
+    ],
+    additionalSitemaps: []
   }
 }

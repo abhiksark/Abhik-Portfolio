@@ -5,7 +5,7 @@ Allow: /
 # Host
 Host: https://www.abhik.xyz
 
-# Sitemaps
+# Sitemap
 Sitemap: https://www.abhik.xyz/sitemap.xml
 
 # Disallow
