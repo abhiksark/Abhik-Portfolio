@@ -63,7 +63,7 @@ export default function Papers({ papers }) {
           description: description,
           images: [
             {
-              url: `https://og.abhik.xyz/api/og?title=Paper Reviews&desc=${description}`,
+              url: `https://og.abhik.xyz/api/og?title=${encodeURIComponent('Paper Reviews')}&desc=${encodeURIComponent(description)}`,
               width: 1200,
               height: 600,
               alt: 'ML Paper Reviews by Abhik',
@@ -71,6 +71,11 @@ export default function Papers({ papers }) {
             }
           ],
           siteName: siteMeta.SITE_NAME,
+        }}
+        twitter={{
+          handle: siteMeta.author.twitter,
+          site: siteMeta.author.twitter,
+          cardType: 'summary_large_image',
         }}
         additionalMetaTags={[
           {

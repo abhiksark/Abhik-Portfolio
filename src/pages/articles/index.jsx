@@ -57,7 +57,7 @@ export default function ArticlesIndex({ articles }) {
           description: description,
           images: [
             {
-              url: `https://og.abhik.xyz/api/og?title=Articles&desc=${description}`,
+              url: `https://og.abhik.xyz/api/og?title=Articles&desc=${encodeURIComponent(description)}`,
               width: 1200,
               height: 600,
               alt: 'Technical Articles by Abhik',
@@ -65,6 +65,11 @@ export default function ArticlesIndex({ articles }) {
             }
           ],
           siteName: siteMeta.SITE_NAME,
+        }}
+        twitter={{
+          handle: '@abhiksark',
+          site: '@abhiksark',
+          cardType: 'summary_large_image',
         }}
         additionalMetaTags={[
           {
