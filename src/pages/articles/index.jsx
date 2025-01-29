@@ -57,7 +57,7 @@ export default function ArticlesIndex({ articles }) {
           description: description,
           images: [
             {
-              url: `https://og.abhik.xyz/api/og?title=Articles&desc=${encodeURIComponent(description)}`,
+              url: `https://og.abhik.xyz/api/og?title=Articles&desc=${description}`,
               width: 1200,
               height: 600,
               alt: 'Technical Articles by Abhik',

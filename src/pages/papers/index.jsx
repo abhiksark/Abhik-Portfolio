@@ -63,7 +63,7 @@ export default function Papers({ papers }) {
           description: description,
           images: [
             {
-              url: `https://og.abhik.xyz/api/og?title=Paper Reviews&desc=${encodeURIComponent(description)}`,
+              url: `https://og.abhik.xyz/api/og?title=Paper Reviews&desc=${description}`,
               width: 1200,
               height: 600,
               alt: 'ML Paper Reviews by Abhik',
