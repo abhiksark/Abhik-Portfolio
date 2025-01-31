@@ -1,0 +1,33 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import DCTAdditionVisualization from '@/components/visualizations/image-encoding/DCTAdditionVisualization'
+
+export const meta = {
+  author: 'Abhik Sarkar',
+  date: '1999-01-22',
+  title: 'Image Encoding',
+  description:
+    'A detailed explanation of image encoding, including the different types of image encoding and how they work.',
+  keywords: ['image encoding', 'image compression', 'image decoding', 'image processing']
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## What is Image Encoding?
+
+Image encoding is the process of converting an image into a digital format that can be stored, transmitted, and processed efficiently. This process involves compressing the image to reduce its size, which is crucial for efficient storage and transmission over networks.
+
+There are two main types of image encoding: lossy and lossless. Lossy encoding reduces the file size by discarding some information, while lossless encoding preserves all the original data.
+
+## Lossy Encoding
+
+Lossy encoding is a technique that reduces the file size of an image by discarding some of the image data. This is achieved by removing certain details or information from the image, which can result in a lower quality image.
+
+The most common type of lossy encoding is JPEG (Joint Photographic Experts Group) compression. JPEG is a widely used image format that compresses images to reduce their file size. The compression process involves removing certain details from the image, which can result in a lower quality image.
+
+## Lossless Encoding
+
+Lossless encoding is a technique that preserves all the original data in an image. This is achieved by storing the image data in a way that allows it to be reconstructed exactly as it was originally.
+
+The most common type of lossless encoding is PNG (Portable Network Graphics) compression. PNG is a widely used image format that compresses images to reduce their file size. The compression process involves storing the image data in a way that allows it to be reconstructed exactly as it was originally.
+
+<DCTAdditionVisualization />
