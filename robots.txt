@@ -11,5 +11,3 @@ Sitemap: https://www.abhik.xyz/sitemap.xml
 # Disallow
 Disallow: /api/
 Disallow: /thank-you
-Disallow: /_next/
-Disallow: /static/
