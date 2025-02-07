@@ -5,10 +5,26 @@ export function generatePaperMetadata({ paper, path }) {
   const ogImageUrl = `https://og.abhik.xyz/api/og?title=${encodeURIComponent(paper.title)}&desc=${encodeURIComponent(paper.description)}`;
   const fullTitle = `${paper.title} - ML Paper Review by Abhik`;
 
+  // Enhanced keywords with LSI terms
+  const enhancedKeywords = [
+    ...(paper.tags || []),
+    'machine learning',
+    'paper review',
+    'research analysis',
+    'deep learning',
+    'AI research',
+    'ML papers',
+    'research papers',
+    'paper summary',
+    'technical analysis',
+    paper.title.toLowerCase(),
+    ...(paper.authors?.map(author => author.toLowerCase()) || [])
+  ];
+
   return {
     title: fullTitle,
     description: paper.description,
-    keywords: [...(paper.tags || []), 'machine learning', 'paper review', 'research analysis', 'deep learning'],
+    keywords: enhancedKeywords,
     authors: [{ name: paper.author }],
     alternates: {
       canonical: url,
@@ -30,7 +46,7 @@ export function generatePaperMetadata({ paper, path }) {
           url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: paper.title,
+          alt: `Paper Review: ${paper.title}`,
           type: 'image/jpeg',
         }
       ],
@@ -49,13 +65,15 @@ export function generatePaperMetadata({ paper, path }) {
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
+      'notranslate': true,
       'max-image-preview': 'large',
-      'notranslate': true
+      'googlebot': 'index,follow',
+      'googlebot-news': 'index,follow'
     },
     verification: {
-      google: 'YOUR_GOOGLE_VERIFICATION_ID',
-      yandex: 'YOUR_YANDEX_VERIFICATION_ID',
-      bing: 'YOUR_BING_VERIFICATION_ID'
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+      yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+      bing: process.env.NEXT_PUBLIC_BING_VERIFICATION
     },
     additionalMetaTags: [
       {
@@ -113,6 +131,18 @@ export function generatePaperMetadata({ paper, path }) {
       {
         property: 'article:tag',
         content: paper.tags?.join(', ')
+      },
+      {
+        name: 'citation_journal_title',
+        content: 'ML Paper Reviews by Abhik'
+      },
+      {
+        name: 'citation_language',
+        content: 'en'
+      },
+      {
+        name: 'news_keywords',
+        content: enhancedKeywords.join(', ')
       }
     ]
   };
