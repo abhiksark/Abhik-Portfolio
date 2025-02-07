@@ -15,22 +15,21 @@ function Paper({ paper }) {
           {paper.title}
         </Card.Title>
         {paper.tags && paper.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-2 mb-3 relative z-20">
+          <div className="flex flex-wrap gap-2 mt-2 mb-3 relative z-20" itemProp="keywords">
             {paper.tags.map((tag) => (
               <span
                 key={tag}
                 className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium 
                   bg-zinc-200/80 text-zinc-900
                   dark:bg-zinc-700/80 dark:text-zinc-100"
-                itemProp="keywords"
               >
                 {tag}
               </span>
             ))}
           </div>
         )}
-        <Card.Description itemProp="description">{paper.description}</Card.Description>
-        <Card.Cta>Read review</Card.Cta>
+        <Card.Description itemProp="abstract">{paper.description}</Card.Description>
+        <Card.Cta>Read detailed analysis</Card.Cta>
       </Card>
       <Card.Eyebrow
         as="time"
@@ -43,14 +42,16 @@ function Paper({ paper }) {
       <meta itemProp="author" content={paper.author} />
       <meta itemProp="dateModified" content={paper.date} />
       <meta itemProp="url" content={`${siteMeta.siteUrl}/papers/${paper.slug}`} />
+      {paper.paper_url && <meta itemProp="sameAs" content={paper.paper_url} />}
+      {paper.doi && <meta itemProp="doi" content={paper.doi} />}
     </article>
   )
 }
 
 export default function Papers({ papers }) {
   const router = useRouter();
-  const title = "ML Paper Reviews and Analysis"
-  const description = "In-depth reviews of influential papers in machine learning, computer vision, and deep learning. Breaking down complex research into digestible insights with practical applications."
+  const title = "Machine Learning Paper Reviews & Analysis | Research Insights"
+  const description = "Expert analysis of cutting-edge machine learning papers, covering deep learning, computer vision, and AI research. Detailed technical reviews with practical implementations and code examples."
   
   // Get all unique tags from papers
   const allTags = [...new Set(papers.flatMap(paper => paper.tags || []))]
@@ -58,7 +59,7 @@ export default function Papers({ papers }) {
   // Get all unique research areas
   const researchAreas = allTags.slice(0, 5).join(', ')
 
-  // Generate breadcrumb schema
+  // Enhanced breadcrumb schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -72,23 +73,31 @@ export default function Papers({ papers }) {
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Paper Reviews",
+        "name": "Research Paper Reviews",
         "item": `${siteMeta.siteUrl}/papers`
       }
     ]
   }
 
-  // FAQ Schema for better search visibility
+  // Enhanced FAQ Schema
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What kind of papers do you review?",
+        "name": "What types of machine learning papers do you review?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `We review papers in ${researchAreas} and other machine learning topics.`
+          "text": `We provide in-depth analysis of papers in ${researchAreas} and other cutting-edge machine learning topics, focusing on practical implementations and real-world applications.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How detailed are the paper reviews?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each review includes comprehensive technical analysis, implementation details, code examples, and practical insights for applying the research in real-world scenarios."
         }
       },
       {
@@ -96,10 +105,24 @@ export default function Papers({ papers }) {
         "name": "How often are new paper reviews published?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "New paper reviews are published regularly, focusing on the most influential and recent research in machine learning and computer vision."
+          "text": "New paper reviews are published regularly, focusing on breakthrough research in machine learning, deep learning, and artificial intelligence. Subscribe to our RSS feed for updates."
         }
       }
     ]
+  }
+
+  // Research topics schema
+  const researchTopicsSchema = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Machine Learning Research Papers Collection",
+    "description": `Comprehensive collection of research paper reviews in ${researchAreas}`,
+    "keywords": allTags,
+    "creator": {
+      "@type": "Person",
+      "name": siteMeta.author.name
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/"
   }
 
   return (
@@ -108,23 +131,23 @@ export default function Papers({ papers }) {
         <link 
           rel="alternate" 
           type="application/rss+xml" 
-          title="ML Paper Reviews RSS Feed"
+          title="Machine Learning Paper Reviews RSS Feed"
           href="/papers/feed.xml" 
         />
         <link 
           rel="alternate" 
           type="application/json" 
-          title="ML Paper Reviews JSON Feed"
+          title="Machine Learning Paper Reviews JSON Feed"
           href="/papers/feed.json" 
         />
-        <meta name="google-news-tags" content="Machine Learning, Research Papers, AI Technology" />
-        <meta name="news_keywords" content={allTags.join(',')} />
+        <meta name="google-news-tags" content="Machine Learning Research, AI Papers, Deep Learning Analysis, Computer Vision Research" />
+        <meta name="news_keywords" content={`${allTags.join(',')}, machine learning research, AI papers, deep learning analysis`} />
         <link rel="preconnect" href="https://og.abhik.xyz" />
       </Head>
       <NextSeo
         title={title}
         titleTemplate="%s | Abhik Sarkar"
-        description={`${description} Covering ${researchAreas} and more.`}
+        description={description}
         canonical={`${siteMeta.siteUrl}${router.asPath}`}
         openGraph={{
           type: 'website',
@@ -136,7 +159,7 @@ export default function Papers({ papers }) {
               url: `https://og.abhik.xyz/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description)}`,
               width: 1200,
               height: 600,
-              alt: title,
+              alt: 'Machine Learning Paper Reviews and Analysis',
               type: 'image/jpeg',
             }
           ],
@@ -144,7 +167,7 @@ export default function Papers({ papers }) {
           locale: 'en_US',
           article: {
             authors: [siteMeta.author.name],
-            tags: allTags
+            tags: [...allTags, 'machine learning research', 'AI papers', 'deep learning']
           }
         }}
         twitter={{
@@ -155,7 +178,18 @@ export default function Papers({ papers }) {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: [...allTags, 'machine learning', 'paper reviews', 'research analysis', 'deep learning', 'AI research', 'ML papers', 'technical analysis'].join(', ')
+            content: [
+              ...allTags, 
+              'machine learning papers',
+              'AI research analysis',
+              'deep learning papers',
+              'computer vision research',
+              'ML paper reviews',
+              'technical paper analysis',
+              'research implementation',
+              'AI paper summaries',
+              'machine learning insights'
+            ].join(', ')
           },
           {
             name: 'author',
@@ -188,75 +222,69 @@ export default function Papers({ papers }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": `${siteMeta.siteUrl}/papers`
-            },
-            "name": title,
-            "description": description,
-            "author": {
-              "@type": "Person",
-              "name": siteMeta.author.name,
-              "url": siteMeta.siteUrl,
-              "sameAs": [
-                siteMeta.author.twitter,
-                siteMeta.author.github,
-                siteMeta.author.linkedin
-              ]
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": siteMeta.SITE_NAME,
-              "logo": {
-                "@type": "ImageObject",
-                "url": `${siteMeta.siteUrl}/logo.png`
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "CollectionPage",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": `${siteMeta.siteUrl}/papers`
+              },
+              "name": title,
+              "description": description,
+              "author": {
+                "@type": "Person",
+                "name": siteMeta.author.name,
+                "url": siteMeta.siteUrl,
+                "sameAs": [
+                  siteMeta.author.twitter,
+                  siteMeta.author.github,
+                  siteMeta.author.linkedin
+                ]
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": siteMeta.SITE_NAME,
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": `${siteMeta.siteUrl}/logo.png`
+                }
+              },
+              "mainEntity": {
+                "@type": "ItemList",
+                "numberOfItems": papers.length,
+                "itemListElement": papers.map((paper, index) => ({
+                  "@type": "ScholarlyArticle",
+                  "position": index + 1,
+                  "url": `${siteMeta.siteUrl}/papers/${paper.slug}`,
+                  "name": paper.title,
+                  "headline": paper.title,
+                  "description": paper.description,
+                  "datePublished": paper.date,
+                  "dateModified": paper.date,
+                  "author": {
+                    "@type": "Person",
+                    "name": paper.author || siteMeta.author.name
+                  },
+                  "keywords": paper.tags,
+                  "isBasedOn": paper.paper_url ? {
+                    "@type": "ScholarlyArticle",
+                    "name": paper.title,
+                    "author": paper.authors?.map(author => ({
+                      "@type": "Person",
+                      "name": author
+                    })),
+                    "datePublished": paper.year_published?.toString(),
+                    "url": paper.paper_url,
+                    "doi": paper.doi
+                  } : undefined
+                }))
               }
             },
-            "mainEntity": {
-              "@type": "ItemList",
-              "numberOfItems": papers.length,
-              "itemListElement": papers.map((paper, index) => ({
-                "@type": "ScholarlyArticle",
-                "position": index + 1,
-                "url": `${siteMeta.siteUrl}/papers/${paper.slug}`,
-                "name": paper.title,
-                "headline": paper.title,
-                "description": paper.description,
-                "datePublished": paper.date,
-                "dateModified": paper.date,
-                "author": {
-                  "@type": "Person",
-                  "name": paper.author || siteMeta.author.name
-                },
-                "keywords": paper.tags,
-                "isBasedOn": paper.paper_url ? {
-                  "@type": "ScholarlyArticle",
-                  "name": paper.title,
-                  "author": paper.authors?.map(author => ({
-                    "@type": "Person",
-                    "name": author
-                  })),
-                  "datePublished": paper.year_published?.toString(),
-                  "url": paper.paper_url
-                } : undefined
-              }))
-            }
-          })
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema)
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema)
+            breadcrumbSchema,
+            faqSchema,
+            researchTopicsSchema
+          ])
         }}
       />
       <SimpleLayout
