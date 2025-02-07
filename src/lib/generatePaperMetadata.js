@@ -1,6 +1,6 @@
 export function generatePaperMetadata({ paper, path }) {
   // Remove any trailing slashes and query parameters
-  const cleanPath = path.split('?')[0].split('#')[0].replace(/\/$/, '');
+  const cleanPath = path.split('?')[0].split('#')[0].replace(/\/*$/, '');
   const url = `https://www.abhik.xyz${cleanPath}`;
   const ogImageUrl = `https://og.abhik.xyz/api/og?title=${encodeURIComponent(paper.title)}&desc=${encodeURIComponent(paper.description)}`;
   const fullTitle = `${paper.title} - ML Paper Review by Abhik`;
@@ -66,7 +66,6 @@ export function generatePaperMetadata({ paper, path }) {
       'max-image-preview': 'large',
       'max-snippet': -1,
       'notranslate': true,
-      'max-image-preview': 'large',
       'googlebot': 'index,follow',
       'googlebot-news': 'index,follow'
     },

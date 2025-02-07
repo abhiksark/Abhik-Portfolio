@@ -1,10 +1,10 @@
 # *
 User-agent: *
 Allow: /
-Disallow: /api/
+Disallow: /api
 Disallow: /thank-you
-Disallow: /_next/
-Disallow: /static/
+Disallow: /_next
+Disallow: /static
 
 # Host
 Host: https://www.abhik.xyz
