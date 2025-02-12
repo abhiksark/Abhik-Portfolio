@@ -12,7 +12,7 @@ export const metadata = {
     template: '%s | Abhik Sarkar'
   },
   alternates: {
-    canonical: '/',
+    canonical: 'https://www.abhik.xyz',
   },
   description: 'Machine Learning Engineer specializing in Computer Vision and Deep Learning. Leading ML teams and building innovative solutions for safety and security.',
   keywords: ['Machine Learning', 'Computer Vision', 'Deep Learning', 'AI', 'Software Engineering'],

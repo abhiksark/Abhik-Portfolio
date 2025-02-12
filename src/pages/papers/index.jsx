@@ -8,6 +8,8 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 function Paper({ paper }) {
+  const canonicalUrl = `${siteMeta.siteUrl}/papers/${paper.slug}`.toLowerCase();
+
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline" itemScope itemType="http://schema.org/ScholarlyArticle">
       <Card className="md:col-span-3">
@@ -42,7 +44,7 @@ function Paper({ paper }) {
       </Card.Eyebrow>
       <meta itemProp="author" content={paper.author} />
       <meta itemProp="dateModified" content={paper.date} />
-      <meta itemProp="url" content={`${siteMeta.siteUrl}/papers/${paper.slug}`} />
+      <meta itemProp="url" content={canonicalUrl} />
     </article>
   )
 }

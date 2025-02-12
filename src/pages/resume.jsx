@@ -270,27 +270,34 @@ function Education({ education }) {
 }
 
 export default function Projects() {
-  const headline = "Things I’ve made trying to put my mark on the universe."
-  const intro = "I’ve worked on tons of little projects over the years, but these are some of the ones that I’m most proud of. If you see something that piques your interest, check it out via the link below. While you're there, feel free to contribute any ideas that would make it better. Remember: Open source!"
+  const headline = "Things I've made trying to put my mark on the universe."
+  const intro = "I've worked on tons of little projects over the years, but these are some of the ones that I'm most proud of. If you see something that piques your interest, check it out via the link below. While you're there, feel free to contribute any ideas that would make it better. Remember: Open source!"
 
   return (
     <>
       <NextSeo
-        title="Shelf - Abhik"
-        description={siteMeta.description}
-        canonical="https://www.abhik.xyz/shelf"
+        title="Resume - Abhik Sarkar"
+        description="Professional experience, skills, and education of Abhik Sarkar - Machine Learning Engineer and Tech Lead"
+        canonical="https://www.abhik.xyz/resume"
         openGraph={{
-          url: 'https://www.abhik.xyz/shelf',
+          url: 'https://www.abhik.xyz/resume',
+          title: 'Resume - Abhik Sarkar',
+          description: 'Professional experience, skills, and education of Abhik Sarkar - Machine Learning Engineer and Tech Lead',
           images: [
             {
-              url: `https://og.abhik.xyz/api/og?title=shelf&desc=${headline}`,
+              url: `https://og.abhik.xyz/api/og?title=Resume&desc=Professional experience and skills`,
               width: 1200,
               height: 600,
-              alt: 'Og Image Alt',
+              alt: 'Resume - Abhik Sarkar',
               type: 'image/jpeg',
             }
           ],
-          siteName: 'abhik.xyz',
+          siteName: siteMeta.SITE_NAME,
+        }}
+        twitter={{
+          handle: '@abhiksark',
+          site: '@abhiksark',
+          cardType: 'summary_large_image',
         }}
       />
       <SimpleLayoutNew title="Abhik Sarkar">
