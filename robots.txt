@@ -6,7 +6,7 @@ Allow: /
 Host: https://www.abhik.xyz
 
 # Sitemap
-Sitemap: https://www.abhik.xyz/sitemap.xml
+Sitemap: https://www.abhik.xyz/sitemap-0.xml 
 
 # Disallow
 Disallow: /api/
