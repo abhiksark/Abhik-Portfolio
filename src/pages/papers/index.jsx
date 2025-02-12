@@ -266,8 +266,10 @@ export default function Papers({ papers }) {
         intro={description}
       >
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl mb-8">
+            {title}
+          </h1>
           <div className="mb-8">
-            <h1 className="sr-only">ML Paper Reviews and Analysis</h1>
             <p className="text-sm italic text-zinc-600 dark:text-zinc-400">
               Note: These paper reviews are best viewed on web for optimal reading experience.
             </p>
