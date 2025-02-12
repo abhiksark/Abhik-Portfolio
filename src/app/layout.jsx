@@ -11,6 +11,9 @@ export const metadata = {
     default: 'Abhik Sarkar - Machine Learning & Computer Vision Expert',
     template: '%s | Abhik Sarkar'
   },
+  alternates: {
+    canonical: '/',
+  },
   description: 'Machine Learning Engineer specializing in Computer Vision and Deep Learning. Leading ML teams and building innovative solutions for safety and security.',
   keywords: ['Machine Learning', 'Computer Vision', 'Deep Learning', 'AI', 'Software Engineering'],
   authors: [{ name: 'Abhik Sarkar' }],
