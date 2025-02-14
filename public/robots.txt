@@ -1,13 +1,9 @@
 # *
 User-agent: *
 Allow: /
-Disallow: /api
-Disallow: /thank-you
-Disallow: /_next
-Disallow: /static
 
 # Host
 Host: https://www.abhik.xyz
 
 # Sitemaps
-Sitemap: https://www.abhik.xyz/sitemap.xml
+Sitemap: https://www.abhik.xyz/sitemap-0.xml
