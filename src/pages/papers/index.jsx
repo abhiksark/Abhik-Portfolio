@@ -204,12 +204,14 @@ export default function Papers({ papers }) {
               ]
             },
             "publisher": {
-              "@type": "Organization",
-              "name": siteMeta.SITE_NAME,
-              "logo": {
-                "@type": "ImageObject",
-                "url": `${siteMeta.siteUrl}/logo.png`
-              }
+              "@type": "Person",
+              "name": siteMeta.author.name,
+              "url": siteMeta.siteUrl,
+              "sameAs": [
+                siteMeta.author.twitter,
+                siteMeta.author.github,
+                siteMeta.author.linkedin
+              ]
             },
             "mainEntity": {
               "@type": "ItemList",
@@ -260,7 +262,7 @@ export default function Papers({ papers }) {
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl md:text-6xl mb-8">
             ML Paper Reviews and Analysis
           </h1>
-          <p className="mt-6 text-xl text-zinc-600 dark:text-zinc-400">
+          <p className="mt-4 text-xl text-zinc-600 dark:text-zinc-400">
             {description}
           </p>
         </header>

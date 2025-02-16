@@ -112,7 +112,9 @@ export default function ArticlesIndex({ articles }) {
         title={title}
         intro={description}
       >
-        <h1 className="sr-only">Technical Articles by Abhik - ML & Software Engineering Blog</h1>
+        <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl md:text-6xl mb-8">
+          Articles & Technical Blog Posts
+        </h1>
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <div className="flex max-w-3xl flex-col space-y-16">
             {articles.map((article) => (
