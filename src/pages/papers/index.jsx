@@ -267,7 +267,7 @@ export default function Papers({ papers }) {
       >
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl mb-8">
-            {title}
+            ML Paper Reviews and Analysis
           </h1>
           <div className="mb-8">
             <p className="text-sm italic text-zinc-600 dark:text-zinc-400">

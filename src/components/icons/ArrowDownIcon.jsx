@@ -10,4 +10,6 @@ function ArrowDownIcon(props) {
       </svg>
     )
   }
+
+export default ArrowDownIcon;
   
