@@ -51,13 +51,11 @@ function Paper({ paper }) {
 
 export default function Papers({ papers }) {
   const router = useRouter();
-  const title = "ML Paper Reviews and Analysis"
-  const description = "In-depth reviews of influential papers in machine learning, computer vision, and deep learning. Breaking down complex research into digestible insights with practical applications."
+  const title = "ML Paper Reviews and Analysis by Abhik"
+  const description = "Expert analysis and in-depth reviews of machine learning research papers. Covering computer vision, deep learning, and AI innovations with practical insights."
   
   // Get all unique tags from papers
   const allTags = [...new Set(papers.flatMap(paper => paper.tags || []))]
-  
-  // Get all unique research areas
   const researchAreas = allTags.slice(0, 5).join(', ')
 
   // Generate breadcrumb schema
@@ -125,8 +123,8 @@ export default function Papers({ papers }) {
       </Head>
       <NextSeo
         title={title}
-        titleTemplate="%s | Abhik Sarkar"
-        description={`${description} Covering ${researchAreas} and more.`}
+        titleTemplate="%s | Machine Learning Research"
+        description={`${description} Featuring papers on ${researchAreas}.`}
         canonical={`${siteMeta.siteUrl}${router.asPath}`}
         openGraph={{
           type: 'website',
@@ -135,19 +133,15 @@ export default function Papers({ papers }) {
           description: description,
           images: [
             {
-              url: `https://og.abhik.xyz/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description)}`,
+              url: `https://og.abhik.xyz/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent("Expert analysis of cutting-edge ML research papers")}`,
               width: 1200,
               height: 600,
-              alt: title,
+              alt: "ML Paper Reviews and Analysis",
               type: 'image/jpeg',
             }
           ],
           siteName: siteMeta.SITE_NAME,
-          locale: 'en_US',
-          article: {
-            authors: [siteMeta.author.name],
-            tags: allTags
-          }
+          locale: 'en_US'
         }}
         twitter={{
           handle: siteMeta.author.twitter,
@@ -261,41 +255,27 @@ export default function Papers({ papers }) {
           __html: JSON.stringify(faqSchema)
         }}
       />
-      <SimpleLayout
-        title={title}
-        intro={description}
-      >
-        <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <header className="max-w-3xl mx-auto text-center mb-16">
+          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl md:text-6xl mb-8">
             ML Paper Reviews and Analysis
           </h1>
-          <div className="mb-8">
-            <p className="text-sm italic text-zinc-600 dark:text-zinc-400">
-              Note: These paper reviews are best viewed on web for optimal reading experience.
-            </p>
-            <div className="mt-4">
-              <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Topics covered:</h2>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {allTags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium 
-                      bg-zinc-200/80 text-zinc-900
-                      dark:bg-zinc-700/80 dark:text-zinc-100"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="flex max-w-3xl flex-col space-y-16">
+          <p className="mt-6 text-xl text-zinc-600 dark:text-zinc-400">
+            {description}
+          </p>
+        </header>
+
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100 mb-8">
+            Featured Research Papers
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {papers.map((paper) => (
               <Paper key={paper.slug} paper={paper} />
             ))}
           </div>
         </div>
-      </SimpleLayout>
+      </div>
     </>
   )
 }
