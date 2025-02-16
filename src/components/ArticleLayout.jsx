@@ -141,7 +141,9 @@ export function ArticleLayout({
                 "@type": "ImageObject",
                 "url": `${siteMeta.siteUrl}/logo.png`
               }
-            }
+            },
+            "wordCount": meta.wordCount,
+            "articleBody": meta.articleSnippet
           })
         }}
       />

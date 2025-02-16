@@ -1,13 +1,16 @@
-export function generateArticleMetadata({ article, path }) {
+export function generateArticleMetadata({ article, path, keywords = [] }) {
   // Remove any trailing slashes and query parameters
   const cleanPath = path.split('?')[0].split('#')[0].replace(/\/$/, '');
   const url = `https://www.abhik.xyz${cleanPath}`;
-  const ogImageUrl = `https://og.abhik.xyz/api/og?title=${article.title}&desc=${article.description}`;
+  const ogImageUrl = `https://og.abhik.xyz/api/og?title=${article.title}&desc=${article.description}&author=${article.author}`;
+
+  // Combine provided keywords with default keywords
+  const allKeywords = [...new Set([...(article.keywords || []), ...keywords])];
 
   return {
     title: article.title,
     description: article.description,
-    keywords: article.keywords || [],
+    keywords: allKeywords,
     authors: [{ name: article.author }],
     alternates: {
       canonical: url,
