@@ -20,4 +20,6 @@ function BriefcaseIcon(props) {
       </svg>
     )
   }
+
+export default BriefcaseIcon;
   
