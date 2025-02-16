@@ -359,3 +359,16 @@ export async function getStaticProps() {
     },
   }
 }
+
+export function generateArticleMetadata({ article, path }) {
+  return {
+    title: `${article.title} | ML Engineering`,
+    // Limit title length to 60 chars
+    openGraph: {
+      title: article.title.length > 50 
+        ? article.title.substring(0, 47) + '...'
+        : article.title,
+      // ... other meta
+    }
+  }
+}
