@@ -5,6 +5,6 @@ Allow: /
 # Host
 Host: https://www.abhik.xyz
 
-# Sitemap
-Sitemap: https://www.abhik.xyz/sitemap-0.xml 
+# Sitemaps
+Sitemap: https://www.abhik.xyz/sitemap.xml 
 

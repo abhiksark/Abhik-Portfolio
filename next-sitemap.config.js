@@ -1,7 +1,7 @@
 module.exports = {
   siteUrl: 'https://www.abhik.xyz',
   generateRobotsTxt: true,
-  exclude: ['/thank-you', '/api/*', '/_next/*', '/static/*'],
+  // exclude: ['/thank-you', '/api/*', '/_next/*', '/static/*'],
   priority: 0.7,
   changefreq: 'daily',
   sitemapBaseFileName: 'sitemap',
@@ -35,9 +35,11 @@ module.exports = {
     policies: [
       {
         userAgent: '*',
-        allow: '/',
-        disallow: ['/api', '/thank-you', '/_next', '/static']
+        allow: '/'
       }
+    ],
+    additionalSitemaps: [
+      'https://www.abhik.xyz/sitemap.xml'
     ]
   }
 }
