@@ -137,6 +137,14 @@ export function PaperLayout({ children, meta, previousPathname }) {
                 <ArrowLeftIcon className="h-4 w-4 stroke-zinc-500 transition group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400" />
               </button>
             )}
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl md:text-5xl lg:text-6xl">
+              {meta.title}
+            </h1>
+            {meta.description && (
+              <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                {meta.description}
+              </p>
+            )}
             <article>
               <header className="relative">
                 {/* Paper Context & Tags */}
@@ -186,19 +194,13 @@ export function PaperLayout({ children, meta, previousPathname }) {
 
                 {/* Title Section */}
                 <div className="mb-8 sm:mb-12">
-                  <h1 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl md:text-5xl lg:text-6xl">
-                    {meta.title}
-                  </h1>
+
                 </div>
 
                 {/* Authors & Paper Info */}
                 <div className="mb-8 sm:mb-12 lg:grid lg:grid-cols-4 lg:gap-8">
                   <div className="lg:col-span-3">
-                    {meta.description && (
-                      <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                        {meta.description}
-                      </p>
-                    )}
+
                   </div>
                   
                   <div className="mt-6 lg:mt-0 lg:col-span-1">

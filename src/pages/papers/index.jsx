@@ -6,6 +6,7 @@ import { formatDate } from '@/lib/formatDate'
 import siteMeta from '@/data/siteMeta'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 function Paper({ paper }) {
   const canonicalUrl = `${siteMeta.siteUrl}/papers/${paper.slug}`.toLowerCase();
@@ -47,6 +48,48 @@ function Paper({ paper }) {
       <meta itemProp="url" content={canonicalUrl} />
     </article>
   )
+}
+
+export function PaperSchema({ paper }) {
+  return (
+    <script type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ScholarlyArticle",
+          "name": paper.title,
+          "description": paper.description,
+          "datePublished": paper.date,
+          "author": paper.authors.map(author => ({
+            "@type": "Person",
+            "name": author
+          })),
+          "publisher": {
+            "@type": "Organization",
+            "name": "Abhik's Research Reviews"
+          },
+          "image": paper.ogImageUrl,
+          "isBasedOn": paper.paper_url ? {
+            "@type": "ScholarlyArticle",
+            "url": paper.paper_url
+          } : undefined
+        })
+      }}
+    />
+  );
+}
+
+export function PaperSEO({ paper }) {
+  return (
+    <>
+      <link rel="canonical" href={`/papers/${paper.slug}`} />
+      <meta name="citation_title" content={paper.title} />
+      <meta name="citation_author" content={paper.authors?.join('; ')} />
+      <meta name="citation_publication_date" content={paper.date} />
+      <meta name="citation_journal_title" content={paper.conference} />
+      <PaperSchema paper={paper} />
+    </>
+  );
 }
 
 export default function Papers({ papers }) {
@@ -151,7 +194,13 @@ export default function Papers({ papers }) {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: [...allTags, 'machine learning', 'paper reviews', 'research analysis', 'deep learning', 'AI research', 'ML papers', 'technical analysis'].join(', ')
+            content: [
+              ...allTags,
+              'machine learning paper reviews',
+              'AI research analysis',
+              'deep learning research breakdowns',
+              'academic paper explanations'
+            ].join(', ')
           },
           {
             name: 'author',
@@ -262,6 +311,17 @@ export default function Papers({ papers }) {
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl md:text-6xl mb-8">
             ML Paper Reviews and Analysis
           </h1>
+          <nav className="mb-4" aria-label="Breadcrumb">
+            <ol className="flex items-center justify-center space-x-2 text-sm text-zinc-600 dark:text-zinc-400">
+              <li>
+                <Link href="/" className="hover:text-teal-500 dark:hover:text-teal-400">Home</Link>
+              </li>
+              <li className="text-zinc-300 dark:text-zinc-600">/</li>
+              <li className="font-medium text-zinc-900 dark:text-zinc-100" aria-current="page">
+                Papers
+              </li>
+            </ol>
+          </nav>
           <p className="mt-4 text-xl text-zinc-600 dark:text-zinc-400">
             {description}
           </p>
