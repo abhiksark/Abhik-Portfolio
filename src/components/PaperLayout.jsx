@@ -22,11 +22,6 @@ function ArrowLeftIcon(props) {
 export function PaperLayout({ children, meta, previousPathname }) {
   let router = useRouter()
 
-  // Wait for router to be ready
-  if (!router.isReady) {
-    return null
-  }
-
   // Get the path and ensure it's valid
   const path = router.asPath || ''
   const canonicalUrl = path ? `${siteMeta.siteUrl}${path}` : `${siteMeta.siteUrl}/papers`

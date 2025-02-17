@@ -5,43 +5,68 @@ import { getAllPapers } from '@/lib/getAllPapers'
 import { formatDate } from '@/lib/formatDate'
 import siteMeta from '@/data/siteMeta'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 
 function Paper({ paper }) {
   const canonicalUrl = `${siteMeta.siteUrl}/papers/${paper.slug}`.toLowerCase();
 
   return (
-    <article className="md:grid md:grid-cols-4 md:items-baseline" itemScope itemType="http://schema.org/ScholarlyArticle">
-      <Card className="md:col-span-3">
-        <Card.Title href={`/papers/${paper.slug}`} itemProp="name">
-          {paper.title}
-        </Card.Title>
-        {paper.tags && paper.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-2 mb-3 relative z-20">
-            {paper.tags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium 
-                  bg-zinc-200/80 text-zinc-900
-                  dark:bg-zinc-700/80 dark:text-zinc-100"
-                itemProp="keywords"
-              >
-                {tag}
-              </span>
-            ))}
+    <article 
+      className="group relative flex flex-col overflow-hidden rounded-2xl bg-zinc-50 p-6 transition-all duration-300 hover:shadow-lg dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50" 
+      itemScope 
+      itemType="http://schema.org/ScholarlyArticle"
+    >
+      <div className="flex flex-col justify-between h-full">
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <time
+              dateTime={paper.date}
+              className="text-sm text-zinc-600 dark:text-zinc-400"
+              itemProp="datePublished"
+            >
+              {formatDate(paper.date)}
+            </time>
           </div>
-        )}
-        <Card.Description itemProp="description">{paper.description}</Card.Description>
-        <Card.Cta>Read review</Card.Cta>
-      </Card>
-      <Card.Eyebrow
-        as="time"
-        dateTime={paper.date}
-        className="mt-1 hidden md:block"
-        itemProp="datePublished"
-      >
-        {formatDate(paper.date)}
-      </Card.Eyebrow>
+          
+          <h3 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-3" itemProp="name">
+            <a href={`/papers/${paper.slug}`} className="hover:text-teal-500 transition">
+              {paper.title}
+            </a>
+          </h3>
+
+          {paper.tags && paper.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {paper.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+                    bg-teal-100/80 text-teal-900
+                    dark:bg-teal-500/10 dark:text-teal-300"
+                  itemProp="keywords"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <p className="text-zinc-600 dark:text-zinc-400 mb-6 line-clamp-3" itemProp="description">
+            {paper.description}
+          </p>
+        </div>
+
+        <div className="mt-auto">
+          <a
+            href={`/papers/${paper.slug}`}
+            className="inline-flex items-center text-sm font-medium text-teal-500 hover:text-teal-600 dark:hover:text-teal-400"
+          >
+            Read review
+            <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      
       <meta itemProp="author" content={paper.author} />
       <meta itemProp="dateModified" content={paper.date} />
       <meta itemProp="url" content={canonicalUrl} />
@@ -50,13 +75,12 @@ function Paper({ paper }) {
 }
 
 export default function Papers({ papers }) {
-  const router = useRouter();
   const title = "ML Paper Reviews and Analysis by Abhik"
   const description = "Expert analysis and in-depth reviews of machine learning research papers. Covering computer vision, deep learning, and AI innovations with practical insights."
   
   // Get all unique tags from papers
   const allTags = [...new Set(papers.flatMap(paper => paper.tags || []))]
-  const researchAreas = allTags.slice(0, 5).join(', ')
+  const researchAreas = allTags.slice(0, 5).join(', ') || 'machine learning research' // Fallback for empty state
 
   // Generate breadcrumb schema
   const breadcrumbSchema = {
@@ -102,6 +126,66 @@ export default function Papers({ papers }) {
     ]
   }
 
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${siteMeta.siteUrl}/papers`
+    },
+    "name": title,
+    "description": description,
+    "author": {
+      "@type": "Person",
+      "name": siteMeta.author.name,
+      "url": siteMeta.siteUrl,
+      "sameAs": [
+        siteMeta.author.twitter,
+        siteMeta.author.github,
+        siteMeta.author.linkedin
+      ]
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": siteMeta.author.name,
+      "url": siteMeta.siteUrl,
+      "sameAs": [
+        siteMeta.author.twitter,
+        siteMeta.author.github,
+        siteMeta.author.linkedin
+      ]
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": papers.length,
+      "itemListElement": papers.map((paper, index) => ({
+        "@type": "ScholarlyArticle",
+        "position": index + 1,
+        "url": `${siteMeta.siteUrl}/papers/${paper.slug}`,
+        "name": paper.title,
+        "headline": paper.title,
+        "description": paper.description,
+        "datePublished": paper.date,
+        "dateModified": paper.date,
+        "author": {
+          "@type": "Person",
+          "name": paper.author || siteMeta.author.name
+        },
+        "keywords": paper.tags,
+        "isBasedOn": paper.paper_url ? {
+          "@type": "ScholarlyArticle",
+          "name": paper.title,
+          "author": paper.authors?.map(author => ({
+            "@type": "Person",
+            "name": author
+          })),
+          "datePublished": paper.year_published?.toString(),
+          "url": paper.paper_url
+        } : undefined
+      }))
+    }
+  }
+
   return (
     <>
       <Head>
@@ -120,12 +204,29 @@ export default function Papers({ papers }) {
         <meta name="google-news-tags" content="Machine Learning, Research Papers, AI Technology" />
         <meta name="news_keywords" content={allTags.join(',')} />
         <link rel="preconnect" href="https://og.abhik.xyz" />
+        
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+          key="page-schema"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+          key="breadcrumb-schema"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          key="faq-schema"
+        />
       </Head>
+
       <NextSeo
         title={title}
         titleTemplate="%s | Machine Learning Research"
         description={`${description} Featuring papers on ${researchAreas}.`}
-        canonical={`${siteMeta.siteUrl}${router.asPath}`}
+        canonical={`${siteMeta.siteUrl}/papers`}
         openGraph={{
           type: 'website',
           url: `${siteMeta.siteUrl}/papers`,
@@ -181,103 +282,31 @@ export default function Papers({ papers }) {
           }
         ]}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": `${siteMeta.siteUrl}/papers`
-            },
-            "name": title,
-            "description": description,
-            "author": {
-              "@type": "Person",
-              "name": siteMeta.author.name,
-              "url": siteMeta.siteUrl,
-              "sameAs": [
-                siteMeta.author.twitter,
-                siteMeta.author.github,
-                siteMeta.author.linkedin
-              ]
-            },
-            "publisher": {
-              "@type": "Person",
-              "name": siteMeta.author.name,
-              "url": siteMeta.siteUrl,
-              "sameAs": [
-                siteMeta.author.twitter,
-                siteMeta.author.github,
-                siteMeta.author.linkedin
-              ]
-            },
-            "mainEntity": {
-              "@type": "ItemList",
-              "numberOfItems": papers.length,
-              "itemListElement": papers.map((paper, index) => ({
-                "@type": "ScholarlyArticle",
-                "position": index + 1,
-                "url": `${siteMeta.siteUrl}/papers/${paper.slug}`,
-                "name": paper.title,
-                "headline": paper.title,
-                "description": paper.description,
-                "datePublished": paper.date,
-                "dateModified": paper.date,
-                "author": {
-                  "@type": "Person",
-                  "name": paper.author || siteMeta.author.name
-                },
-                "keywords": paper.tags,
-                "isBasedOn": paper.paper_url ? {
-                  "@type": "ScholarlyArticle",
-                  "name": paper.title,
-                  "author": paper.authors?.map(author => ({
-                    "@type": "Person",
-                    "name": author
-                  })),
-                  "datePublished": paper.year_published?.toString(),
-                  "url": paper.paper_url
-                } : undefined
-              }))
-            }
-          })
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema)
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema)
-        }}
-      />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <header className="max-w-3xl mx-auto text-center mb-16">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl md:text-6xl mb-8">
-            ML Paper Reviews and Analysis
-          </h1>
-          <p className="mt-4 text-xl text-zinc-600 dark:text-zinc-400">
-            {description}
-          </p>
-        </header>
 
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100 mb-8">
-            Featured Research Papers
-          </h2>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {papers.map((paper) => (
-              <Paper key={paper.slug} paper={paper} />
-            ))}
+      <main>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="py-16 sm:py-24">
+            <div className="text-center mb-16">
+              <h1 className="font-display text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-7xl">
+                <span className="relative whitespace-nowrap">
+                  <span className="relative">ML Paper Reviews</span>
+                </span>
+              </h1>
+              <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+                {description}
+              </p>
+            </div>
+
+            <div className="mt-16">
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {papers.map((paper) => (
+                  <Paper key={paper.slug} paper={paper} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
     </>
   )
 }
@@ -287,8 +316,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      papers,
+      papers: papers || [],
     },
-    revalidate: 3600 // Revalidate every hour
+    revalidate: 3600
   }
 }

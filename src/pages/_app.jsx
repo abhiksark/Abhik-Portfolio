@@ -23,7 +23,7 @@ function usePrevious(value) {
 
 export default function App({ Component, pageProps, router }) {
   let previousPathname = usePrevious(router.pathname)
-  const canonicalUrl = `https://www.abhik.xyz${router.asPath.split('?')[0].split('#')[0]}`
+  const canonicalUrl = `https://www.abhik.xyz${router.asPath.split('?')[0].split('#')[0]}`.replace(/\/$/, '')
 
   return (
     <>
