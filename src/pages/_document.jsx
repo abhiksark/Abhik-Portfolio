@@ -52,6 +52,11 @@ export default function Document() {
         />
         <link rel="me" href="https://www.abhik.xyz" />
         
+        {/* SEO Meta Tags */}
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="googlebot-news" content="index,follow" />
+        
         {/* Default meta tags that will be overridden by page-specific ones */}
         <meta name="theme-color" content="#ffffff" />
         

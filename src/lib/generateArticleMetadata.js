@@ -46,6 +46,9 @@ export function generateArticleMetadata({ article, path, keywords = [] }) {
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
+      'notranslate': true,
+      'googlebot': 'index,follow',
+      'googlebot-news': 'index,follow'
     },
   };
 }

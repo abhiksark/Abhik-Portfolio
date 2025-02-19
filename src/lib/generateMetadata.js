@@ -39,6 +39,9 @@ export function generateMetadata({ title, description, path = '', ogImage = null
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
+      'notranslate': true,
+      'googlebot': 'index,follow',
+      'googlebot-news': 'index,follow'
     },
   };
 }

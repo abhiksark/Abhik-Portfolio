@@ -40,6 +40,18 @@ export default {
     {
       name: 'apple-mobile-web-app-status-bar-style',
       content: 'default'
+    },
+    {
+      name: 'robots',
+      content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+    },
+    {
+      name: 'googlebot',
+      content: 'index,follow'
+    },
+    {
+      name: 'googlebot-news',
+      content: 'index,follow'
     }
   ],
   additionalLinkTags: [
